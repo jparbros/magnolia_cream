@@ -81,9 +81,6 @@ group :test do
   gem "autotest", '~> 4.4.6'
   gem "autotest-rails-pure"
 
-  if RUBY_PLATFORM =~ /darwin/
-    gem "autotest-fsevent", '~> 0.2.5'
-  end
   gem "autotest-growl"
   #gem "redgreen"
   gem "ZenTest", '4.6.2'
