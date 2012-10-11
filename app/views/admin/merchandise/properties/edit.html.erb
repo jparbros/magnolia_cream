@@ -5,7 +5,16 @@
 <%= form_for @property, :url  => admin_merchandise_property_path(@property),
                         :html => {:class => 'prepend-6'}  do |form| %>
   <%= render :partial => '/admin/merchandise/properties/form', :locals => {:form => form } %>
+
+  <fieldset id="admin-property-names">
+    <legend>Property Values</legend>
+     <% @property.property_values.each do |property_value| %>
+     <%= property_value.display_name %> <br/>
+     <% end %>
+  </fieldset>
+
   <div class=" generic_submit_button">
     <%= submit_tag "Update", :class => "button", :id => "update_property_button" %>
+    <%= link_to 'Property values', admin_merchandise_property_property_values_path(@property), class: 'button'%>
   </div>
 <% end %>

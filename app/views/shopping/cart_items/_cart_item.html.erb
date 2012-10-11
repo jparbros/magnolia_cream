@@ -28,6 +28,11 @@
       </b>
       <%=  item.variant.brand_name.blank? ? '' : ['-', item.variant.brand_name].join(' ') %><br/>
       <%= item.variant.display_stock_status('', '') %>
+      <div id="properties_details">
+        <% item.property_values.each do |property_value| %>
+          <%= property_value.property.display_name %>: <%= property_value.display_name %> <br/>
+        <% end %>
+      </div>
       <br/>
     </div>
   </td>

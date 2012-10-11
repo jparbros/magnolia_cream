@@ -8,6 +8,8 @@ class Property < ActiveRecord::Base
 
   has_many :variant_properties
   has_many :variants,          :through => :variant_properties
+  
+  has_many :property_values
 
   validates :identifing_name,    :presence => true, :length => { :maximum => 250 }
   validates :display_name,       :presence => true, :length => { :maximum => 165 }

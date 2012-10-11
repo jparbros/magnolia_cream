@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120627000122) do
+ActiveRecord::Schema.define(:version => 20121011150237) do
 
   create_table "accounting_adjustments", :force => true do |t|
     t.integer  "adjustable_id",                                 :null => false
@@ -83,12 +83,13 @@ ActiveRecord::Schema.define(:version => 20120627000122) do
   create_table "cart_items", :force => true do |t|
     t.integer  "user_id"
     t.integer  "cart_id"
-    t.integer  "variant_id",                     :null => false
-    t.integer  "quantity",     :default => 1
-    t.boolean  "active",       :default => true
-    t.integer  "item_type_id",                   :null => false
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.integer  "variant_id",                           :null => false
+    t.integer  "quantity",           :default => 1
+    t.boolean  "active",             :default => true
+    t.integer  "item_type_id",                         :null => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+    t.text     "property_value_ids"
   end
 
   add_index "cart_items", ["cart_id"], :name => "index_cart_items_on_cart_id"
@@ -362,6 +363,15 @@ ActiveRecord::Schema.define(:version => 20120627000122) do
     t.string  "identifing_name",                   :null => false
     t.string  "display_name"
     t.boolean "active",          :default => true
+  end
+
+  create_table "property_values", :force => true do |t|
+    t.string   "identifing_name"
+    t.string   "display_name"
+    t.boolean  "active",          :default => true
+    t.integer  "property_id"
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
   end
 
   create_table "prototype_properties", :force => true do |t|

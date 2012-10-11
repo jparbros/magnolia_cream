@@ -27,4 +27,10 @@ namespace :db do
       puts 'IT APPEAR YOU ALREADY HAVE DATA. PLEASE truncate your DB or take a look because it might be ready to go!!'
     end
   end
+  
+  desc "Task description"
+  task :mangolias_seed => [:environment] do
+    base = ["piel normal",'piel seca','piel sensible']
+    func_primaria = ['estrias', 'celulitis', 'manchas']
+  end
 end

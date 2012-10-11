@@ -1,0 +1,100 @@
+html {
+  background: url('/assets/top-background.png') repeat-x top, url('/assets/bottom-background.png') repeat-x bottom, url("/assets/bedge_grunge.png");
+  height: 100%;
+}
+
+body {
+  background-color: transparent;
+  margin: 20px 0;
+}
+
+#content {min-height: 600px;}
+
+.side-lines {
+  background-color:transparent;
+  border-color:rgb(88,154,119);
+  border-width: 4px 0;
+  border-style: double;
+  height: 50px;
+  margin-top: 20px;
+}
+
+h1 {
+  color: #333;
+  font-family: 'OSP-DIN'; 
+  font-weight: normal; 
+  font-style: normal;
+  font-size: 70px; 
+  font-line: 1;
+  text-align: center;
+  margin: 50px 0;
+}
+
+.circle-button {
+  border-radius: 80px;
+  padding: 30px 10px;
+  margin-top: 30px;
+}
+
+.float-right {float: right;}
+
+.hide-left {margin-left: -9999px;}
+
+#submit-cream { 
+  opacity: 0;
+  filter:alpha(opacity=0);
+  position: absolute;
+  top: 400px;
+  left: 50%;
+}
+
+#animacion {
+  width: 244px;
+  height: 466px;
+  margin-top: -1999px;
+  margin-left: 100px;
+  
+  &.started {margin-top: 0px;}
+  
+  #fill {
+    background: url("/assets/bottle/aclarante.png") no-repeat 0px -385px;
+    width: 220px;
+    position: relative;
+    z-index: -10;
+    left: 19px;
+    
+    &.step0 {
+      height: 0px;
+      top: -64px;
+      background-position-y: -385px;
+    }
+    
+    &.step1 {
+      height: 97px;
+      top: -161px;
+      background-position-y: -288px;
+    }
+    
+    &.step2 {
+      height: 194px;
+      top: -258px;
+      background-position-y: -191px;
+    }
+    
+    &.step3 {
+      height: 291px;
+      top: -355px;
+      background-position-y: -94px;
+    }
+    
+    &.step4 {
+      height: 386px;
+      top: -450px;
+      background-position-y: 0px;
+    }
+  }
+}
+
+#properties_details {
+  font-size: 12px;
+}

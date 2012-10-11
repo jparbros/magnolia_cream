@@ -2,4 +2,4 @@
 // the compiled file.
 //
 //= require_tree  ./jquery
-//= require_tree  ./layout
+//= require bootstrap-all

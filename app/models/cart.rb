@@ -123,16 +123,11 @@ class Cart < ActiveRecord::Base
   end
 
   def add_cart_items(items, qty, customer, cart_item_type_id, variant_id)
-    if items.size < 1
-      cart_item = shopping_cart_items.create(:variant_id   => variant_id,
-                                    :user         => customer,
-                                    :item_type_id => cart_item_type_id,
-                                    :quantity     => qty#,#:price      => variant.price
-                                    )
-    else
-      cart_item = items.first
-      update_shopping_cart(cart_item,customer, qty)
-    end
+    cart_item = shopping_cart_items.create(:variant_id   => variant_id,
+                                  :user         => customer,
+                                  :item_type_id => cart_item_type_id,
+                                  :quantity     => qty#,#:price      => variant.price
+                                  )
     cart_item
   end
 

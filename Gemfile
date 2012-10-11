@@ -1,15 +1,19 @@
 source 'http://rubygems.org'
 
 ## Bundle rails:
-gem 'rails', '~> 3.2.6'
+gem 'rails'
+gem 'compass_twitter_bootstrap'
+gem 'sass-rails', "  ~> 3.2.3"
 
 group :assets do
-  #gem 'coffee-rails', "~> 3.1.0"
+  gem 'coffee-rails'
   gem 'uglifier', '>= 1.0.3'
 end
-  gem 'sass-rails', "  ~> 3.2.3"
+  
 
-gem "activemerchant", '~> 1.17.0'#, :lib => 'active_merchant'
+gem 'haml-rails'
+
+gem "activemerchant", :require => 'active_merchant'
 gem 'authlogic', "3.0.3"
 gem 'bluecloth',     '~> 2.1.0'
 gem 'cancan', '~> 1.6.7'
@@ -23,14 +27,11 @@ gem 'haml',  ">= 3.0.13"#, ">= 3.0.4"#, "2.2.21"#,
 gem "jquery-rails"
 
 #gem 'memcache-client', '~> 1.8.5'
-group :production do
-  gem 'mysql2', '~> 0.3.10'
-end
-
+gem 'pg'
 gem 'nested_set', '~> 1.7.0'
 #gem "nifty-generators", :git => 'git://github.com/drhenner/nifty-generators.git'
 gem 'nokogiri', '~> 1.5.0'
-gem 'paperclip', '~> 2.4.5'
+gem 'paperclip'
 gem 'prawn', '~> 0.12.0'
 
 gem "rails3-generators", :git => "https://github.com/neocoin/rails3-generators.git"
@@ -57,15 +58,15 @@ group :development do
   gem 'RedCloth'
 end
 group :test, :development do
-  gem "rspec-rails", "~> 2.8.0"
+  gem "rspec-rails"
   gem 'capybara', :git => 'git://github.com/jnicklas/capybara.git'
   gem 'launchy'
   gem 'database_cleaner'
 end
 
 group :test do
-  gem 'factory_girl', "~> 3.3.0"
-  gem 'factory_girl_rails', "~> 3.3.0"
+  gem 'factory_girl'
+  gem 'factory_girl_rails'
   gem 'mocha', '~> 0.10.0', :require => false
   gem 'rspec-rails-mocha'
   #gem "shoulda"

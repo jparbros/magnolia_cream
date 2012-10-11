@@ -18,10 +18,19 @@ class CartItem < ActiveRecord::Base
   belongs_to :user
   belongs_to :cart
   belongs_to :variant
+  
+  serialize :property_value_ids
 
   QUANTITIES = [1,2,3,4]
 
   before_save :inactivate_zero_quantity
+
+
+  def property_values
+    property_value_ids.collect do |property_value_id|
+      PropertyValue.find(property_value_id)
+    end
+  end
 
   # Call this if you need to know the unit price of an item
   #

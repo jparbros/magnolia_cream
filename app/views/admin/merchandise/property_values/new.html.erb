@@ -1,0 +1,15 @@
+<%= render :partial => '/admin/merchandise/sub_header'%>
+
+<h3>New Property Value</h3>
+
+<p>
+  An "Identifing name" is like 'shirt-color'.<br/>
+  However "Display name" is what you will display to the customer for the given property value.  In this case 'color'.
+</p>
+
+<%= form_for @property_value, :url  => admin_merchandise_property_property_values_path(params[:property_id]) do |form| %>
+  <%= render :partial => '/admin/merchandise/property_values/form', :locals => {:form => form } %>
+  <div class=" generic_submit_button">
+    <%= submit_tag "Create", :class => "button", :id => "create_property_button" %>
+  </div>
+<% end %>

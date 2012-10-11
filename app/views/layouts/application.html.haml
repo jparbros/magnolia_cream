@@ -1,0 +1,39 @@
+!!!5
+%html
+  %head
+    %title
+      = site_name
+    %link{href: 'http://openfontlibrary.org/face/osp-din', rel: 'stylesheet', type: 'text/css'}
+    = stylesheet_link_tag 'application'
+    = csrf_meta_tag
+    = javascript_include_tag 'application'
+    = yield :head
+
+
+  %body
+    .container
+      - if alert
+        .alert-message.error{'data-alert'=>"alert"}
+          = link_to 'x','#', :class => 'close'
+          %p= alert
+      - if notice
+        .alert-message.info{'data-alert'=>"alert"}
+          = link_to 'x','#', :class => 'close'
+          %p= notice
+      %header
+        .row
+          .side-lines.span5
+            &nbsp;
+          = image_tag '/assets/logo-magnolias.png', class: :span2
+          .side-lines.span5
+            &nbsp;
+      #content.row
+        .span12
+          = yield
+          
+      %footer
+        Copyright 2012. All right reserved.
+
+
+    %script{type: 'text/javascript'}
+      = yield :javascript

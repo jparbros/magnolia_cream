@@ -136,7 +136,9 @@ Hadean::Application.routes.draw do
       namespace :images do
         resources :products
       end
-      resources :properties
+      resources :properties do
+        resources :property_values
+      end
       resources :prototypes
       resources :brands
       resources :product_types
