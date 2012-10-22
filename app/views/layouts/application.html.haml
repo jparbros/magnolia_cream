@@ -2,7 +2,7 @@
 %html
   %head
     %title
-      = site_name
+      Magnolias Cream Parlor
     %link{href: 'http://openfontlibrary.org/face/osp-din', rel: 'stylesheet', type: 'text/css'}
     = stylesheet_link_tag 'application'
     = csrf_meta_tag
@@ -22,11 +22,7 @@
           %p= notice
       %header
         .row
-          .side-lines.span5
-            &nbsp;
-          = image_tag '/assets/logo-magnolias.png', class: :span2
-          .side-lines.span5
-            &nbsp;
+          = image_tag '/assets/logo-magnolias.png', class: [:span2, :offset5], id: :logo
       #content.row
         .span12
           = yield
