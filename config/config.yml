@@ -17,10 +17,9 @@ development: &non_production_settings
     username: someLOGIN
     password: s0meth1ngs3cr3t
   paypal:
-    ip:         192.168.0.1
-    login:      someLOGIN.yahoo.com
-    password:   somePASSWORD
-    signature:  someSIGNATURE
+    login:      magnol_1351263382_biz_api1.hotmail.com
+    password:   1351263438
+    signature:  AFcWxV21C7fd0v3bYYYRCpSSRl31AlmTUbskilNRZj-HSJl0-UYtCZfV
   authnet:
     login:      someLOGIN
     password:   somePASSWORD
@@ -35,10 +34,9 @@ production:
     username: someLOGIN
     password: somePASSOWRD
   paypal:
-    ip:         192.168.0.1
-    login:      someLOGIN.yahoo.com
-    password:   somePASSWORD
-    signature:  someSIGNATURE
+    login:      magnol_1351263382_biz_api1.hotmail.com
+    password:   1351263438
+    signature:  AFcWxV21C7fd0v3bYYYRCpSSRl31AlmTUbskilNRZj-HSJl0-UYtCZfV
   authnet:
     login:      someLOGIN
     password:   somePASSWORD

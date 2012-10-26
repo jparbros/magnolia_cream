@@ -97,23 +97,23 @@ Hadean::Application.configure do
     #Formtastic::SemanticFormBuilder.send(:include, Formtastic::YearPicker)
 
     ActiveMerchant::Billing::Base.mode = :test
-    #::GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(
-    #  :login      => HADEAN_CONFIG['paypal']['login'],
-    #  :password   => HADEAN_CONFIG['paypal']['password'],
-    #  :signature  => HADEAN_CONFIG['paypal']['signature']
-    #)
-
-    ::GATEWAY = ActiveMerchant::Billing::AuthorizeNetGateway.new(
-      :login    => HADEAN_CONFIG['authnet']['login'],
-      :password => HADEAN_CONFIG['authnet']['password'],
-      :test     => true
+    ::GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(
+     :login      => HADEAN_CONFIG['paypal']['login'],
+     :password   => HADEAN_CONFIG['paypal']['password'],
+     :signature  => HADEAN_CONFIG['paypal']['signature']
     )
 
-    ::CIM_GATEWAY = ActiveMerchant::Billing::AuthorizeNetCimGateway.new(
-      :login    => HADEAN_CONFIG['authnet']['login'],
-      :password => HADEAN_CONFIG['authnet']['password'],
-      :test     => true
-    )
+    # ::GATEWAY = ActiveMerchant::Billing::AuthorizeNetGateway.new(
+    #   :login    => HADEAN_CONFIG['authnet']['login'],
+    #   :password => HADEAN_CONFIG['authnet']['password'],
+    #   :test     => true
+    # )
+    # 
+    # ::CIM_GATEWAY = ActiveMerchant::Billing::AuthorizeNetCimGateway.new(
+    #   :login    => HADEAN_CONFIG['authnet']['login'],
+    #   :password => HADEAN_CONFIG['authnet']['password'],
+    #   :test     => true
+    # )
 
     #::GATEWAY = ActiveMerchant::Billing::BraintreeGateway.new(
     #  :login     => HADEAN_CONFIG['braintree']['login'],

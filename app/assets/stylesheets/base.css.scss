@@ -13,19 +13,20 @@ body {
   color: #E3E3D6;
 }
 
-header {height: 145px;}
+header {height: 145px; margin-top: 20px;}
 
 footer {
   height: 33px; 
   padding: 10px 0 0 0;
   text-align: center;
+  color: #636363;
 }
 
 img#magnolia-girl {
   margin-left: -50px;
 }
 
-img#logo { margin-top: 25px;}
+img#logo { margin-top: 10px;}
 
 a#lets-do-it {
   margin: 20px 105px 0 105px;
@@ -141,4 +142,19 @@ h1 {
 
 #properties_details {
   font-size: 12px;
+}
+
+.cart_item {
+  border-bottom: 1px solid #333;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  
+  .price {font-size: 20px;}
+}
+
+.shopping-cart-header {
+  background-color: #E3E3D6;
+  color: #333333;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }

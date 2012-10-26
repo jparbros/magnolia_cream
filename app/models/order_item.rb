@@ -85,6 +85,11 @@ class OrderItem < ActiveRecord::Base
   def ship_category_id
     variant.product.shipping_category_id
   end
+  alias :shipping_category_id :ship_category_id
+  
+  def quantity
+    OrderItem.select("count(*) as qty").group('order_items.variant_id').where({ :order_items => {:order_id => self.order_id}}).first.try(:qty) || 0
+  end
 
   def shipping_rate_options(total_charge)
     ShippingRate.joins(:shipping_method).where(['shipping_rates.shipping_category_id = ?

@@ -20,6 +20,8 @@ en:
   login_successful:     "Login successful!"
   login_failure:        "Invalid email or password."
   logout_successful:    "Logout successful!"
+  update: "update"
+  checkout: "checkout"
 
   select_address_before_shipping_method:  'Select an address before you select a shipping method.'
   shipping_method_created:                'Shipping method was successfully created.'
@@ -41,3 +43,19 @@ en:
       us_date: "%m/%d/%Y"
       us_time: "%m/%d/%Y @ %I:%M %p"
       long_date: "%B %d, %Y"
+  
+  cart_items:
+    changes_bellow: 'Make any changes below?'
+    to_buy_now: 'Shopping Cart Items -- To Buy Now'
+    item_added_on: 'Item added on'
+    save_for_later: 'Save for later'
+    delete: 'Delete'
+    price: 'Price'
+    qty: 'Quantity'
+    saved_items: 'Saved Items--To Buy Later'
+    move_to_cart: 'Move to cart'
+  user_sessions:
+    registration: 'Registration'
+    password_confirmation: 'Password confirmation'
+    register: 'Register'
+    forgot_password: 'forgot password?'

@@ -7,17 +7,13 @@ class Shopping::ShippingMethodsController < Shopping::BaseController
       redirect_to shopping_addresses_url
     else
       session_order.find_sub_total
-      ##  TODO  refactopr this method... it seems a bit lengthy
-      @shipping_method_ids = session_order.ship_address.state.shipping_zone.shipping_method_ids
 
-      @order_items = OrderItem.includes({:variant => {:product => :shipping_category}}).order_items_in_cart(session_order.id)
-      #session_order.order_
-      @order_items.each do |item|
-        item.variant.product.available_shipping_rates = ShippingRate.with_these_shipping_methods(item.variant.product.shipping_category.shipping_rate_ids, @shipping_method_ids)
-      end
+      @order_items = session_order.order_items.includes({:variant => {:product => :shipping_category}})
+      
+      OrderItem.update_all("shipping_rate_id = #{ShippingRate.first.id}","id IN (#{@order_items.map{|i| i.id}.join(',')})")
 
       respond_to do |format|
-        format.html # index.html.erb
+        format.html { redirect_to(shopping_orders_url) }
       end
     end
   end
@@ -26,7 +22,7 @@ class Shopping::ShippingMethodsController < Shopping::BaseController
   # PUT /shopping/shipping_methods/1.xml
   def update
     all_selected = true
-    params[:shipping_category].each_pair do |category_id, rate_id|#[rate]
+    params[:shipping_category].each_pair do |category_id, rate_id|
       if rate_id
         items = OrderItem.includes([{:variant => :product}]).
                           where(['order_items.order_id = ? AND

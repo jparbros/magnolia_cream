@@ -8,7 +8,7 @@ class Admin::Shopping::Checkout::ShippingMethodsController < Admin::Shopping::Ch
       ##  TODO  refactopr this method... it seems a bit lengthy
       @shipping_method_ids = session_admin_order.ship_address.state.shipping_zone.shipping_method_ids
       session_admin_order.find_sub_total
-      @order_items = OrderItem.includes({:variant => {:product => :shipping_category}}).order_items_in_cart(session_admin_order.id)
+      @order_items = OrderItem.includes({:variant => {:product => :shipping_category}})
       #session_order.order_
       @order_items.each do |item|
         item.variant.product.available_shipping_rates = ShippingRate.with_these_shipping_methods(item.variant.product.shipping_category.shipping_rate_ids, @shipping_method_ids)

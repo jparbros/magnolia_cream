@@ -2,4 +2,5 @@
 // the compiled file.
 //
 //= require_tree  ./jquery
+//= require jquery_ujs
 //= require bootstrap-all

@@ -1,0 +1,29 @@
+= form_for session_cart, :url => shopping_cart_item_path(session_cart), :as => :cart do |cart_form|
+  .row
+    .span12
+      - unless @cart_items.blank?
+        %span= I18n.t 'cart_items.changes_bellow'
+        = cart_form.submit I18n.t('update'), class: 'btn'
+        = cart_form.submit I18n.t('checkout'), class: 'btn btn-primary', :checkout => 1
+
+  - unless @cart_items.blank?
+    .row.shopping-cart-header
+      .span6
+        %h3= I18n.t 'cart_items.to_buy_now'
+      .span2
+        %h3= I18n.t 'cart_items.price'
+      .span2
+        %h3= I18n.t 'cart_items.qty'
+      
+    - @cart_items.each_with_index do |item, i| 
+      = cart_form.fields_for :shopping_cart_items, item do |cart_items_form|
+        = render :partial => 'cart_item', :locals => {:cart_items_form => cart_items_form, :item => item, :i => i }
+      
+  - unless @saved_cart_items.empty?
+    .row.shopping-cart-header
+      .span6
+        %h3= I18n.t 'cart_items.saved_items'
+      .span2
+        %h3= I18n.t 'cart_items.price'
+    
+    = render :partial => '/shopping/cart_items/saved_items' unless @saved_cart_items.empty?

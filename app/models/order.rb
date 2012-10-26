@@ -319,7 +319,7 @@ class Order < ActiveRecord::Base
   end
 
   def display_shipping_charges
-    items = OrderItem.order_items_in_cart(self.id)
+    items = order_items
     return 'TBD' if items.any?{|i| i.shipping_rate_id.nil? }
     shipping_charges(items)
   end
@@ -330,7 +330,7 @@ class Order < ActiveRecord::Base
   # @return [Array] array of shipping rates that will be charged, it will return the same
   #                 shipping rate more than once if it can be charged more than once
   def shipping_rates(items = nil)
-    items ||= OrderItem.order_items_in_cart(self.id)
+    items ||= order_items
     rates = items.inject([]) do |rates, item|
       rates << item.shipping_rate if item.shipping_rate.individual? || !rates.include?(item.shipping_rate)
       rates

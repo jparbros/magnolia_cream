@@ -51,27 +51,12 @@ Hadean::Application.configure do
     #Formtastic::SemanticFormBuilder.send(:include, Formtastic::YearPicker)
 
     ActiveMerchant::Billing::Base.mode = :test
-    #::GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(
-    #  :login      => HADEAN_CONFIG['paypal']['login'],
-    #  :password   => HADEAN_CONFIG['paypal']['password'],
-    #  :signature  => HADEAN_CONFIG['paypal']['signature']
-    #)
-
-    ::GATEWAY = ActiveMerchant::Billing::AuthorizeNetGateway.new(
-      :login    => HADEAN_CONFIG['authnet']['login'],
-      :password => HADEAN_CONFIG['authnet']['password'],
-      :test     => true   #  Make sure this is pointing to the authnet test server.  This needs to be uncommented to test capturing a payment.
+    ::GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(
+     :login      => HADEAN_CONFIG['paypal']['login'],
+     :password   => HADEAN_CONFIG['paypal']['password'],
+     :signature  => HADEAN_CONFIG['paypal']['signature']
     )
 
-    ::CIM_GATEWAY = ActiveMerchant::Billing::AuthorizeNetCimGateway.new(
-      :login    => HADEAN_CONFIG['authnet']['login'],
-      :password => HADEAN_CONFIG['authnet']['password'],
-      :test     => true   #  Make sure this is pointing to the authnet test server.  This needs to be uncommented to test capturing a payment.
-    )
-    #::GATEWAY = ActiveMerchant::Billing::BraintreeGateway.new(
-    #  :login     => HADEAN_CONFIG['braintree']['login'],
-    #  :password  => HADEAN_CONFIG['braintree']['password']
-    #)
   end
 
   PAPERCLIP_STORAGE_OPTS = {  :styles => {:mini => '48x48>',
