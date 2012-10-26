@@ -43,7 +43,10 @@ Hadean::Application.configure do
                                 'tables.css',
                                 'cupertino/jquery-ui-1.8.12.custom.css',
                                 'modstyles.css',
-                                'scaffold.css']
+                                'scaffold.css',
+                                'admin/foundation.css',
+                                'admin/app.css',
+                                'admin/ie.css', 'markitup/skins/markitup/style.css']
 
   # Full error reports are disabled and caching is turned on
   config.consider_all_requests_local       = false
