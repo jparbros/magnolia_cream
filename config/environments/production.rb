@@ -87,7 +87,7 @@ Hadean::Application.configure do
     :password       => ENV['SENDGRID_PASSWORD'],
     :domain         => 'magnolias.parbros.com'  
   }
-  onfig.action_mailer.default_url_options = { :host => 'magnolias.parbros.com' }
+  config.action_mailer.default_url_options = { :host => 'magnolias.parbros.com' }
   ActionMailer::Base.delivery_method = :smtp
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
