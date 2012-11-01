@@ -158,3 +158,15 @@ h1 {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+#payment-methods {
+  background-color: #ffffff;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  
+  a {
+    text-align: center;
+    display: inline-block;
+  }
+}

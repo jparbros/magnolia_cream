@@ -64,94 +64,42 @@
     </table>
     <div>
   </div>
-    <%= form_tag( shopping_order_path(@order),
-                                  :method => :put,
-                                  #:as   => :order,
-                                  :id   => 'purchase_order') do  %>
 
-
-      <%# text_field(object_name, method, options = {}) %>
-
-
-
-      <div class="field column">
-        <%= label_tag  :name %>
-      </div>
-<div class='clear'></div>
-      <div class="field column">
-        <%= label_tag 'First' %>
-         <%= text_field_tag(:first_name, @credit_card.first_name ,:class => 'span-3') %>
-      </div>
-
-      <div class="field column">
-        <%= label_tag :last_name, 'Last' %>
-         <%= text_field_tag(:last_name, @credit_card.last_name,:class => 'span-3') %>
-      </div>
-
-      <div class='clear'></div>
-      <div class="field column float-left clear-fix">
-        <%= label_tag 'Number'%>
-         <%= text_field_tag(:number, @credit_card.number ,:class => 'span-4 disableAutoComplete', :autocomplete => "off") %>
-      </div>
-
-      <div class="field column float-left">
-        <%= label_tag :verification_value, 'VCC'%>
-         <%= text_field_tag(:verification_value, @credit_card.verification_value ,:class => 'span-1 disableAutoComplete', :autocomplete => "off") %>
-      </div>
-
-      <div class='clear'></div>
-      <div class="field column float-left ">
-        <%= label_tag :type, 'Type'%>
-         <%= select_tag(:type, options_for_select(['visa', 'mastercard'])) %>
-      </div>
-
-      <div class="field column float-left">
-        <%= label_tag :month %>
-        <%= select_tag(:month, options_for_select(['01', '02',  '03', '04', '05', '06', '07', '08', '09', '10', '11', '12' ])) %>
-      </div>
-
-      <div class="field column float-left">
-        <%= label_tag :year %>
-         <%= select_tag(:year, options_for_select((Time.zone.now.year..(Time.zone.now.year + 10)))) %>
-      </div>
-      <div class='clear'></div>
-
-
-      <%= submit_tag 'Complete Order', :class => 'button light' %>
-      <%= link_to shopping_paypal_checkout_path, method: :post do %>
-        <img src="https://www.paypalobjects.com/es_XC/i/btn/btn_xpressCheckout.gif" align="left" style="margin-right:7px;">
-      <% end %>
+  <div id="payment-methods">
+    <%= link_to shopping_paypal_checkout_path, method: :post do %>
+      <img src="https://www.paypalobjects.com/es_XC/i/btn/btn_xpressCheckout.gif" align="left" style="margin-right:7px;">
     <% end %>
+
     <form action="https://checkout.dineromail.com/CheckOut" method="post" >
-    <!-- Variables Obligatorias -->
-    <input type="hidden" name="merchant" value="integrationdm01@gmail.com" />
-    <input type="hidden" name="country_id" value="4" />
-    <input type="hidden" name="payment_method_available" value="all" />
+      <!-- Variables Obligatorias -->
+      <input type="hidden" name="merchant" value="integrationdm01@gmail.com" />
+      <input type="hidden" name="country_id" value="4" />
+      <input type="hidden" name="payment_method_available" value="all" />
 
-    <% i = 1 %>
-    <% @order.order_items.group_by(&:variant_id).each do |variant_id, items| %>
-      <input type="hidden" name="item_name_<%= i %>" value="<%= items.first.variant.product.name%>" />
-      <input type="hidden" name="item_quantity_<%= i %>" value="<%= items.size %>" />
-      <input type="hidden" name="item_ammount_<%= i %>" value="<%= to_cents items.first.price %>" />
-      <input type="hidden" name="item_currency_<%= i %>" value="mxn" />
-      <% i += 1 %>
-    <% end %>
+      <% i = 1 %>
+      <% @order.order_items.group_by(&:variant_id).each do |variant_id, items| %>
+        <input type="hidden" name="item_name_<%= i %>" value="<%= items.first.variant.product.name%>" />
+        <input type="hidden" name="item_quantity_<%= i %>" value="<%= items.size %>" />
+        <input type="hidden" name="item_ammount_<%= i %>" value="<%= to_cents items.first.price %>" />
+        <input type="hidden" name="item_currency_<%= i %>" value="mxn" />
+        <% i += 1 %>
+      <% end %>
     
-    <input type="hidden" name="ok_url" value="<%= review_shopping_dinero_facil_checkout_url %>" />
-    <input type="hidden" name="pending_url" value="<%= pending_shopping_dinero_facil_checkout_url %>" />
-    <input type="hidden" name="url_redirect_enabled" value="1" />
+      <input type="hidden" name="ok_url" value="<%= review_shopping_dinero_facil_checkout_url %>" />
+      <input type="hidden" name="pending_url" value="<%= pending_shopping_dinero_facil_checkout_url %>" />
+      <input type="hidden" name="url_redirect_enabled" value="1" />
 
-    <input type="hidden" name="shipping_type_1" value="1" />
-    <input type="hidden" name="shipping_cost_1_1" value="12000" />
-    <input type="hidden" name="shipping_currency_1" value="mxn" />
+      <input type="hidden" name="shipping_type_1" value="1" />
+      <input type="hidden" name="shipping_cost_1_1" value="12000" />
+      <input type="hidden" name="shipping_currency_1" value="mxn" />
     
-    <!-- Variables Obligatorias para funcionalidad Express Checkout -->
-    <input type="hidden" name="payment_method_1" value="mx_pagofacil" />
-    <input type="hidden" name="currency" value="mxn" />
-    <!-- Boton -->
-    <input type='image' src='https://argentina.dineromail.com/imagenes/botones/pagar-
-    medios_c.gif' border='0' name='submit' alt='Pagar con DineroMail'>
+      <!-- Variables Obligatorias para funcionalidad Express Checkout -->
+      <input type="hidden" name="payment_method_1" value="mx_pagofacil" />
+      <input type="hidden" name="currency" value="mxn" />
+      <!-- Boton -->
+      <input type='image' src='https://argentina.dineromail.com/imagenes/botones/pagar-medios_c.gif' border='0' name='submit' alt='Pagar con DineroMail'>
     </form>
+  </div>
   </div>
 </div>
 
