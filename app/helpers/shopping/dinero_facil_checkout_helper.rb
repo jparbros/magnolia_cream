@@ -1,0 +1,2 @@
+module Shopping::DineroFacilCheckoutHelper
+end

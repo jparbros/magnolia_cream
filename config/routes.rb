@@ -31,6 +31,19 @@ Hadean::Application.routes.draw do
   end
 
   namespace :shopping do
+    resource :paypal_checkout, controller: :paypal_checkout do
+      member do
+        get :review
+      end
+    end
+
+    resource :dinero_facil_checkout, controller: :dinero_facil_checkout do
+      member do
+        get :review
+        get :pending
+      end
+    end
+
     resources  :cart_items do
       member do
         put :move_to

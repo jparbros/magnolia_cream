@@ -42,6 +42,7 @@ class Invoice < ActiveRecord::Base
     state :paid
     state :payment_declined
     state :canceled
+    state :pending_payment
 
     #after_transition :on => 'cancel', :do => :cancel_authorized_payment
 
@@ -71,6 +72,10 @@ class Invoice < ActiveRecord::Base
     event :cancel do
       transition :from => :authorized,
                   :to  => :canceled
+    end
+    
+    event :payment_pending do
+      transition from: [:pending, :authorized, :paid, :payment_declined, :canceled], to: :pending_payment
     end
   end
 
@@ -254,6 +259,20 @@ class Invoice < ActiveRecord::Base
       end
       authorization
     end
+  end
+  
+  def paypal_payment(response)
+    payment = Payment.paypal_payment(amount, response)
+    payments.push(payment)
+    payment_authorized!
+    authorize_complete_order
+  end
+  
+  def df_pending_payment
+    payment = Payment.df_pending_payment(amount)
+    payments.push(payment)
+    payment_pending!
+    authorize_complete_order
   end
 
   def capture_payment(options = {})

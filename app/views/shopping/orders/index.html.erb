@@ -118,7 +118,40 @@
 
 
       <%= submit_tag 'Complete Order', :class => 'button light' %>
+      <%= link_to shopping_paypal_checkout_path, method: :post do %>
+        <img src="https://www.paypalobjects.com/es_XC/i/btn/btn_xpressCheckout.gif" align="left" style="margin-right:7px;">
+      <% end %>
     <% end %>
+    <form action="https://checkout.dineromail.com/CheckOut" method="post" >
+    <!-- Variables Obligatorias -->
+    <input type="hidden" name="merchant" value="integrationdm01@gmail.com" />
+    <input type="hidden" name="country_id" value="4" />
+    <input type="hidden" name="payment_method_available" value="all" />
+
+    <% i = 1 %>
+    <% @order.order_items.group_by(&:variant_id).each do |variant_id, items| %>
+      <input type="hidden" name="item_name_<%= i %>" value="<%= items.first.variant.product.name%>" />
+      <input type="hidden" name="item_quantity_<%= i %>" value="<%= items.size %>" />
+      <input type="hidden" name="item_ammount_<%= i %>" value="<%= to_cents items.first.price %>" />
+      <input type="hidden" name="item_currency_<%= i %>" value="mxn" />
+      <% i += 1 %>
+    <% end %>
+    
+    <input type="hidden" name="ok_url" value="<%= review_shopping_dinero_facil_checkout_url %>" />
+    <input type="hidden" name="pending_url" value="<%= pending_shopping_dinero_facil_checkout_url %>" />
+    <input type="hidden" name="url_redirect_enabled" value="1" />
+
+    <input type="hidden" name="shipping_type_1" value="1" />
+    <input type="hidden" name="shipping_cost_1_1" value="12000" />
+    <input type="hidden" name="shipping_currency_1" value="mxn" />
+    
+    <!-- Variables Obligatorias para funcionalidad Express Checkout -->
+    <input type="hidden" name="payment_method_1" value="mx_pagofacil" />
+    <input type="hidden" name="currency" value="mxn" />
+    <!-- Boton -->
+    <input type='image' src='https://argentina.dineromail.com/imagenes/botones/pagar-
+    medios_c.gif' border='0' name='submit' alt='Pagar con DineroMail'>
+    </form>
   </div>
 </div>
 

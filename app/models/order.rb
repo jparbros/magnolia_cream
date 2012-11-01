@@ -61,6 +61,10 @@ class Order < ActiveRecord::Base
     event :complete do
       transition :to => 'complete', :from => 'in_progress'
     end
+    
+    event :pending do
+      transition :to => 'pending_payment', :from => ['in_progress', 'complete']
+    end
 
     event :pay do
       transition :to => 'paid', :from => ['in_progress', 'complete']
@@ -192,6 +196,27 @@ class Order < ActiveRecord::Base
   def create_invoice(credit_card, charge_amount, args, credited_amount = 0.0)
     transaction do
       create_invoice_transaction(credit_card, charge_amount, args, credited_amount)
+    end
+  end
+  
+  def create_paypal_invoice(response, charge_amount)
+    transaction do
+      invoice_statement = Invoice.generate(self.id, charge_amount, 0.0)
+      invoice_statement.save
+      invoice_statement.paypal_payment(response)
+      invoices.push(invoice_statement)
+      order_complete!
+      save!
+    end
+  end
+  
+  def create_DF_pending_invoice(charge_amount)
+    transaction do
+      invoice_statement = Invoice.generate(self.id, charge_amount, 0.0)
+      invoice_statement.save
+      invoice_statement.df_pending_payment
+      invoices.push(invoice_statement)
+      pending!
     end
   end
 

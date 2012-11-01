@@ -135,6 +135,25 @@ class Payment < ActiveRecord::Base
         result
       end
 
+    def paypal_payment(amount, response)
+      result = Payment.new
+      result.amount = (amount && !amount.integer?) ? (amount * 100).to_i : amount
+      result.action = 'charge'
+      result.success    = response.success?
+      result.confirmation_id  = response.authorization
+      result.message    = response.message
+      result.params     = response.params
+      result.test       = response.test?
+      result
+    end
+    
+    def df_pending_payment(amount)
+      result = Payment.new
+      result.amount = (amount && !amount.integer?) ? (amount * 100).to_i : amount
+      result.action = 'pending'
+      result
+    end
+
     private
 
       def unique_order_number
