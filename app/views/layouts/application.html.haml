@@ -23,6 +23,17 @@
       %header
         .row
           = image_tag '/assets/logo-magnolias.png', class: [:span2, :offset5], id: :logo
+          %nav
+            %ul
+              %li
+                %a{href: '#'}
+                  = I18n.t 'nav.about_us'
+              %li
+                %a{href: '#'}
+                  = I18n.t 'nav.contact'
+              %li
+                = link_to I18n.t('nav.login'), login_path
+
       #content.row
         .span12
           = yield

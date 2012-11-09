@@ -22,6 +22,11 @@ en:
   logout_successful:    "Logout successful!"
   update: "update"
   checkout: "checkout"
+  
+  nav:
+    about_us: 'About us'
+    contact:  'Contact'
+    login:    'Login'
 
   select_address_before_shipping_method:  'Select an address before you select a shipping method.'
   shipping_method_created:                'Shipping method was successfully created.'

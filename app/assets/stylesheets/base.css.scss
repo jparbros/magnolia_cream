@@ -170,3 +170,19 @@ h1 {
     display: inline-block;
   }
 }
+
+nav {
+  float: right;
+  margin: 50px 0 0 0;
+
+  ul {
+    list-style: none;
+    
+    li {
+      float: left;
+      margin-left: 10px;
+      
+      a {color: #852C43}
+    }
+  }
+}
