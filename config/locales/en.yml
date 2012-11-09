@@ -27,6 +27,8 @@ en:
     about_us: 'About us'
     contact:  'Contact'
     login:    'Login'
+    logout:   'Logout'
+    cart:     'Cart'
 
   select_address_before_shipping_method:  'Select an address before you select a shipping method.'
   shipping_method_created:                'Shipping method was successfully created.'

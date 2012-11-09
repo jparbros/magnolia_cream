@@ -121,6 +121,8 @@ class User < ActiveRecord::Base
 
   has_many    :return_authorizations
   has_many    :authored_return_authorizations, :class_name => 'ReturnAuthorization', :foreign_key => 'author_id'
+  
+  has_many    :authentications
 
   validates :first_name,  :presence => true, :if => :registered_user?,
                           :format   => { :with => CustomValidators::Names.name_validator },
@@ -366,6 +368,41 @@ class User < ActiveRecord::Base
 
   def number_of_finished_orders_at(at)
     finished_orders.select{|o| o.completed_at < at }.size
+  end
+
+  def apply_omniauth(omniauth)
+    case omniauth['provider']
+    when 'facebook'
+      self.apply_facebook(omniauth)
+    when 'twitter'
+      self.apply_twitter(omniauth)
+    end
+    authentications.build(hash_from_omniauth(omniauth))
+    save!(:validate => false)
+  end
+
+  protected
+
+  def apply_facebook(omniauth)
+    if (extra = omniauth['extra']['user_hash'] rescue false)
+      self.email = (extra['email'] rescue '')
+    end
+  end
+
+  def apply_twitter(omniauth)
+    if (extra = omniauth['extra']['user_hash'] rescue false)
+      # Example fetching extra data. Needs migration to User model:
+      # self.firstname = (extra['name'] rescue '')
+    end
+  end
+
+  def hash_from_omniauth(omniauth)
+    {
+      :provider => omniauth['provider'],
+      :uid => omniauth['uid'],
+      :token => (omniauth['credentials']['token'] rescue nil),
+      :secret => (omniauth['credentials']['secret'] rescue nil)
+    }
   end
 
   private

@@ -21,6 +21,11 @@
           .controls
             = link_to I18n.t('user_sessions.forgot_password'), new_customer_password_reset_path()
 
+        .control-group
+          .controls.social-logins
+            = link_to image_tag('/assets/login-twitter.png'), '/auth/twitter'
+            = link_to image_tag('/assets/login-facebook.png'), '/auth/facebook'
+
   .span6
     = form_for @user, :url => customer_registrations_path(@user), html: {class: 'form-horizontal'}  do |form|
       %h3= I18n.t 'user_sessions.registration'
@@ -43,3 +48,7 @@
         .control-group
           .controls
             = form.submit I18n.t('user_sessions.register'), class: 'btn btn-primary'
+        .control-group
+          .controls.social-logins
+            = link_to image_tag('/assets/sigin-twitter.png'), '/auth/twitter'
+            = link_to image_tag('/assets/signin-facebook.png'), '/auth/facebook'

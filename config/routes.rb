@@ -15,6 +15,9 @@ Hadean::Application.routes.draw do
   resources :terms,       :only => [:index]
 
   root :to => "welcome#index"
+  
+  resources :authentications
+  match '/auth/:provider/callback' => 'authentications#create'
 
   namespace :customer do
     resources :registrations,   :only => [:new, :create]
