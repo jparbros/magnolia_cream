@@ -1,8 +1,15 @@
-%h1
-  PREPARA TU CREMA
-
+.row
+  .span12
+    .steps.step0
+    
+      
 
 .row
+  .span5
+    #animacion
+      = image_tag '/assets/bottle/frasco.png', id: 'bottle'
+      #fill.step0
+        &nbsp;
   .span7
     #instruccions.row
       .span7
@@ -11,130 +18,127 @@
         %p
           Aliquam sit amet porta justo. Aliquam erat volutpat. In hac habitasse platea dictumst. Nullam lacinia commodo diam, id adipiscing ipsum molestie eu. Phasellus fringilla, eros eu scelerisque pretium, risus quam vulputate velit, a imperdiet libero diam eget erat. Nam adipiscing arcu eu mauris sagittis bibendum. Aliquam nunc magna, malesuada a iaculis id, porta in felis.
 
-        = link_to 'Empezar','', class: 'btn btn-primary btn-large circle-button float-right'
     = form_for  @cart_item, :as => :cart_item, :url  => shopping_cart_items_path(@cart_item), :html => { :id => 'new_cart_item' } do |f|
       - Property.all.each do |property|
-        .row.hide-left{id: "#{property.display_name.downcase.parameterize}"}
+        .row.hide.properties{id: "#{property.display_name.downcase.parameterize}"}
           .span7
-            = property.display_name
-          .span7
-            .btn-group{"data-toggle" => "buttons-radio"}
-              -property.property_values.each do |property_value|
-                %button.btn{"type" => "button", 'data-property-value-id' =>  property_value.id}
-                  = property_value.display_name
-                = radio_button_tag "property[#{property.id}][property_value_id]", property_value.id, '', class: :hide
-            = link_to 'Siguiente','', class: 'hide btn btn-primary float-right'
+            -property.property_values.each do |property_value|
+              = link_to '#', 'data-property' => "property_#{property.id}_property_value_id_#{property_value.id}" do
+                = image_tag "/assets/steps/#{property.display_name.downcase.parameterize}-#{property_value.display_name.downcase.parameterize}.png"
+              = radio_button_tag "property[#{property.id}][property_value_id]", property_value.id, '', class: :hide
       - @product.variants.each do |variant|
         = radio_button_tag "cart_item[variant_id]", variant.id, false, class: :hide, 'data-variant-sku' => variant.sku
       = hidden_field_tag "cart_item[quantity]", 1
     = submit_tag 'Adquirir', class: 'btn hide btn-large circle-button float-right', id: 'submit-cream'
-      
-  .span5
-    #animacion
-      = image_tag '/assets/bottle/bottle.png', id: 'bottle'
-      #fill.step0
-        &nbsp;
-      
+
+.row
+  .span12
+    = link_to 'Empezar >', '#', class: 'button-steps  float-right', id: 'next-steps'
+
+= javascript_include_tag 'crema'
 - content_for :javascript do
   $(document).ready(function(){
-  $('input:checked').removeAttr('checked');
+  Magnolias.crema.init();
   });
 
-  $('#instruccions a').click(function (event){
-  event.preventDefault();
-  $('#instruccions').hide(1000);
-  $('#funcion-primaria').animate({"margin-left": "0px"}, 1500, 'linear');
-  $('#animacion').animate({"margin-top": "0px"}, 1300, 'linear');
-  });
-  
-  $('#funcion-primaria button').click(function (){
-  property_value_id = $(this).data('property-value-id');
-  switch(property_value_id) {
-  case 11:
-  background_image = '/assets/bottle/anti-estrias.png'
-  break;
-  case 12:
-  background_image = '/assets/bottle/anticelulitis.png'
-  break;
-  case 13:
-  background_image = '/assets/bottle/aclarante.png'
-  break;
-  case 14:
-  background_image = '/assets/bottle/reafirmante.png'
-  break;
-  case 15:
-  background_image = '/assets/bottle/anti-aspereza.png'
-  break;
-  }
-  
-  if($('#funcion-primaria button.active').length >= 1) {
-  $('#fill').animate({height: "0px", top: "-64px", "background-position": "0px -385px"}, 1500, 'linear', function(){
-  $('#fill').css('background-image',"url(" + background_image + ")")
-  });
-  } else {
-  $('#fill').css('background-image',"url(" + background_image + ")");
-  }
-  $('#funcion-primaria a').show(800);
-  animate_step(97, -161, -288);
-  $('#funcion-primaria input').removeAttr('checked');
-  $('#funcion-primaria').find("input[value=" + property_value_id +"]").attr('checked','checked');
-  });
-  
-  $('#funcion-primaria a').click(function(event) {
-  event.preventDefault();
-  $('#funcion-primaria').hide(1000);
-  $('#base').animate({"margin-left": "0px"}, 1500, 'linear');
-  });
-  
-  $('#base button').click(function (){
-  $('#base a').show(800);
-  animate_step(194, -258, -191);
-  $('#base input').removeAttr('checked');
-  $('#base').find("input[value=" + $(this).data('property-value-id')+"]").attr('checked','checked');
-  $('input[type=submit]').show().animate({"opacity":"1","filter":"alpha(opacity=0)"});
-  });
-  
-  $('#base a').click(function(event) {
-  event.preventDefault();
-  $('#base').hide(1000);
-  $('#extra').animate({"margin-left": "0px"}, 1500, 'linear');
-  });
-  
-  $('#extra button').click(function (){
-  $('#extra a').show(800);
-  animate_step(291, -355, -94);
-  $('#fill').animate({height: "291px", top: "-355px", "background-position": "0px -94px"}, 1500, 'linear');
-  $('#extra input').removeAttr('checked');
-  $('#extra').find("input[value=" + $(this).data('property-value-id')+"]").attr('checked','checked');
-  });
-  
-  $('#extra a').click(function(event) {
-  event.preventDefault();
-  $('#extra').hide(1000);
-  $('#sabor').animate({"margin-left": "0px"}, 1500, 'linear');
-  });
-  
-  $('#sabor button').click(function (){
-  animate_step(386, -450, -0);
-  $('#sabor input').removeAttr('checked');
-  $('#sabor').find("input[value=" + $(this).data('property-value-id')+"]").attr('checked','checked');
-  $('form input[type=submit]').animate({"font-size": "26", "border-radius":"150px"}, 400, 'linear');
-  });
-  
-  $('input[type=submit]').click(function(event){
-  event.preventDefault();
-  selected_properties = $('form input[name*=property_value_id]:checked').length
-  variant_sku = "10" + selected_properties + "0";
-  $('input[data-variant-sku='+ variant_sku +']').attr('checked','checked');
-  $('form').submit();
-  })
-  
-  function animate_step(height, top, background_position_y) {
-  if(jQuery.browser.webkit || jQuery.browser.safari) {
-  $('#fill').animate({height: height+"px", top: top+"px", "background-position-y":  background_position_y+"px"}, 1500, 'linear');
-  }
-  else if(jQuery.browser.mozilla) {
-  console.log('mozilla')
-  $('#fill').animate({height: height + "px", top: top + "px", "backgroundPosition":  "0px " + background_position_y + "px"}, 1500, 'linear');
-  }
-  }
+  / $('#start-steps').click(function (event){
+  / event.preventDefault();
+  / $('#instruccions').hide(1000);
+  / $('#base').show('slow');
+  / $('#animacion').animate({"margin-top": "0px"}, 1300, 'linear');
+  / $(this).hide();
+  / $('#next-steps').show().data('next','funcion-primaria');
+  / $('.steps.step0').removeClass('step0').addClass('step1');
+  / });
+  / 
+  / $('#funcion-primaria button').click(function (){
+  / property_value_id = $(this).data('property-value-id');
+  / switch(property_value_id) {
+  / case 11:
+  / background_image = '/assets/bottle/anti-estrias.png'
+  / break;
+  / case 12:
+  / background_image = '/assets/bottle/anticelulitis.png'
+  / break;
+  / case 13:
+  / background_image = '/assets/bottle/aclarante.png'
+  / break;
+  / case 14:
+  / background_image = '/assets/bottle/reafirmante.png'
+  / break;
+  / case 15:
+  / background_image = '/assets/bottle/anti-aspereza.png'
+  / break;
+  / }
+  / 
+  / if($('#funcion-primaria button.active').length >= 1) {
+  / $('#fill').animate({height: "0px", top: "-64px", "background-position": "0px -385px"}, 1500, 'linear', function(){
+  / $('#fill').css('background-image',"url(" + background_image + ")")
+  / });
+  / } else {
+  / $('#fill').css('background-image',"url(" + background_image + ")");
+  / }
+  / $('#funcion-primaria a').show(800);
+  / animate_step(97, -161, -288);
+  / $('#funcion-primaria input').removeAttr('checked');
+  / $('#funcion-primaria').find("input[value=" + property_value_id +"]").attr('checked','checked');
+  / });
+  / 
+  / $('#funcion-primaria a').click(function(event) {
+  / event.preventDefault();
+  / $('#funcion-primaria').hide(1000);
+  / $('#base').animate({"margin-left": "0px"}, 1500, 'linear');
+  / });
+  / 
+  / $('#base button').click(function (){
+  / $('#base a').show(800);
+  / animate_step(194, -258, -191);
+  / $('#base input').removeAttr('checked');
+  / $('#base').find("input[value=" + $(this).data('property-value-id')+"]").attr('checked','checked');
+  / $('input[type=submit]').show().animate({"opacity":"1","filter":"alpha(opacity=0)"});
+  / });
+  / 
+  / $('#base a').click(function(event) {
+  / event.preventDefault();
+  / $('#base').hide(1000);
+  / $('#extra').animate({"margin-left": "0px"}, 1500, 'linear');
+  / });
+  / 
+  / $('#extra button').click(function (){
+  / $('#extra a').show(800);
+  / animate_step(291, -355, -94);
+  / $('#fill').animate({height: "291px", top: "-355px", "background-position": "0px -94px"}, 1500, 'linear');
+  / $('#extra input').removeAttr('checked');
+  / $('#extra').find("input[value=" + $(this).data('property-value-id')+"]").attr('checked','checked');
+  / });
+  / 
+  / $('#extra a').click(function(event) {
+  / event.preventDefault();
+  / $('#extra').hide(1000);
+  / $('#sabor').animate({"margin-left": "0px"}, 1500, 'linear');
+  / });
+  / 
+  / $('#sabor button').click(function (){
+  / animate_step(386, -450, -0);
+  / $('#sabor input').removeAttr('checked');
+  / $('#sabor').find("input[value=" + $(this).data('property-value-id')+"]").attr('checked','checked');
+  / $('form input[type=submit]').animate({"font-size": "26", "border-radius":"150px"}, 400, 'linear');
+  / });
+  / 
+  / $('input[type=submit]').click(function(event){
+  / event.preventDefault();
+  / selected_properties = $('form input[name*=property_value_id]:checked').length
+  / variant_sku = "10" + selected_properties + "0";
+  / $('input[data-variant-sku='+ variant_sku +']').attr('checked','checked');
+  / $('form').submit();
+  / })
+  / 
+  / function animate_step(height, top, background_position_y) {
+  / if(jQuery.browser.webkit || jQuery.browser.safari) {
+  / $('#fill').animate({height: height+"px", top: top+"px", "background-position-y":  background_position_y+"px"}, 1500, 'linear');
+  / }
+  / else if(jQuery.browser.mozilla) {
+  / console.log('mozilla')
+  / $('#fill').animate({height: height + "px", top: top + "px", "backgroundPosition":  "0px " + background_position_y + "px"}, 1500, 'linear');
+  / }
+  / }

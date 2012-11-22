@@ -3,6 +3,11 @@
     src: url(/assets/fonts/Forque.ttf) format("truetype");
 }
 
+@font-face {
+    font-family: "Lobster";
+    src: url(/assets/fonts/Lobster.otf) format("truetype");
+}
+
 html {
   background: url('/assets/top-background.png') repeat-x top, url('/assets/bottom-background.png') repeat-x bottom, url("/assets/bedge_grunge.png");
 
@@ -83,7 +88,7 @@ h1 {
 
 .float-right {float: right;}
 
-.hide-left {margin-left: -9999px;}
+.hide-top {margin-top: -99999px;}
 
 #submit-cream { 
   opacity: 0;
@@ -94,48 +99,47 @@ h1 {
 }
 
 #animacion {
-  width: 244px;
-  height: 466px;
+  width: 376px;
+  height: 399px;
   margin-top: -1999px;
-  margin-left: 100px;
   
   &.started {margin-top: 0px;}
   
   #fill {
-    background: url("/assets/bottle/aclarante.png") no-repeat 0px -385px;
-    width: 220px;
+    background: url("/assets/bottle/frasco-relleno.png") no-repeat 0px -385px;
+    width: 337px;
     position: relative;
     z-index: -10;
-    left: 19px;
+    left: 23px;
     
     &.step0 {
       height: 0px;
-      top: -64px;
-      background-position-y: -385px;
+      top: -49px;
+      background-position: 0px -266px;
     }
     
     &.step1 {
-      height: 97px;
-      top: -161px;
-      background-position-y: -288px;
+      height: 67px;
+      top: -116px;
+      background-position: 0px -199px;
     }
     
     &.step2 {
-      height: 194px;
-      top: -258px;
-      background-position-y: -191px;
+      height: 134px;
+      top: -183px;
+      background-position: 0px -132px;
     }
     
     &.step3 {
-      height: 291px;
-      top: -355px;
-      background-position-y: -94px;
+      height: 201px;
+      top: -250px;
+      background-position: 0px -65px;
     }
     
     &.step4 {
-      height: 386px;
-      top: -450px;
-      background-position-y: 0px;
+      height: 266px;
+      top: -315px;
+      background-position: 0px 0px;
     }
   }
 }
@@ -190,4 +194,42 @@ nav {
 .controls.social-logins img{
   display:block;
   margin: 0 auto 10px auto;
+}
+
+.steps {
+  background: url('/assets/pasos.png') no-repeat;
+  height: 52px;
+  margin-bottom: 25px;
+  width: 943px;
+  
+  &.step0 { background-position: 0px 0px;}
+  &.step1 { background-position: 0px -52px;}
+  &.step2 { background-position: 0px -104px;}
+  &.step3 { background-position: 0px -156px;}
+  &.step4 { background-position: 0px -208px;}
+}
+
+.button-steps {
+  background: url('/assets/boton-next-step.png') no-repeat;
+  color: #EED297;
+  font-family: "Lobster";
+  font-size: 32px;
+  width: 242px;
+  text-align: center;
+  padding: 28px 0;
+  margin-bottom: 10px;
+  
+  &:hover {color: #EED297;}
+}
+
+#base, #funcion-primaria, #extra, #sabor {
+  img {cursor: pointer;}
+  
+  img:hover {
+    -moz-transform: rotate(-20deg);
+    -webkit-transform: rotate(-20deg);
+    -o-transform: rotate(-20deg);
+    -ms-transform: rotate(-20deg);
+    transform: rotate(-20deg);
+  }
 }
