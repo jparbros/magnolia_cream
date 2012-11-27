@@ -11,7 +11,13 @@
 html {
   background: url('/assets/top-background.png') repeat-x top, url("/assets/bedge_grunge.png");
   
-  &.products {background: url('/assets/top-background.png') repeat-x top, url("/assets/bkg.png")}
+  &.products {
+    background: url('/assets/top-background.png') repeat-x top, url("/assets/bkg.png");
+    
+    body {
+      color: #852C43;
+    }
+  }
 }
 
 body {
