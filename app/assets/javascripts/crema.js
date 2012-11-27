@@ -30,12 +30,14 @@ Magnolias.crema = {
     this.$$$.stepsContainer = $('.steps');
     this.$$$.propertiesLinks = $('.properties a');
     this.$$$.fill = $('#fill');
+    this.$$$.checkoutButton = $('#checkout');
   },
   
   bindElements: function() {
     this.$$$.startStepsButton.live('click', this.startSteps);
     this.$$$.nextStepButton.live('click', this.nextStep);
     this.$$$.propertiesLinks.live('click', this.selectProperty);
+    this.$$$.checkoutButton.live('click', this.submitForm)
   },
   
   startSteps: function() {
@@ -66,9 +68,10 @@ Magnolias.crema = {
     containerBox = $(this).closest('.properties');
     containerBox.find('input:checked').removeAttr('checked');
     containerBox.find('input#' + propertyValue).attr('checked','checked');
-    // Magnolias.crema.$$$.fill.removeClass(Magnolias.crema.previousStep).addClass(Magnolias.crema.currentStep);
-    // Magnolias.crema.$$$.fill.switchClass(Magnolias.crema.previousStep, Magnolias.crema.currentStep, 1500,'linear');
+    Magnolias.crema.selectVariant();
     Magnolias.crema.transitionSelection();
+    Magnolias.crema.showCheckoutButton();
+    Magnolias.crema.checkedItem(this);
   },
   
   markNextSteps: function() {
@@ -78,6 +81,7 @@ Magnolias.crema = {
     Magnolias.crema.previousStep = steps[Magnolias.crema.actualStep - 1];
     Magnolias.crema.currentStep = steps[Magnolias.crema.actualStep];
     Magnolias.crema.nextStep = steps[Magnolias.crema.actualStep + 1];
+    Magnolias.crema.hideNextButton();
   },
   
   stepsSign: function() {
@@ -150,9 +154,40 @@ Magnolias.crema = {
       Magnolias.crema.$$$.fill.animate({height: height+"px", top: top+"px", "background-position-y":  background_position_y + "px"}, 1500, 'linear');
     }
     else if(jQuery.browser.mozilla) {
-      console.log(Magnolias.crema.previousStep);
       Magnolias.crema.$$$.fill.switchClass(Magnolias.crema.previousStep, Magnolias.crema.currentStep, 1500, 'linear');
       // Magnolias.crema.$$$.fill.animate({height: height + "px", top: top + "px", "background-position": [0, background_position_y]}, 1500, 'linear');
     }
+  },
+  
+  showCheckoutButton: function() {
+    if(Magnolias.crema.currentStep == 'step3')
+      Magnolias.crema.$$$.checkoutButton.show(1000);
+  },
+  
+  hideNextButton: function() {
+    if(Magnolias.crema.currentStep == 'step4')
+      Magnolias.crema.$$$.nextStepButton.hide(1000);
+  },
+  
+  selectVariant: function() {
+    switch(Magnolias.crema.currentStep) {
+      case 'step3':
+        $("input[data-variant-sku=1030]").attr('checked', true);
+        break;
+      case 'step4':
+        $("input[data-variant-sku=1040]").attr('checked', true);
+        break;
+    }
+  },
+  
+  checkedItem: function(_this) {
+    $('.checked-cloned').remove();
+    checked = $('.checked-icon').clone();
+    checked.show().addClass('checked-cloned');
+    $(_this).append(checked);
+  },
+  
+  submitForm: function() {
+    $('#new_cart_item').submit();
   }
 }

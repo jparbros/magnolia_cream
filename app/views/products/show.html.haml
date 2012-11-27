@@ -23,16 +23,18 @@
         .row.hide.properties{id: "#{property.display_name.downcase.parameterize}"}
           .span7
             -property.property_values.each do |property_value|
-              = link_to '#', 'data-property' => "property_#{property.id}_property_value_id_#{property_value.id}" do
+              = link_to '#', 'data-property' => "property_#{property.id}_property_value_id_#{property_value.id}", class: 'link-property' do
                 = image_tag "/assets/steps/#{property.display_name.downcase.parameterize}-#{property_value.display_name.downcase.parameterize}.png"
               = radio_button_tag "property[#{property.id}][property_value_id]", property_value.id, '', class: :hide
       - @product.variants.each do |variant|
         = radio_button_tag "cart_item[variant_id]", variant.id, false, class: :hide, 'data-variant-sku' => variant.sku
       = hidden_field_tag "cart_item[quantity]", 1
-    = submit_tag 'Adquirir', class: 'btn hide btn-large circle-button float-right', id: 'submit-cream'
+
+= image_tag '/assets/checked.png', class: 'checked-icon hide'
 
 .row
   .span12
+    = link_to 'Comprar', '#', class: 'button-steps checkout-button hide float-left', id: 'checkout'
     = link_to 'Empezar >', '#', class: 'button-steps  float-right', id: 'next-steps'
 
 = javascript_include_tag 'crema'

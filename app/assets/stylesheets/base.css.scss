@@ -9,8 +9,9 @@
 }
 
 html {
-  background: url('/assets/top-background.png') repeat-x top, url('/assets/bottom-background.png') repeat-x bottom, url("/assets/bedge_grunge.png");
-
+  background: url('/assets/top-background.png') repeat-x top, url("/assets/bedge_grunge.png");
+  
+  &.products {background: url('/assets/top-background.png') repeat-x top, url("/assets/bkg.png")}
 }
 
 body {
@@ -18,20 +19,34 @@ body {
   color: #E3E3D6;
 }
 
-header {height: 145px; margin-top: 20px;}
+html, body {height: 100%;}
+
+#wrap {
+  min-height: 100%;
+}
+
+header {height: 145px; margin: 3px 0 10px 0;}
 
 footer {
-  height: 33px; 
-  padding: 10px 0 0 0;
+  background: url('/assets/bottom-background.png') repeat-x bottom;
+  height: 30px;
+  padding: 15px 0 0 0;
   text-align: center;
   color: #636363;
+  position: relative;
+  margin-top: -40px;
+  clear: both;
 }
 
 img#magnolia-girl {
   margin-left: -50px;
+  position: absolute;
+  bottom: 43px;
 }
 
-img#logo { margin-top: 10px;}
+.main-text-container { float: right;}
+
+img#logo { margin: 0 auto; display: block;}
 
 a#lets-do-it {
   margin: 20px 105px 0 105px;
@@ -87,6 +102,7 @@ h1 {
 }
 
 .float-right {float: right;}
+.float-left {float: left;}
 
 .hide-top {margin-top: -99999px;}
 
@@ -177,7 +193,7 @@ h1 {
 
 nav {
   float: right;
-  margin: 50px 0 0 0;
+  margin: -70px 0 0 0;
 
   ul {
     list-style: none;
@@ -198,15 +214,15 @@ nav {
 
 .steps {
   background: url('/assets/pasos.png') no-repeat;
-  height: 52px;
+  height: 50px;
   margin-bottom: 25px;
   width: 943px;
   
   &.step0 { background-position: 0px 0px;}
-  &.step1 { background-position: 0px -52px;}
-  &.step2 { background-position: 0px -104px;}
-  &.step3 { background-position: 0px -156px;}
-  &.step4 { background-position: 0px -208px;}
+  &.step1 { background-position: 0px -50px;}
+  &.step2 { background-position: 0px -100px;}
+  &.step3 { background-position: 0px -150px;}
+  &.step4 { background-position: 0px -200px;}
 }
 
 .button-steps {
@@ -220,6 +236,12 @@ nav {
   margin-bottom: 10px;
   
   &:hover {color: #EED297;}
+  
+  &.checkout-button {
+    background: url('/assets/checkout-button.png') no-repeat;
+    padding: 23px 0;
+    width: 216px;
+  }
 }
 
 #base, #funcion-primaria, #extra, #sabor {
@@ -231,5 +253,51 @@ nav {
     -o-transform: rotate(-20deg);
     -ms-transform: rotate(-20deg);
     transform: rotate(-20deg);
+  }
+}
+
+.checked-icon {
+  width: 54px;
+  height: 54px;
+  margin-bottom: -54px;
+  position: relative;
+}
+
+#base {
+  .link-property {
+    display: inline-table;
+    height: 219px;
+    width: 219px;
+  }
+
+  .checked-icon {
+    top: -210px;
+    left: 160px;
+  }
+}
+
+#funcion-primaria, #sabor {
+  .link-property {
+    display: inline-table;
+    height: 167px;
+    width: 167px;
+  }
+
+  .checked-icon {
+    top: -160px;
+    left: 110px;
+  }
+}
+
+#extra {
+  .link-property {
+    display: inline-table;
+    height: 136px;
+    width: 218px;
+  }
+
+  .checked-icon {
+    top: -150px;
+    left: 180px;
   }
 }

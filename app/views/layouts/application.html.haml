@@ -1,5 +1,5 @@
 !!!5
-%html
+%html{class: controller_name}
   %head
     %title
       Magnolias Cream Parlor
@@ -11,41 +11,42 @@
 
 
   %body
-    .container
-      - if alert
-        .alert-message.error{'data-alert'=>"alert"}
-          = link_to 'x','#', :class => 'close'
-          %p= alert
-      - if notice
-        .alert-message.info{'data-alert'=>"alert"}
-          = link_to 'x','#', :class => 'close'
-          %p= notice
-      %header
-        .row
-          = image_tag '/assets/logo-magnolias.png', class: [:span2, :offset5], id: :logo
-          %nav
-            %ul
-              %li
-                %a{href: '#'}
-                  = I18n.t 'nav.about_us'
-              %li
-                %a{href: '#'}
-                  = I18n.t 'nav.contact'
-              - if current_user
+    #wrap
+      .container
+        - if alert
+          .alert-message.error{'data-alert'=>"alert"}
+            = link_to 'x','#', :class => 'close'
+            %p= alert
+        - if notice
+          .alert-message.info{'data-alert'=>"alert"}
+            = link_to 'x','#', :class => 'close'
+            %p= notice
+        %header
+          .row
+            = link_to image_tag('/assets/logo-magnolias.png', id: :logo), root_path
+            %nav
+              %ul
                 %li
-                  = link_to I18n.t('nav.cart'), shopping_cart_items_path
-              %li
+                  %a{href: '#'}
+                    = I18n.t 'nav.about_us'
+                %li
+                  %a{href: '#'}
+                    = I18n.t 'nav.contact'
                 - if current_user
-                  = link_to I18n.t('nav.logout'), logout_path
-                - else
-                  = link_to I18n.t('nav.login'), login_path
+                  %li
+                    = link_to I18n.t('nav.cart'), shopping_cart_items_path
+                %li
+                  - if current_user
+                    = link_to I18n.t('nav.logout'), logout_path
+                  - else
+                    = link_to I18n.t('nav.login'), login_path
 
-      #content.row
-        .span12
-          = yield
+        #content.row
+          .span12
+            = yield
           
-      %footer
-        Copyright 2012. All right reserved.
+    %footer
+      Copyright 2012. All right reserved.
 
 
     %script{type: 'text/javascript'}
