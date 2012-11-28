@@ -3,7 +3,7 @@
 <h3>Edit Property Value</h3>
 
 <%= form_for @property_value, :url  => admin_merchandise_property_property_value_path(params[:property_id], @property_value), :html => {:class => 'prepend-6'}  do |form| %>
-  <%= render :partial => '/admin/merchandise/properties/form', :locals => {:form => form } %>
+  <%= render :partial => 'form', :locals => {:form => form } %>
   <div class=" generic_submit_button">
     <%= submit_tag "Update", :class => "button", :id => "update_property_button" %>
   </div>

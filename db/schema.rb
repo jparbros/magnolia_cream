@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121128134616) do
+ActiveRecord::Schema.define(:version => 20121128220554) do
 
   create_table "accounting_adjustments", :force => true do |t|
     t.integer  "adjustable_id",                                 :null => false
@@ -385,6 +385,7 @@ ActiveRecord::Schema.define(:version => 20121128134616) do
     t.integer  "property_id"
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
+    t.text     "description"
   end
 
   create_table "prototype_properties", :force => true do |t|

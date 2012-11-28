@@ -1,5 +1,5 @@
 class PropertyValue < ActiveRecord::Base
-  attr_accessible :active, :display_name, :identifing_name, :property_id
+  attr_accessible :active, :display_name, :identifing_name, :property_id, :description
   
   validates :identifing_name,    :presence => true, :length => { :maximum => 250 }
   validates :display_name,       :presence => true, :length => { :maximum => 165 }

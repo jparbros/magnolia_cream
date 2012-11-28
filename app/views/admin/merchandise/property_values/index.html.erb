@@ -35,7 +35,7 @@
     </thead>
     <% @property_values.each do |property_value| %>
       <tr class='<%= cycle("odd", "")%>'>
-        <td><%= link_to property_value.identifing_name, edit_admin_merchandise_property_path(@property, property_value) %></td>
+        <td><%= link_to property_value.identifing_name, edit_admin_merchandise_property_property_value_path(@property, property_value) %></td>
         <td><%= property_value.display_name %></td>
         <td><%= property_value.display_active %></td>
       </tr>
