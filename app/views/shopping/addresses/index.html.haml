@@ -1,20 +1,23 @@
 .row
   .span12
     - if @shopping_addresses.empty?
-      %h2 New Address
+      %h2 Nueva dirección
     - else
-      %h3 Pick an Address
+      %h3 Seleccion una dirección
 
 .row
   .span5
-    - @shopping_addresses.each do |shopping_address|
-      = render :partial => '/shared/compact_address', :locals => {:shopping_address => shopping_address}
-      = button_to 'Use', select_address_shopping_address_path(shopping_address), :class => 'button spade inline-block', :method => :put
-      = link_to 'Edit', edit_shopping_address_path(shopping_address)
-      = link_to 'Delete', shopping_address_path(shopping_address), :data => {:confirm => 'Are you sure?'}, :method => :delete
+    %ol
+      - @shopping_addresses.each do |shopping_address|
+        %li
+          = render :partial => '/shared/compact_address', :locals => {:shopping_address => shopping_address}
+          = link_to 'Usar', select_address_shopping_address_path(shopping_address), :class => 'btn btn-primary', :method => :put
+          %br/
+          = link_to 'Editar', edit_shopping_address_path(shopping_address), class: ['btn', 'btn-mini']
+          = link_to 'Borrar', shopping_address_path(shopping_address), :data => {:confirm => '¿Esta seguro?'}, :method => :delete, class: ['btn', 'btn-mini', 'btn-danger']
       
-    - if session_order.ready_to_checkout?
-      = link_to 'Order Summary', shopping_orders_path, :class => 'btn btn-primary'
+        - if session_order.ready_to_checkout?
+          = link_to 'Resumen de la orden', shopping_orders_path, :class => 'btn btn-primary'
       
   .span7
     = form_for @shopping_address, :url => shopping_addresses_path do |address_form|

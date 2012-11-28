@@ -1,0 +1,68 @@
+.row
+  .span12
+
+    %h2 
+      Orden #
+      = @order.number
+
+.row
+  %table.table.table-striped.table-bordered.span12
+    %thead
+      %tr.shopping-cart-header
+        %th Productos
+        %th Precio
+
+    %tbody
+      - @order.order_items.each do |item|
+        %tr
+          %td
+            .pull-left
+              = image_tag item.variant.product.featured_image(:small)
+            .pull-left
+              = "#{item.variant.product_name} (#{item.property_value_ids.size} ingredientes)"
+              %br
+              - item.property_values.each do |property_value|
+                = "#{property_value.property.display_name} : #{property_value.display_name}"
+                %br
+          %td= number_to_currency item.price 
+
+      %tr
+        %td.text-right Sub-total:
+        %td= number_to_currency @order.find_sub_total
+
+      %tr
+        %td.text-right Envio:
+        %td= number_to_currency @order.shipping_charges
+
+      - if @order.coupon_amount > 0.0
+        %tr
+          %td.text-right Coupon:
+          %td= number_to_currency @order.coupon_amount
+
+      - if @order.deal_amount && @order.deal_amount > 0.0
+        %tr
+          %td.text-right Promotion:
+          %td= number_to_currency @order.deal_amount
+            
+      %tr
+        %td.text-right Total:
+        %td
+          %em= number_to_currency @order.find_total
+.row
+  %table.table-striped.table-bordered.span6
+    %thead
+      %tr.shopping-cart-header
+        %th Direccion de envio:
+    %tbody
+      %tr
+        %td
+          = render :partial => '/shared/compact_address', :locals => {:shopping_address => @order.ship_address} if @order.ship_address_id
+
+  %table.table-striped.table-bordered.span6
+    %thead
+      %tr.shopping-cart-header
+        %th Direccion de facturacion:
+    %tbody
+      %tr
+        %td
+          = render :partial => '/shared/compact_address', :locals => {:shopping_address => @order.bill_address} if @order.bill_address_id

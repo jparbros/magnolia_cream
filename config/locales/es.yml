@@ -30,7 +30,7 @@ es:
     logout:   'Salir'
     cart:     'Carrito'
 
-  select_address_before_shipping_method:  'Seleccione una direccion antes de seleccionar un metodo de envio.'
+  select_address_before_shipping_method:  'Seleccione una dirección antes de seleccionar un metodo de envio.'
   shipping_method_created:                'Shipping method was successfully created.'
   shipping_method_updated:                'Shipping method was successfully updated.'
   all_shipping_methods_must_be_selected:  'All the Shipping Methods must be selected'

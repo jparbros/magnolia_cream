@@ -1,0 +1,10 @@
+%tr
+  %td
+    .pull-left
+      = image_tag item.variant.product.featured_image(:small)
+    .pull-left
+      = "#{item.variant.product_name} (#{item.property_value_ids.size} ingredientes)"
+      %br
+      - item.property_values.each do |property_value|
+        = "#{property_value.property.display_name} : #{property_value.display_name}"
+        %br    

@@ -13,14 +13,6 @@
   %body
     #wrap
       .container
-        - if alert
-          .alert-message.error{'data-alert'=>"alert"}
-            = link_to 'x','#', :class => 'close'
-            %p= alert
-        - if notice
-          .alert-message.info{'data-alert'=>"alert"}
-            = link_to 'x','#', :class => 'close'
-            %p= notice
         %header
           .row
             = link_to image_tag('/assets/logo-magnolias.png', id: :logo), root_path
@@ -43,6 +35,15 @@
 
         #content.row
           .span12
+            - if alert
+              .alert.alert-error{'data-alert'=>"alert"}
+                = link_to 'x','#', :class => 'close'
+                %p= alert
+            - if notice
+              .alert.alert-info{'data-alert'=>"alert"}
+                = link_to 'x','#', :class => 'close'
+                %p= notice
+            
             = yield
           
     %footer
@@ -51,3 +52,13 @@
 
     %script{type: 'text/javascript'}
       = yield :javascript
+      
+      (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1";
+      fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+
+      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");

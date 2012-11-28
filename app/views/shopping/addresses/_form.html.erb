@@ -12,21 +12,21 @@
 <div class='main-address'>
   <div class="inline">
     <div class="field column">
-       <%= f.label :first_name %>
+       <%= f.label :nombre %>
        <%= f.text_field :first_name, :class => 'span-3' %>
     </div>
 
     <div class="field column">
-      <%= f.label :last_name %>
+      <%= f.label :apellido %>
       <%= f.text_field :last_name, :class => 'span-3' %>
     </div>
   </div>
   <div class='clear'></div>
     <div class="inline">
       <div class="field column">
-        <%= f.label :address1, 'Address' %>
+        <%= f.label :direccion, 'Dirección' %>
         <%= f.text_field :address1 %><br/>
-        <%= f.label :address2, 'line 2' %>
+        <%= f.label :address2, 'Linea 2' %>
         <%= f.text_field :address2 %>
       </div>
     </div>
@@ -34,18 +34,18 @@
 
     <div class="field column">
 
-      <%= f.label :state_id, "State/Province" %>
+      <%= f.label :state_id, "Estado" %>
       <%= f.select  :state_id, @states,
                     :include_blank => true %>
     </div>
   <div class='clear'></div>
     <div class="inline">
       <div class="field column">
-        <%= f.label :city %>
+        <%= f.label 'Ciudad' %>
         <%= f.text_field :city, :class => 'span-3' %>
       </div>
       <div class="field column">
-        <%= f.label :zip_code %>
+        <%= f.label 'Codigo Postal' %>
         <%= f.text_field :zip_code, :class => 'span-3' %>
       </div>
 
@@ -65,9 +65,9 @@
 </div>
 <div class="field span-7">
   <%= check_box_tag :default, 1, f.object.default? %>
-  <%= f.label :default, "Make this my default shipping method", :class => 'auto_width' %>
+  <%= f.label :default, "Hacer sireccion principal", :class => 'auto_width' %>
 </div>
 
 <div class="actions prepend-1">
-  <%= submit_tag 'Create Address', :class => 'button ar-red-small-button' %>
+  <%= submit_tag 'Crear Direccion', :class => 'btn' %>
 </div>

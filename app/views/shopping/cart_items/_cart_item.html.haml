@@ -3,8 +3,9 @@
     %b
       = I18n.t 'cart_items.item_added_on'
       = item.created_at.strftime(I18n.translate('time.formats.long_date'))
-      
+    %br/
     = link_to I18n.t('cart_items.save_for_later'), move_to_shopping_cart_item_path(item, variant_id: item.variant_id, item_type_id: ItemType::SAVE_FOR_LATER_ID), method: 'put', class: 'btn btn-mini btn-danger'
+    %br/
     = link_to I18n.t('cart_items.delete'), shopping_cart_item_path(item, :variant_id => item.variant_id), :method => :delete, class: 'btn btn-mini btn-danger'
   %td
     = link_to item.variant.product_name, product_path(item.variant.product)
@@ -16,4 +17,4 @@
   %td.price
     = number_to_currency item.price 
   %td
-    = cart_items_form.text_field :quantity, :size=>"2", class: 'input-xlarge'
+    = cart_items_form.text_field :quantity, :size=>"2", class: 'input-large'

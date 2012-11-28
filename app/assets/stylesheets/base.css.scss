@@ -187,7 +187,6 @@ h1 {
 
 #payment-methods {
   background-color: #ffffff;
-  margin: 10px;
   padding: 10px;
   text-align: center;
   
@@ -309,5 +308,23 @@ nav {
 }
 
 table {
-  margin-bottom: 30px;
+  color: #636363;
+  background-color: #fff;
+  margin: 10px 0 20px 0;
+  
+  td {
+    padding: 10px;
+  }
 }
+
+ol {
+  li {
+    padding: 10px;
+  }
+}
+
+.btn {
+  margin: 0 5px 5px 0;
+}
+
+.text-right { text-align: right !important;}

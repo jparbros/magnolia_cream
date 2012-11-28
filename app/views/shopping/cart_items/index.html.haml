@@ -6,7 +6,7 @@
         = cart_form.submit I18n.t('update'), class: 'btn'
         = cart_form.submit I18n.t('checkout'), class: 'btn btn-primary', :checkout => 1
   .row
-    %table.table-striped.table-bordered.span12
+    %table.table.table-striped.table-bordered.span12
       %thead
         %tr.shopping-cart-header
           %th{colspan: 2}
@@ -22,7 +22,7 @@
             = render :partial => 'cart_item', :locals => {:cart_items_form => cart_items_form, :item => item, :i => i }
   .row
     - unless @saved_cart_items.empty?
-      %table.table-striped.table-bordered.span12
+      %table.table.table-striped.table-bordered.span12
         %thead
           %tr.shopping-cart-header
             %th{colspan: 2}
@@ -30,4 +30,5 @@
             %th
               %h3= I18n.t 'cart_items.price'
         %tbody
-          = render :partial => '/shopping/cart_items/saved_items' unless @saved_cart_items.empty?
+          - @saved_cart_items.each_with_index do |item, i|
+            = render :partial => '/shopping/cart_items/saved_items', :locals => {item: item, :i => i}

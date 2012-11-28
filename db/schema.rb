@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121109155654) do
+ActiveRecord::Schema.define(:version => 20121128134616) do
 
   create_table "accounting_adjustments", :force => true do |t|
     t.integer  "adjustable_id",                                 :null => false
@@ -222,16 +222,17 @@ ActiveRecord::Schema.define(:version => 20121109155654) do
   end
 
   create_table "order_items", :force => true do |t|
-    t.decimal  "price",            :precision => 8, :scale => 2
-    t.decimal  "total",            :precision => 8, :scale => 2
-    t.integer  "order_id",                                       :null => false
-    t.integer  "variant_id",                                     :null => false
-    t.string   "state",                                          :null => false
+    t.decimal  "price",              :precision => 8, :scale => 2
+    t.decimal  "total",              :precision => 8, :scale => 2
+    t.integer  "order_id",                                         :null => false
+    t.integer  "variant_id",                                       :null => false
+    t.string   "state",                                            :null => false
     t.integer  "tax_rate_id"
     t.integer  "shipping_rate_id"
     t.integer  "shipment_id"
-    t.datetime "created_at",                                     :null => false
-    t.datetime "updated_at",                                     :null => false
+    t.datetime "created_at",                                       :null => false
+    t.datetime "updated_at",                                       :null => false
+    t.string   "property_value_ids"
   end
 
   add_index "order_items", ["order_id"], :name => "index_order_items_on_order_id"

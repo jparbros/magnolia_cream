@@ -17,6 +17,7 @@ if (document.getElementsByTagName) {
 // This allows forms to have unobtrusive JS nested forms.
 $(function() {
   $('form a.add_child').click(function() {
+    console.log("some")
     var assoc   = $(this).attr('data-association');
     var content = $('#' + assoc + '_fields_template').html();
     var regexp  = new RegExp('new_' + assoc, 'g');
