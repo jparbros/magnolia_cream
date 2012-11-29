@@ -26,7 +26,7 @@ gem 'compass-rails'
 gem "friendly_id", "~> 3.3"
 gem 'haml',  ">= 3.0.13"#, ">= 3.0.4"#, "2.2.21"#,
 gem "jquery-rails"
-
+gem 'airbrake'
 
 gem 'pg'
 gem 'nested_set', '~> 1.7.0'
