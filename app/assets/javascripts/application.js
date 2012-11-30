@@ -4,4 +4,4 @@
 //= require jquery.min
 //= require jquery_ujs
 //= require jquery/jquery-ui-1.8.17.custom.min
-//= require bootstrap-all
+//= require bootstrap.min

@@ -493,4 +493,16 @@ private
   def before_validation_on_create
     self.access_token = SecureRandom::hex(9+rand(6)) if new_record? and access_token.nil?
   end
+  
+  def extract_name(name)
+    name_splited = name.split(' ')
+    case name_splited.size
+    when 2
+      return [name_splited[0], name_splited[1]]
+    when 3
+      return [name_splited[0] , "#{name_splited[1]} #{name_splited[2]}"]
+    when 4
+      return ["#{name_splited[0]} #{name_splited[1]}", "#{name_splited[2]} #{name_splited[3]}"]
+    end
+  end
 end
