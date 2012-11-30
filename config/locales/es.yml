@@ -62,7 +62,7 @@ es:
     saved_items: 'Cremas guardadas'
     move_to_cart: 'Mover al carrito'
   user_sessions:
-    registration: 'Regis'
-    password_confirmation: 'Password confirmation'
-    register: 'Register'
-    forgot_password: 'forgot password?'
+    registration: 'Registro'
+    password_confirmation: 'Confirmacion del password'
+    register: 'Registro'
+    forgot_password: '¿Olvido su contraseña?'

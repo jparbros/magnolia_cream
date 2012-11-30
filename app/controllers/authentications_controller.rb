@@ -17,9 +17,9 @@ class AuthenticationsController < ApplicationController
         flash[:info] = 'Authentication successful.'
         redirect_to root_url
       else
-        # User is new to this application
-        password = SecureRandom.hex
-        user = User.new(email: "#{password}@magnolias.temporal.user.com", password: password, password_confirmation: password)
+        
+        user = User.find_or_initialize_by_email(omniauth['extra']['raw_info']['email'])
+        user.apply_authorization
         
         if user.save
           user.apply_omniauth(omniauth)

@@ -23,8 +23,8 @@
 
         .control-group
           .controls.social-logins
-            = link_to image_tag('/assets/login-twitter.png'), '/auth/twitter'
-            = link_to image_tag('/assets/login-facebook.png'), '/auth/facebook'
+            = link_to image_tag('/assets/ingresar-twitter.png'), '/auth/twitter'
+            = link_to image_tag('/assets/ingresar-facebook.png'), '/auth/facebook'
 
   .span6
     = form_for @user, :url => customer_registrations_path(@user), html: {class: 'form-horizontal'}  do |form|
@@ -50,5 +50,5 @@
             = form.submit I18n.t('user_sessions.register'), class: 'btn btn-primary'
         .control-group
           .controls.social-logins
-            = link_to image_tag('/assets/sigin-twitter.png'), '/auth/twitter'
-            = link_to image_tag('/assets/signin-facebook.png'), '/auth/facebook'
+            = link_to image_tag('/assets/conectar-twitter.png'), '/auth/twitter'
+            = link_to image_tag('/assets/conectar-facebook.png'), '/auth/facebook'

@@ -168,6 +168,8 @@ class User < ActiveRecord::Base
 
   end
 
+  TEMPORAL_EMAIL = '@temp.magnolias.com'
+
   # returns true or false if the user is active or not
   #
   # @param [none]
@@ -370,6 +372,23 @@ class User < ActiveRecord::Base
     finished_orders.select{|o| o.completed_at < at }.size
   end
 
+  def twitter_authentication
+    authentications.where(provider: 'twitter').first
+  end
+  
+  def facebook_authentication
+    authentications.where(provider: 'facebook').first
+  end
+  
+  def apply_authorization
+    if new_record?
+      _password = SecureRandom.hex(5)
+      self.password = _password
+      self.password_confirmation = _password
+      self.email = "#{_password}#{TEMPORAL_EMAIL}" if email.blank?
+    end
+  end
+  
   def apply_omniauth(omniauth)
     case omniauth['provider']
     when 'facebook'
@@ -378,21 +397,32 @@ class User < ActiveRecord::Base
       self.apply_twitter(omniauth)
     end
     authentications.build(hash_from_omniauth(omniauth))
-    save!(:validate => false)
+    save!
   end
+  
+  def missing_complete_register?
+    email.nil? || email.match(/#{TEMPORAL_EMAIL}/)
+  end
+  
 
-  protected
+protected
 
   def apply_facebook(omniauth)
-    if (extra = omniauth['extra']['user_hash'] rescue false)
-      self.email = (extra['email'] rescue '')
+    if omniauth['extra']['raw_info'].present?
+      self.email = omniauth['extra']['raw_info']['email'] if omniauth['extra']['raw_info']['email'].present? && email.blank?
+      self.first_name = omniauth['extra']['raw_info']['first_name'] if omniauth['extra']['raw_info']['first_name'].present? && first_name.blank?
+      self.last_name = omniauth['extra']['raw_info']['last_name'] if omniauth['extra']['raw_info']['last_name'].present? && last_name.blank?
     end
   end
 
   def apply_twitter(omniauth)
-    if (extra = omniauth['extra']['user_hash'] rescue false)
-      # Example fetching extra data. Needs migration to User model:
-      # self.firstname = (extra['name'] rescue '')
+    if omniauth['extra']['raw_info'].present?
+      self.email = omniauth['extra']['raw_info']['email'] if omniauth['extra']['raw_info']['email'].present? && email.blank?
+      if omniauth['extra']['raw_info']['name'].present?
+        name = extract_name(omniauth['extra']['raw_info']['name'])
+        self.first_name = name[0] if first_name.blank?
+        self.last_name = name[1] if last_name.blank?
+      end
     end
   end
 
@@ -405,7 +435,7 @@ class User < ActiveRecord::Base
     }
   end
 
-  private
+private
 
   def validate_age
     if birth_date && birth_date_changed?
