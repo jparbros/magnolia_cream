@@ -253,7 +253,7 @@ nav {
   }
 }
 
-#base, #funcion-primaria, #extra, #sabor {
+#skin-type, #power-blend, #topping, #flavor {
   img {cursor: pointer;}
   
   img:hover {
@@ -272,7 +272,7 @@ nav {
   position: relative;
 }
 
-#base {
+#skin-type {
   .link-property {
     display: inline-table;
     height: 219px;
@@ -285,7 +285,7 @@ nav {
   }
 }
 
-#funcion-primaria, #sabor {
+#power-blend, #flavor {
   .link-property {
     display: inline-table;
     height: 167px;
@@ -298,7 +298,7 @@ nav {
   }
 }
 
-#extra {
+#topping {
   .link-property {
     display: inline-table;
     height: 136px;
