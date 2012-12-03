@@ -275,39 +275,33 @@ nav {
 #skin-type {
   .link-property {
     display: inline-table;
-    height: 219px;
-    width: 219px;
+    max-height: 219px;
+    max-width: 219px;
   }
+}
 
-  .checked-icon {
-    top: -210px;
-    left: 160px;
-  }
+.link-property.checked::after {
+  content: url("/assets/checked.png");
+  position: relative;
+  top: -50px;
+  left: -70px;
+  z-index: 1040;
+  margin-right: -50px;
 }
 
 #power-blend, #flavor {
   .link-property {
     display: inline-table;
-    height: 167px;
-    width: 167px;
-  }
-
-  .checked-icon {
-    top: -160px;
-    left: 110px;
+    max-height: 167px;
+    max-width: 167px;
   }
 }
 
-#topping {
+#extra {
   .link-property {
     display: inline-table;
-    height: 136px;
-    width: 218px;
-  }
-
-  .checked-icon {
-    top: -150px;
-    left: 180px;
+    max-height: 136px;
+    max-width: 218px;
   }
 }
 

@@ -15,6 +15,7 @@ Magnolias.crema = {
     $('input:checked').removeAttr('checked');
     this.cacheElements();
     this.bindElements();
+    this.cleanBox();
     Magnolias.crema.markNextSteps();
   },
   
@@ -31,13 +32,15 @@ Magnolias.crema = {
     this.$$$.propertiesLinks = $('.properties a');
     this.$$$.fill = $('#fill');
     this.$$$.checkoutButton = $('#checkout');
+    this.$$$.backButton = $('#back-step');
   },
   
   bindElements: function() {
     this.$$$.startStepsButton.live('click', this.startSteps);
     this.$$$.nextStepButton.live('click', this.nextStep);
     this.$$$.propertiesLinks.live('click', this.selectProperty);
-    this.$$$.checkoutButton.live('click', this.submitForm)
+    this.$$$.checkoutButton.live('click', this.submitForm);
+    this.$$$.backButton.live('click', this.backStep);
   },
   
   startSteps: function() {
@@ -55,11 +58,18 @@ Magnolias.crema = {
     if (Magnolias.crema.currentStep == 'step0')
       Magnolias.crema.startSteps();
     if (Magnolias.crema.canContinue()) {
+      Magnolias.crema.$$$.backButton.show('slow');
       Magnolias.crema.stepsSign();
       Magnolias.crema.markNextSteps();
-      Magnolias.crema.cleanBox();
       Magnolias.crema.onOffBox();
     }
+  },
+  
+  backStep: function() {
+    Magnolias.crema.actualBox().hide(1000);
+    Magnolias.crema.previousBox().show(1000);
+    Magnolias.crema.$$$.stepsContainer.removeClass(Magnolias.crema.currentStep).addClass(Magnolias.crema.previousStep);
+    Magnolias.crema.markBackSteps();
   },
   
   selectProperty: function(event) {
@@ -73,6 +83,17 @@ Magnolias.crema = {
     Magnolias.crema.showCheckoutButton();
     Magnolias.crema.checkedItem(this);
   },
+
+  markBackSteps: function() {
+    steps = ['step0', 'step1', 'step2', 'step3', 'step4'];
+    if (Magnolias.crema.currentStep != '')
+      Magnolias.crema.actualStep -= 1;
+    Magnolias.crema.previousStep = steps[Magnolias.crema.actualStep - 1];
+    Magnolias.crema.currentStep = steps[Magnolias.crema.actualStep];
+    Magnolias.crema.nextStep = steps[Magnolias.crema.actualStep + 1];
+    Magnolias.crema.hideNextButton();
+    Magnolias.crema.hideBackButton();
+  },
   
   markNextSteps: function() {
     steps = ['step0', 'step1', 'step2', 'step3', 'step4'];
@@ -82,6 +103,7 @@ Magnolias.crema = {
     Magnolias.crema.currentStep = steps[Magnolias.crema.actualStep];
     Magnolias.crema.nextStep = steps[Magnolias.crema.actualStep + 1];
     Magnolias.crema.hideNextButton();
+    Magnolias.crema.hideBackButton();
   },
   
   stepsSign: function() {
@@ -124,7 +146,7 @@ Magnolias.crema = {
   },
   
   cleanBox: function() {
-    Magnolias.crema.actualBox().find('input:checked').removeAttr('checked');
+    $('input:checked').removeAttr('checked');
   },
   
   onOffBox: function () {
@@ -167,6 +189,15 @@ Magnolias.crema = {
   hideNextButton: function() {
     if(Magnolias.crema.currentStep == 'step4')
       Magnolias.crema.$$$.nextStepButton.hide(1000);
+    else
+      Magnolias.crema.$$$.nextStepButton.show(1000);
+  },
+  
+  hideBackButton: function() {
+    if(Magnolias.crema.currentStep == 'step1' || Magnolias.crema.currentStep == 'step0')
+      Magnolias.crema.$$$.backButton.hide(1000);
+    else
+      Magnolias.crema.$$$.backButton.show(1000);
   },
   
   selectVariant: function() {
@@ -181,10 +212,8 @@ Magnolias.crema = {
   },
   
   checkedItem: function(_this) {
-    $('.checked-cloned').remove();
-    checked = $('.checked-icon').clone();
-    checked.show().addClass('checked-cloned');
-    $(_this).append(checked);
+    $(_this).closest('.properties').find('.checked').removeClass('checked');
+    $(_this).addClass('checked');
   },
   
   submitForm: function() {

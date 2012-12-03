@@ -24,7 +24,7 @@
           .span7
             -property.property_values.each do |property_value|
               = link_to '#', 'data-property' => "property_#{property.id}_property_value_id_#{property_value.id}", class: 'link-property' do
-                = image_tag "/assets/steps/#{property.display_name.downcase.parameterize}-#{property_value.display_name.downcase.parameterize}.png"
+                = image_tag "/assets/steps/#{property.display_name.downcase.parameterize}-#{property_value.display_name.downcase.parameterize}.png", class: 'lazy'
               = radio_button_tag "property[#{property.id}][property_value_id]", property_value.id, '', class: :hide
       - @product.variants.each do |variant|
         = radio_button_tag "cart_item[variant_id]", variant.id, false, class: :hide, 'data-variant-sku' => variant.sku
@@ -36,6 +36,7 @@
   .span12
     = link_to 'Comprar', '#', class: 'button-steps checkout-button hide float-left', id: 'checkout'
     = link_to 'Empezar >', '#', class: 'button-steps  float-right', id: 'next-steps'
+    = link_to '< Regresar', '#', class: 'button-steps  float-right hide', id: 'back-step'
 
 = javascript_include_tag 'crema'
 - content_for :javascript do
