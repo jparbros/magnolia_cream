@@ -31,9 +31,6 @@ rescue  Exception => e
   end
 end
 
-CIM_LOGIN_ID = HADEAN_CONFIG['authnet']['login']
-CIM_TRANSACTION_KEY = HADEAN_CONFIG['authnet']['password']
-
 require File.expand_path('../../lib/printing/invoice_printer', __FILE__)
 
 Paperclip.options[:command_path] = "/usr/local/bin"

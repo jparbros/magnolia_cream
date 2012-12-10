@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121128220554) do
+ActiveRecord::Schema.define(:version => 20121210085920) do
 
   create_table "accounting_adjustments", :force => true do |t|
     t.integer  "adjustable_id",                                 :null => false
@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(:version => 20121128220554) do
     t.datetime "created_at",                           :null => false
     t.datetime "updated_at",                           :null => false
     t.text     "property_value_ids"
+    t.string   "cream_name"
   end
 
   add_index "cart_items", ["cart_id"], :name => "index_cart_items_on_cart_id"

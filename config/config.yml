@@ -11,33 +11,17 @@
 # after "deploy:update_code", :copy_config_files
 
 development: &non_production_settings
-  encryption_key: someRandomBINARYKEY
-  mailer:
-    server: mail.example.com
-    username: someLOGIN
-    password: s0meth1ngs3cr3t
   paypal:
     login:      magnol_1351263382_biz_api1.hotmail.com
     password:   1351263438
     signature:  AFcWxV21C7fd0v3bYYYRCpSSRl31AlmTUbskilNRZj-HSJl0-UYtCZfV
-  authnet:
-    login:      someLOGIN
-    password:   somePASSWORD
-  vat: false
 
 test:
   <<: *non_production_settings
+
 production:
   encryption_key: someRandomBINARYKEY
-  mailer:
-    server: mail.example.com
-    username: someLOGIN
-    password: somePASSOWRD
   paypal:
     login:      magnol_1351263382_biz_api1.hotmail.com
     password:   1351263438
     signature:  AFcWxV21C7fd0v3bYYYRCpSSRl31AlmTUbskilNRZj-HSJl0-UYtCZfV
-  authnet:
-    login:      someLOGIN
-    password:   somePASSWORD
-  vat: false

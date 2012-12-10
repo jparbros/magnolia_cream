@@ -25,6 +25,8 @@ class Coupon < ActiveRecord::Base
   validates :starts_at,     :presence => true
   validates :expires_at,    :presence => true
 
+  attr_accessible :type, :code, :amount, :minimum_value, :percent, :description, :combine, :starts_at, :expires_at
+
   COUPON_TYPES = ['coupon_percent', 'coupon_value']
   # order must respond to item_prices
   attr_accessor :c_type

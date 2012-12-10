@@ -10,6 +10,7 @@ module Shopping::PaypalCheckoutHelper
         :tax =>      0,
         :allow_note =>  true,
         :items => get_items,
+        :solution_type => 'sole'
       }
   end
 
@@ -37,6 +38,7 @@ module Shopping::PaypalCheckoutHelper
       :handling => 0,
       :tax =>      0,
       :items =>    get_items,
+      :solution_type => 'sole'
     }
   end
 end

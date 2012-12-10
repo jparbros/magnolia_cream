@@ -33,6 +33,8 @@ Magnolias.crema = {
     this.$$$.fill = $('#fill');
     this.$$$.checkoutButton = $('#checkout');
     this.$$$.backButton = $('#back-step');
+    this.$$$.creamNameInput = $('.cream_name_container');
+    this.$$$.creamName = $('#cream-name');
   },
   
   bindElements: function() {
@@ -41,12 +43,13 @@ Magnolias.crema = {
     this.$$$.propertiesLinks.live('click', this.selectProperty);
     this.$$$.checkoutButton.live('click', this.submitForm);
     this.$$$.backButton.live('click', this.backStep);
+    this.$$$.creamNameInput.find('input').keyup(this.fillCreamName);
   },
   
   startSteps: function() {
     $('.span5').css('min-height','100px');
     Magnolias.crema.$$$.instruccionsContainer.hide(1000);
-    Magnolias.crema.$$$.animacionContainer.animate({"margin-top": "0px"}, 1300, 'linear');
+    Magnolias.crema.$$$.animacionContainer.animate({"margin-top": "0px", 'margin-bottom': '0'}, 1300, 'linear');
     Magnolias.crema.$$$.nextStepButton.html('Siguiente >');
     Magnolias.crema.$$$.baseContainer.show('slow');
     Magnolias.crema.stepsSign();
@@ -182,8 +185,10 @@ Magnolias.crema = {
   },
   
   showCheckoutButton: function() {
-    if(Magnolias.crema.currentStep == 'step3')
+    if(Magnolias.crema.currentStep == 'step3') {
       Magnolias.crema.$$$.checkoutButton.show(1000);
+      Magnolias.crema.$$$.creamNameInput.show(1000);
+    }
   },
   
   hideNextButton: function() {
@@ -218,5 +223,11 @@ Magnolias.crema = {
   
   submitForm: function() {
     $('#new_cart_item').submit();
+  },
+  
+  fillCreamName: function() {
+    creamNameValue = $(this).val();
+    console.log($(this));
+    Magnolias.crema.$$$.creamName.html(creamNameValue);
   }
 }

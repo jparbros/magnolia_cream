@@ -55,7 +55,7 @@ img#magnolia-girl {
 img#logo { margin: 0 auto; display: block;}
 
 a#lets-do-it {
-  margin: 20px 105px 0 105px;
+  margin: 20px 105px 50px 105px;
   display: inline-block;
 }
 
@@ -124,6 +124,7 @@ h1 {
   width: 376px;
   height: 399px;
   margin-top: -1999px;
+  margin-bottom: 1700px;
   
   &.started {margin-top: 0px;}
   
@@ -221,6 +222,22 @@ nav {
   color: #E3E3D6;
 }
 
+.buttons-container {
+  margin-bottom: 50px;
+
+  .button-row {
+    display: inline-block;
+    width: 100%;
+    
+    input {
+      width: 285px;
+      height: 35px;
+
+      &.hide {display:none}
+    }
+  }
+}
+
 .steps {
   background: url('/assets/pasos.png') no-repeat;
   height: 50px;
@@ -235,13 +252,13 @@ nav {
 }
 
 .button-steps {
-  background: url('/assets/boton-next-step.png') no-repeat;
+  background: url('/assets/button.png') no-repeat;
   color: #EED297;
   font-family: "Lobster";
-  font-size: 32px;
-  width: 242px;
+  font-size: 28px;
+  width: 145px;
   text-align: center;
-  padding: 28px 0;
+  padding: 10px 0 20px 0;
   margin-bottom: 10px;
   
   &:hover {color: #EED297;}
@@ -249,8 +266,12 @@ nav {
   &.checkout-button {
     background: url('/assets/checkout-button.png') no-repeat;
     padding: 23px 0;
-    width: 216px;
+    width: 305px;
   }
+}
+
+.ingredients-container {
+  margin-bottom: 50px;
 }
 
 #skin-type, #power-blend, #topping, #flavor {
@@ -328,3 +349,44 @@ ol {
 .text-right { text-align: right !important;}
 
 img.lazy {display: none;}
+
+.social-logins {
+  text-align: center;
+  margin-top: 50px;
+  
+  a img {
+    margin-bottom: 15px;
+  }
+}
+
+.hr-line {
+  border-top: 2px solid #E3E3D6;
+  text-align: center;
+  margin: 20px 0;
+  
+  span {
+    background: url("/assets/bedge_grunge.png");
+    padding: 5px;
+    position: relative;
+    top: -10px;
+  }
+}
+
+.cream_name_container {
+  display: none;
+
+  span {
+    color: #000;
+    font-family: "Lobster";
+    font-size: 18px;
+  }
+}
+
+#cream-name {
+  position: relative;
+  top: 290px;
+  display: block;
+  text-align: center;
+  font-family: "Lobster";
+  font-size: 18px;
+}
