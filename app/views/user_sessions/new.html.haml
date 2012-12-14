@@ -1,60 +1,65 @@
 .row
   .span6
-    %h3 Ingresar
+  
+    = image_tag '/assets/magnolia-girl.png', id: 'magnolia-girl'
+  
+  .span5.offset1
+    %h1 Ingresar
+    
+    
     
     .social-logins
       = link_to image_tag('/assets/ingresar-facebook.png'), '/auth/facebook'
-      = link_to image_tag('/assets/ingresar-twitter.png'), '/auth/twitter'
 
     .hr-line
+      %span
+        con tu correo electr&oacute;nico
 
-    = form_for @user_session, as: :user_session, url: user_sessions_path(@user_session), html: {class: 'form-horizontal'} do |form|
+    = form_for @user_session, as: :user_session, url: user_sessions_path(@user_session) do |form|
       %fieldset
         .control-group
           = form.label :email, 'Email', class: 'control-label'
           .controls
-            = form.email_field :email, :autocomplete => 'off', :autocapitalize => 'off'
+            = form.email_field :email, :autocomplete => 'off', :autocapitalize => 'off', class: 'span5'
 
         .control-group
           = form.label :password, 'Password', class: 'control-label'
           .controls
-            = form.password_field :password, :autocomplete => 'off', :autocapitalize => 'off'
+            = form.password_field :password, :autocomplete => 'off', :autocapitalize => 'off', class: 'span5'
           
         .control-group
           .controls
-            = form.submit "Login", class: 'btn btn-primary'
+            = form.submit "Ingresar", class: 'button-large'
 
         .control-group
           .controls
             = link_to I18n.t('user_sessions.forgot_password'), new_customer_password_reset_path()
+          .controls
+            = link_to 'Crear una cuenta', '#', class: 'show-new-user-form'
 
 
-  .span6
-    %h3= I18n.t 'user_sessions.registration'
 
-    .social-logins
-      = link_to image_tag('/assets/conectar-facebook.png'), '/auth/facebook'
-      = link_to image_tag('/assets/conectar-twitter.png'), '/auth/twitter'
-
-    .hr-line
-
-    = form_for @user, :url => customer_registrations_path(@user), html: {class: 'form-horizontal'}  do |form|
+    = form_for @user, :url => customer_registrations_path(@user), html: {class: :hide}  do |form|
       %fieldset
         .control-group
           =form.label :email, 'Email', class: 'control-label'
           .controls
-            = form.email_field :email, :autocomplete => 'off', :autocapitalize => 'off'
+            = form.email_field :email, :autocomplete => 'off', :autocapitalize => 'off', class: 'span5'
 
         .control-group
           =form.label :email, 'Password', class: 'control-label'
           .controls
-            = form.password_field :password, :autocomplete => 'off', :autocapitalize => 'off'
+            = form.password_field :password, :autocomplete => 'off', :autocapitalize => 'off', class: 'span5'
 
         .control-group
           =form.label :email, I18n.t('user_sessions.password_confirmation'), class: 'control-label'
           .controls
-            = form.password_field :password_confirmation, :autocomplete => 'off', :autocapitalize => 'off' 
+            = form.password_field :password_confirmation, :autocomplete => 'off', :autocapitalize => 'off', class: 'span5'
 
         .control-group
           .controls
-            = form.submit I18n.t('user_sessions.register'), class: 'btn btn-primary'
+            = form.submit I18n.t('user_sessions.register'), class: 'button-large'
+
+        .control-group
+          .controls
+            = link_to 'Ingresar con email', '#', class: 'show-new-user-session-form'

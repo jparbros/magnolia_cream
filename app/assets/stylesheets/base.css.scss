@@ -91,13 +91,13 @@ span.ribbon {
 }
 
 h1 {
-  color: #333;
+  color: #DFDFD0;
   font-family: 'OSP-DIN'; 
   font-weight: normal; 
   font-style: normal;
   font-size: 70px; 
   font-line: 1;
-  text-align: center;
+  text-align: left;
   margin: 50px 0;
 }
 
@@ -389,4 +389,31 @@ img.lazy {display: none;}
   text-align: center;
   font-family: "Lobster";
   font-size: 18px;
+}
+
+#new_user_session, #new_user {
+  margin-bottom: 50px;
+
+  input[type=email], input[type=password] {
+    color: #777;
+    font-size: 20px;
+    padding: 10px 5px;
+  }
+  
+  label {
+    color: #EBCC8C;
+    font-size: 20px;
+    font-family: "Lobster";
+  }
+}
+
+.button-large {
+  background: url('/assets/button-large.png') no-repeat;
+  border: 0;
+  color: #fff;
+  font-family: "Lobster";
+  font-size: 32px;
+  height: 64px;
+  text-align: center;
+  width: 376px !important;
 }

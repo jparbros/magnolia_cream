@@ -9,4 +9,15 @@
 
 $(function(){
   $("img.lazy").show().lazyload();
+  
+  $('.show-new-user-form').click(function() {
+    $('#new_user_session').hide(1000);
+    $('#new_user').show(1000);
+  })
+  
+  $('.show-new-user-session-form').click(function() {
+    $('#new_user').hide(1000);
+    $('#new_user_session').show(1000);
+  })
 });
+
