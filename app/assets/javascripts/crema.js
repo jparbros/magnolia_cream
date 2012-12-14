@@ -185,7 +185,7 @@ Magnolias.crema = {
   },
   
   showCheckoutButton: function() {
-    if(Magnolias.crema.currentStep == 'step3') {
+    if(Magnolias.crema.currentStep == 'step4') {
       Magnolias.crema.$$$.checkoutButton.show(1000);
       Magnolias.crema.$$$.creamNameInput.show(1000);
     }
