@@ -8,8 +8,7 @@
     %br/
     = link_to I18n.t('cart_items.delete'), shopping_cart_item_path(item, :variant_id => item.variant_id), :method => :delete, class: 'btn btn-mini btn-danger'
   %td
-    = link_to item.variant.product_name, product_path(item.variant.product)
-    =  item.variant.brand_name.blank? ? '' : ['-', item.variant.brand_name].join(' ') 
+    %b=  "Crema #{item.cream_name}"
     %br
     - item.property_values.each do |property_value|
       = "#{property_value.property.display_name} : #{property_value.display_name}"
