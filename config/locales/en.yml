@@ -3,11 +3,11 @@
 
 en:
   company:              'RoR Ecommerce'
-  hello:                'Hello'
-  out_of_stock_notice:  'Sorry this item is out of stock.'
-  item_saved_for_later: 'The item will be saved for later.'
-  reset_password_title: 'Confirm your identity to reset password'
-  reset_password_text:  'Enter your email below and Click the Continue button.'
+  hello:                'Hola'
+  out_of_stock_notice:  'Disculpe, este producto esta agotado.'
+  item_saved_for_later: 'El producto de guardara para despues.'
+  reset_password_title: 'Confirme su identidad para resetear el password.'
+  reset_password_text:  'Introduzca su email abajo y de click en el boton de continuar.'
   something_went_wrong: 'Sorry something went wrong'
   item_failed_update:   'Item failed to be updated.'
   item_passed_update:   'Item was successfully updated.'
@@ -24,13 +24,13 @@ en:
   checkout: "checkout"
   
   nav:
-    about_us: 'About us'
-    contact:  'Contact'
-    login:    'Login'
-    logout:   'Logout'
-    cart:     'Cart'
+    about_us: 'Sobre nosotros'
+    contact:  'Contacto'
+    login:    'Ingresar'
+    logout:   'Salir'
+    cart:     'Carrito'
 
-  select_address_before_shipping_method:  'Select an address before you select a shipping method.'
+  select_address_before_shipping_method:  'Seleccione una dirección antes de seleccionar un metodo de envio.'
   shipping_method_created:                'Shipping method was successfully created.'
   shipping_method_updated:                'Shipping method was successfully updated.'
   all_shipping_methods_must_be_selected:  'All the Shipping Methods must be selected'
@@ -52,17 +52,17 @@ en:
       long_date: "%B %d, %Y"
   
   cart_items:
-    changes_bellow: 'Make any changes below?'
-    to_buy_now: 'Shopping Cart Items -- To Buy Now'
-    item_added_on: 'Item added on'
-    save_for_later: 'Save for later'
-    delete: 'Delete'
-    price: 'Price'
-    qty: 'Quantity'
-    saved_items: 'Saved Items--To Buy Later'
-    move_to_cart: 'Move to cart'
+    changes_bellow: '¿Desea hacer algun cambio?'
+    to_buy_now: 'Cremas en el carrito de compras'
+    item_added_on: 'Producto agregado el'
+    save_for_later: 'Grabar para despues'
+    delete: 'Borrar'
+    price: 'Precio'
+    qty: 'Cantidad'
+    saved_items: 'Cremas guardadas'
+    move_to_cart: 'Mover al carrito'
   user_sessions:
-    registration: 'Registration'
-    password_confirmation: 'Password confirmation'
-    register: 'Register'
-    forgot_password: 'forgot password?'
+    registration: 'Registro'
+    password_confirmation: 'Confirmacion del password'
+    register: 'Registro'
+    forgot_password: '¿Olvido su contraseña?'

@@ -1,0 +1,28 @@
+.row
+  .span6
+  
+    = image_tag '/assets/magnolia-girl.png', id: 'magnolia-girl'
+  
+  .span5.offset1
+    %h1 Contacto
+  
+    = form_tag '/contacto', id: 'contact-form' do
+    
+      .control-group
+        %label Nombre
+        .controls
+          = text_field_tag 'nombre', '', class: 'span5'
+
+      .control-group
+        %label Email
+        .controls
+          = text_field_tag 'email', '', class: 'span5'
+         
+      .control-group
+        %label Mensaje
+        .controls
+          = text_area_tag 'mensaje', '', class: 'span5'
+
+      .control-group
+        .controls
+          = submit_tag 'Enviar', class: 'button-large'

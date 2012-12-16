@@ -391,14 +391,16 @@ img.lazy {display: none;}
   font-size: 18px;
 }
 
-#new_user_session, #new_user {
+#new_user_session, #new_user, #contact-form {
   margin-bottom: 50px;
 
-  input[type=email], input[type=password] {
+  input[type=email], input[type=password], input[type=text] {
     color: #777;
     font-size: 20px;
     padding: 10px 5px;
   }
+  
+  textarea { height: 150px;}
   
   label {
     color: #EBCC8C;

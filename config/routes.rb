@@ -16,6 +16,8 @@ Hadean::Application.routes.draw do
 
   root :to => "welcome#index"
   
+  
+  resource :contacto, only: [:new, :create], controller: 'contact'
   resources :authentications
   match '/auth/:provider/callback' => 'authentications#create'
 
