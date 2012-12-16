@@ -22,6 +22,6 @@ test:
 production:
   encryption_key: someRandomBINARYKEY
   paypal:
-    login:      magnol_1351263382_biz_api1.hotmail.com
-    password:   1351263438
-    signature:  AFcWxV21C7fd0v3bYYYRCpSSRl31AlmTUbskilNRZj-HSJl0-UYtCZfV
+    login:      magnolias_api1.parbros.net
+    password:   ZBXKJJ7MXBV4CHPD
+    signature:  A-sqeF2nkwwFawrGjvy0h5e0gEHRAqtgTreAzTQofNJvUZfbiHHFm8yN
