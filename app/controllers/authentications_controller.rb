@@ -6,8 +6,12 @@ class AuthenticationsController < ApplicationController
       if authentication
         # User is already registered with application        
         flash[:info] = 'Signed in successfully.'
+        
+        session[:authenticated_at] = Time.now
+        cookies[:insecure] = false
 
-        sign_in_and_redirect(authentication.user)
+        create_session(authentication.user)
+        redirect_back_or_default root_url
       elsif current_user
         # User is signed in but has not already authenticated with this social network
         current_user.authentications.create!(:provider => omniauth['provider'], :uid => omniauth['uid'])
@@ -15,7 +19,7 @@ class AuthenticationsController < ApplicationController
         current_user.save
 
         flash[:info] = 'Authentication successful.'
-        redirect_to root_url
+        redirect_back_or_default root_url
       else
         
         user = User.find_or_initialize_by_email(omniauth['extra']['raw_info']['email'])
