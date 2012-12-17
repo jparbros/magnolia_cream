@@ -25,6 +25,7 @@ class Shopping::PaypalCheckoutController < Shopping::BaseController
       @order.remove_user_store_credits
       session_cart.mark_items_purchased(@order)
       Notifier.order_confirmation(@order, invoice).deliver rescue puts( 'do nothing...  dont blow up over an email')
+      OrderMailer.order_confirmation(@order).deliver
       redirect_to myaccount_order_path(@order)
     else
       notice = "Woops. Something went wrong while we were trying to complete the purchase with Paypal. Btw, here's what Paypal said: #{purchase.message}"
