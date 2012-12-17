@@ -419,3 +419,48 @@ img.lazy {display: none;}
   text-align: center;
   width: 376px !important;
 }
+
+.social-networks-links {
+  float: right;
+  margin: 0 50px 0 0;
+  
+  a {
+    background: url('/assets/social-networks.png') no-repeat;
+    display: inline-block;
+    height: 17px;
+    text-indent: -9999px;
+    width: 17px;
+    
+    &.twitter {
+      background-position: 0px -17px;
+      
+      &:hover {
+        background-position: 0px 0px;
+      }
+    }
+    
+    &.facebook {
+      background-position: -51px -17px;
+      
+      &:hover {
+        background-position: -51px 0px;
+      }
+    }
+    
+    &.pinterest {
+      background-position: -17px -17px;
+      
+      &:hover {
+        background-position: -17px 0px;
+      }
+    }
+    
+    &.google-plus {
+      background-position: -34px -17px;
+      
+      &:hover {
+        background-position: -34px 0px;
+      }
+    }
+  }
+}
