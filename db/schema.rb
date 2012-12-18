@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121210085920) do
+ActiveRecord::Schema.define(:version => 20121218175546) do
 
   create_table "accounting_adjustments", :force => true do |t|
     t.integer  "adjustable_id",                                 :null => false
@@ -234,6 +234,7 @@ ActiveRecord::Schema.define(:version => 20121210085920) do
     t.datetime "created_at",                                       :null => false
     t.datetime "updated_at",                                       :null => false
     t.string   "property_value_ids"
+    t.string   "cream_name"
   end
 
   add_index "order_items", ["order_id"], :name => "index_order_items_on_order_id"

@@ -177,7 +177,8 @@ class Order < ActiveRecord::Base
           :variant_id   => item.variant.id,
           :price        => item.variant.price,
           :tax_rate_id  => tax_rate_id,
-          :property_value_ids => item.property_value_ids)
+          :property_value_ids => item.property_value_ids,
+          :cream_name => item.cream_name)
       self.order_items.push(oi)
     end
   end
