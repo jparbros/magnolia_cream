@@ -1,7 +1,7 @@
 Hadean::Application.configure do
   # Settings specified here will take precedence over those in config/environment.rb
 
-  config.force_ssl = true
+  # config.force_ssl = true
 
   # The production environment is meant for finished, "live" apps.
   # Code is not reloaded between requests
@@ -85,9 +85,9 @@ Hadean::Application.configure do
     :authentication => :plain,
     :user_name      => ENV['SENDGRID_USERNAME'],
     :password       => ENV['SENDGRID_PASSWORD'],
-    :domain         => 'magnolias.parbros.com'  
+    :domain         => 'magnoliacream.com'  
   }
-  config.action_mailer.default_url_options = { :host => 'magnolias.parbros.com' }
+  config.action_mailer.default_url_options = { :host => 'magnoliacream.com' }
   ActionMailer::Base.delivery_method = :smtp
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
