@@ -427,12 +427,12 @@ img.lazy {display: none;}
   a {
     background: url('/assets/social-networks.png') no-repeat;
     display: inline-block;
-    height: 17px;
+    height: 21px;
     text-indent: -9999px;
-    width: 17px;
+    width: 21px;
     
     &.twitter {
-      background-position: 0px -17px;
+      background-position: 0px -23px;
       
       &:hover {
         background-position: 0px 0px;
@@ -440,26 +440,26 @@ img.lazy {display: none;}
     }
     
     &.facebook {
-      background-position: -51px -17px;
+      background-position: -67px -23px;
       
       &:hover {
-        background-position: -51px 0px;
+        background-position: -67px 0px;
       }
     }
     
     &.pinterest {
-      background-position: -17px -17px;
+      background-position: -21px -23px;
       
       &:hover {
-        background-position: -17px 0px;
+        background-position: -21px 0px;
       }
     }
     
     &.google-plus {
-      background-position: -34px -17px;
+      background-position: -44px -23px;
       
       &:hover {
-        background-position: -34px 0px;
+        background-position: -44px 0px;
       }
     }
   }
