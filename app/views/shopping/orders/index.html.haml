@@ -21,10 +21,6 @@
           %h5 Dirección de envio
           = render :partial => '/shared/compact_address', :locals => {:shopping_address => @order.ship_address}
           = link_to 'Cambiar Direccion', shopping_addresses_path, :class => 'button green'
-      .span4
-        #final-order-shipping-address
-          %h5 Dirección de facturacion
-          = render :partial => '/shared/compact_address', :locals => {:shopping_address => @order.bill_address}
 
   .span5
     %table.table.table-striped.table-bordered
