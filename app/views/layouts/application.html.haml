@@ -34,16 +34,7 @@
                     = link_to I18n.t('nav.login'), login_path
 
         #content.row
-          .span12
-            - if alert
-              .alert.alert-error{'data-alert'=>"alert"}
-                = link_to 'x','#', :class => 'close'
-                %p= alert
-            - if notice
-              .alert.alert-info{'data-alert'=>"alert"}
-                = link_to 'x','#', :class => 'close'
-                %p= notice
-            
+          .span12            
             = yield
           
     %footer
