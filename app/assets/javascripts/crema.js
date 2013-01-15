@@ -226,8 +226,13 @@ Magnolias.crema = {
   },
   
   fillCreamName: function() {
-    creamNameValue = $(this).val();
-    console.log($(this));
-    Magnolias.crema.$$$.creamName.html(creamNameValue);
+    input = $(this);
+    creamNameValue = input.val();
+    if (creamNameValue.length <= 10)
+      Magnolias.crema.$$$.creamName.html(creamNameValue);
+    else {
+      input.val(creamNameValue.split("",10).join(""));
+    }
+    
   }
 }
