@@ -3,7 +3,7 @@
     .span12
       - unless @cart_items.blank?
         %span= I18n.t 'cart_items.changes_bellow'
-        = cart_form.submit I18n.t('update'), class: 'btn'
+        = link_to 'Continue Shopping', '/products/Crema-Magnolia', class: 'btn'
         = cart_form.submit I18n.t('checkout'), class: 'btn btn-primary', :checkout => 1
   .row
     %table.table.table-striped.table-bordered.span12
