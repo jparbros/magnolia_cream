@@ -18,11 +18,12 @@
           = link_to '< Regresar', '#', class: 'button-steps  float-left hide', id: 'back-step'
           = link_to 'Empezar >', '#', class: 'button-steps  float-right', id: 'next-steps'
         .button-row
-          = link_to 'Comprar', '#', class: 'button-steps checkout-button hide float-left', id: 'checkout'
-        .button-row
           .cream_name_container
             %span ¿C&oacute;mo te llamas?
             = text_field_tag 'cart_item[cream_name]', ''
+        .button-row
+          = link_to 'Comprar', '#', class: 'button-steps checkout-button hide float-left', id: 'checkout'
+
 
     .span7.ingredients-container
       #instruccions.row
