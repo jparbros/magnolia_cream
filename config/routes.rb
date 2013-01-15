@@ -57,7 +57,8 @@ Hadean::Application.routes.draw do
     resource  :coupon, :only => [:show, :create]
     resources  :orders do
       member do
-        get :checkout
+        get  :checkout
+        post :change_shipping_method
       end
     end
     resources  :shipping_methods

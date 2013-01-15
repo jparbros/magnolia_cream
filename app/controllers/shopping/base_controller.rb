@@ -55,6 +55,10 @@ class Shopping::BaseController < ApplicationController
     else
       create_order
     end
+    if current_user.shipping_addresses.present? && @session_order.ship_address.blank?
+      @session_order.ship_address = current_user.shipping_addresses.first 
+      @session_order.save
+    end
     @session_order
   end
 

@@ -94,7 +94,11 @@ class Shopping::AddressesController < Shopping::BaseController
                           :bill_address_id => (session_order.bill_address_id ? session_order.bill_address_id : id)
                                     )
     session_order.order_items.each do |item|
-      item.shipping_rate_id = session_order.ship_address.state.shipping_zone.shipping_methods.first.shipping_rates.first.id
+      if session_order.ship_address.state.shipping_zone.name == "Mexico DF"
+        item.shipping_rate_id = session_order.ship_address.state.shipping_zone.shipping_methods.find_by_name('Envio DF').shipping_rates.first.id
+      else
+        item.shipping_rate_id = session_order.ship_address.state.shipping_zone.shipping_methods.find_by_name('Envio').shipping_rates.first.id
+      end
       item.save
     end
   end

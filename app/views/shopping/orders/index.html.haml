@@ -20,7 +20,7 @@
         #final-order-shipping-address
           %h5 Dirección de envio
           = render :partial => '/shared/compact_address', :locals => {:shopping_address => @order.ship_address}
-          = link_to 'Cambiar Direccion', shopping_addresses_path, :class => 'button green'
+          = link_to 'Change address', shopping_addresses_path, :class => 'button green'
 
   .span5
     %table.table.table-striped.table-bordered
@@ -46,7 +46,10 @@
         %tr
           %td
           %td Shipping Charges:
-          %td= number_to_currency @order.shipping_charges
+          %td
+            = number_to_currency @order.shipping_charges
+            - if @order.ship_address.state.shipping_zone.at_df?
+              = link_to 'Change', '#myModal', "data-toggle" => "modal", class: 'btn btn-mini'
 
         - if @order.coupon_amount > 0.0
           %tr
@@ -69,3 +72,19 @@
     #payment-methods
       = link_to shopping_paypal_checkout_path, method: :post do
         = image_tag 'https://www.paypalobjects.com/es_XC/i/btn/btn_xpressCheckout.gif', align: 'left', style: 'margin-right: 7px'
+
+#myModal.modal.hide.fade
+  .modal-header
+    .button.close{'type' => "button", 'data-dismiss' => "modal", 'aria-hidden' => "true"} &times;
+    %h3 Shipping Methods
+  .modal-body
+    = form_tag change_shipping_method_shopping_order_path(@order), id: 'change_shipping_method_form' do
+      = select_tag 'shipping_method', options_for_select([['Shipped to my address - $50.00','envio_df'],['I pick it up at the store - $0.00','no_envio']]), prompt: 'Select a shipping method'
+  .modal-footer
+    %a.btn{'href' => "#", 'data-dismiss' => "modal", 'aria-hidden' => "true"} Close
+    %a#update-shipping-method.btn.btn-primary{'href' => "#"} Update
+
+:javascript
+  $('a#update-shipping-method').click(function() {
+    $('form#change_shipping_method_form').submit();
+  });

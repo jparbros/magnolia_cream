@@ -77,6 +77,19 @@ class Shopping::OrdersController < Shopping::BaseController
       render :action => 'index'
     end
   end
+  
+  def change_shipping_method
+    @order = find_or_create_order
+    @order.order_items.each do |item|
+      if params[:shipping_method] == "envio_df"
+        item.shipping_rate_id = session_order.ship_address.state.shipping_zone.shipping_methods.find_by_name('Envio DF').shipping_rates.first.id
+      elsif params[:shipping_method] == "no_envio"
+        item.shipping_rate_id = session_order.ship_address.state.shipping_zone.shipping_methods.find_by_name('No Envio DF').shipping_rates.first.id
+      end
+      item.save
+    end
+    redirect_to shopping_orders_url
+  end
 
   private
 

@@ -16,4 +16,8 @@ class ShippingZone < ActiveRecord::Base
 
   accepts_nested_attributes_for :states
 
+
+  def at_df?
+    name == 'Mexico DF'
+  end
 end
