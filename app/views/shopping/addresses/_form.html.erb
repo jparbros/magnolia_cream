@@ -26,7 +26,7 @@
       <div class="field column">
         <%= f.label :direccion, 'Dirección' %>
         <%= f.text_field :address1 %><br/>
-        <%= f.label :address2, 'Linea 2' %>
+        <%= f.label :address2, 'Colonia' %>
         <%= f.text_field :address2 %>
       </div>
     </div>
@@ -62,10 +62,6 @@
     <div class="field">
       <%#= f.input :phone %>
     </div>
-</div>
-<div class="field span-7">
-  <%= check_box_tag :default, 1, f.object.default? %>
-  <%= f.label :default, "Hacer sireccion principal", :class => 'auto_width' %>
 </div>
 
 <div class="actions prepend-1">
