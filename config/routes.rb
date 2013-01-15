@@ -59,6 +59,8 @@ Hadean::Application.routes.draw do
       member do
         get  :checkout
         post :change_shipping_method
+        post :apply_coupon
+        get :remove_coupon
       end
     end
     resources  :shipping_methods

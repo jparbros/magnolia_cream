@@ -25,7 +25,7 @@ class Coupon < ActiveRecord::Base
   validates :starts_at,     :presence => true
   validates :expires_at,    :presence => true
 
-  attr_accessible :type, :code, :amount, :minimum_value, :percent, :description, :combine, :starts_at, :expires_at
+  attr_accessible :type, :code, :amount, :minimum_value, :percent, :description, :combine, :starts_at, :expires_at, :c_type
 
   COUPON_TYPES = ['coupon_percent', 'coupon_value']
   # order must respond to item_prices
@@ -38,12 +38,12 @@ class Coupon < ActiveRecord::Base
 
   # Does the coupon meet the criteria to apply it.  (is the order price total over the coupon's minimum value)
   def qualified?(item_prices, order, at = nil)
-    at ||= order.completed_at || Time.zone.now
-    item_prices.sum > minimum_value && eligible?(at)
+    at ||= order.try(:completed_at) || Time.zone.now
+    item_prices.sum > minimum_value && eligible?(order, at)
   end
 
   def eligible?(order, at = nil)
-    at ||= order.completed_at || Time.zone.now
+    at ||= order.try(:completed_at) || Time.zone.now
     starts_at <= at && expires_at >= at
   end
 

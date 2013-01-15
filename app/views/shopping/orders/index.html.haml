@@ -55,7 +55,9 @@
           %tr
             %td
             %td Coupon:
-            %td= number_to_currency @order.coupon_amount
+            %td
+              = number_to_currency @order.coupon_amount
+              = link_to 'Remove', remove_coupon_shopping_order_path(@order), class: 'btn btn-mini'
 
         - if @order.deal_amount && @order.deal_amount > 0.0
           %tr
@@ -69,6 +71,8 @@
           %td
             %em= number_to_currency @order.total
     
+    #payment-methods
+      = link_to 'Apply coupon', '#couponModal', "data-toggle" => "modal", class: 'btn btn-mini'
     #payment-methods
       = link_to shopping_paypal_checkout_path, method: :post do
         = image_tag 'https://www.paypalobjects.com/es_XC/i/btn/btn_xpressCheckout.gif', align: 'left', style: 'margin-right: 7px'
@@ -84,7 +88,27 @@
     %a.btn{'href' => "#", 'data-dismiss' => "modal", 'aria-hidden' => "true"} Close
     %a#update-shipping-method.btn.btn-primary{'href' => "#"} Update
 
+#couponModal.modal.hide.fade
+  .modal-header
+    .button.close{'type' => "button", 'data-dismiss' => "modal", 'aria-hidden' => "true"} &times;
+    %h3 Apply coupon
+  .modal-body
+    = form_tag apply_coupon_shopping_order_path(@order), id: 'apply-coupon-code-form', class: 'form-horizontal' do
+      .control-group
+        %label.control-label
+          Coupon code
+        .controls
+          = text_field_tag 'coupon_code', ''
+  .modal-footer
+    %a.btn{'href' => "#", 'data-dismiss' => "modal", 'aria-hidden' => "true"} Close
+    %a#apply-coupon-code.btn.btn-primary{'href' => "#"} Update
+
+
 :javascript
   $('a#update-shipping-method').click(function() {
     $('form#change_shipping_method_form').submit();
+  });
+  
+  $('a#apply-coupon-code').click(function() {
+    $('form#apply-coupon-code-form').submit();
   });

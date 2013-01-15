@@ -90,6 +90,22 @@ class Shopping::OrdersController < Shopping::BaseController
     end
     redirect_to shopping_orders_url
   end
+  
+  def apply_coupon
+    @order = find_or_create_order
+    @coupon = Coupon.find_by_code(params[:coupon_code])
+    if @coupon && @coupon.eligible?(@order)
+      @order.coupon = @coupon
+      @order.save
+    end
+    redirect_to shopping_orders_url
+  end
+  
+  def remove_coupon
+    @order = find_or_create_order
+    @order.update_attribute :coupon_id, nil
+    redirect_to shopping_orders_url
+  end
 
   private
 
