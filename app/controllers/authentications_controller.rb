@@ -17,6 +17,8 @@ class AuthenticationsController < ApplicationController
         current_user.authentications.create!(:provider => omniauth['provider'], :uid => omniauth['uid'])
         current_user.apply_omniauth(omniauth)
         current_user.save
+        
+        set_user_to_cart_items
 
         flash[:info] = 'Authentication successful.'
         redirect_back_or_default root_url
