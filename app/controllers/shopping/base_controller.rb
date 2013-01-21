@@ -46,8 +46,8 @@ class Shopping::BaseController < ApplicationController
   def find_or_create_order
     return @session_order if @session_order
     if session[:order_id]
-      @session_order = current_user.orders.includes([ {:ship_address => :state},
-                                                      {:bill_address => :state},
+      @session_order = current_user.orders.includes([ {:ship_address},
+                                                      {:bill_address},
                                                       {:order_items =>
                                                         {:variant =>
                                                           {:product => :images }}}]).find(session[:order_id])
