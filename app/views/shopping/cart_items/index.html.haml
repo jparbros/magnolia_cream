@@ -2,33 +2,24 @@
   .row
     .span12
       - unless @cart_items.blank?
-        %span= I18n.t 'cart_items.changes_bellow'
-        = link_to 'Continue Shopping', '/products/Crema-Magnolia', class: 'btn'
-        = cart_form.submit I18n.t('checkout'), class: 'btn btn-primary', :checkout => 1
+        %span.any-change= I18n.t 'cart_items.changes_bellow'
+        
   .row
-    %table.table.table-striped.table-bordered.span12
+    %table.table.table-striped.table-radius.span12
       %thead
         %tr.shopping-cart-header
-          %th{colspan: 2}
-            %h3= I18n.t 'cart_items.to_buy_now'
+          %th{colspan: 2}= I18n.t 'cart_items.to_buy_now'
+          %th= I18n.t 'cart_items.price'
+          %th= I18n.t 'cart_items.qty'
           %th
-            %h3= I18n.t 'cart_items.price'
-          %th
-            %h3= I18n.t 'cart_items.qty'
 
       - unless @cart_items.blank?
         - @cart_items.each_with_index do |item, i| 
           = cart_form.fields_for :shopping_cart_items, item do |cart_items_form|
             = render :partial => 'cart_item', :locals => {:cart_items_form => cart_items_form, :item => item, :i => i }
+
   .row
-    - unless @saved_cart_items.empty?
-      %table.table.table-striped.table-bordered.span12
-        %thead
-          %tr.shopping-cart-header
-            %th{colspan: 2}
-              %h3= I18n.t 'cart_items.saved_items'
-            %th
-              %h3= I18n.t 'cart_items.price'
-        %tbody
-          - @saved_cart_items.each_with_index do |item, i|
-            = render :partial => '/shopping/cart_items/saved_items', :locals => {item: item, :i => i}
+    .span12
+      = link_to 'Continue Shopping', '/products/Crema-Magnolia', class: 'continue-shopping'
+      
+      = cart_form.submit I18n.t('checkout'), class: 'button-steps  float-right checkout', :checkout => 1

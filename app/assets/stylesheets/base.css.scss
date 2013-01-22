@@ -180,8 +180,11 @@ h1 {
 }
 
 .shopping-cart-header {
-  background-color: #E3E3D6;
-  color: #333333;
+  background-color: #EBCC8C;
+  color: #444444;
+  font-family: 'BenchNine', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -465,6 +468,12 @@ img.lazy {display: none;}
   }
 }
 
+span.any-change {
+  color: #EBCC8C;
+  font-family: 'BenchNine', sans-serif;
+  font-size: 24px;
+}
+
 @media screen and (max-width: 1024px){
   img#magnolia-girl {
     width: 410px;
@@ -486,5 +495,67 @@ img.lazy {display: none;}
   
   span.main-text {
     font-size: 55px !important;
+  }
+}
+
+.table-radius {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  font-family: 'BenchNine', sans-serif;
+  font-size: 15px;
+  
+  thead {
+    td, th {
+      &:first-child {
+        -webkit-border-top-left-radius: 5px;
+        -moz-border-radius-topleft: 5px;
+        border-top-left-radius: 5px;
+      }
+      
+      &:last-child {
+        -webkit-border-top-right-radius: 5px;
+        -moz-border-radius-topright: 5px;
+        border-top-right-radius: 5px;
+      }
+    }
+  }
+  
+  tbody {
+    tr {
+      td {
+        &:first-child {
+          -webkit-border-bottom-left-radius: 5px;
+          -moz-border-radius-bottomleft: 5px;
+          border-bottom-left-radius: 5px;
+        }
+      
+        &:last-child {
+          -webkit-border-bottom-right-radius: 5px;
+          -moz-border-radius-bottomright: 5px;
+          border-bottom-right-radius: 5px;
+        }
+      }
+    }
+  }
+}
+
+.cream-name, .price {
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.checkout {
+  width: 148px !important;
+  border: 0;
+}
+
+.continue-shopping {
+  color: #DFDFCE;
+  font-family: "Lobster";
+  font-size: 28px;
+  
+  &:hover {
+    color: #EBCC8C;
   }
 }
