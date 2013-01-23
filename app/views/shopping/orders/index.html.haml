@@ -1,29 +1,20 @@
 .row
-  .span12
-    %h1 Resumen de la orden
+  .span10.offset2
+    %span.any-change Resumen de la orden
   
 .row
-  .span7#order-items-summary
-    .row
-      .span7
-        %table.table.table-striped.table-bordered
-          %thead
-            %tr.shopping-cart-header
-              %th
-                Detalles del Producto
-          %tbody
-            - @order.order_items.each do |item|
-              = render :partial => 'order_item', :locals => {:item => item }
+  .span4.offset2
+    %table.table.table-radius
+      %thead
+        %tr.shopping-cart-header
+          %th
+            Detalles del Producto
+      %tbody
+        - @order.order_items.each do |item|
+          = render :partial => 'order_item', :locals => {:item => item }
 
-    .row
-      .span3
-        #final-order-shipping-address
-          %h5 Dirección de envio
-          = render :partial => '/shared/compact_address', :locals => {:shopping_address => @order.ship_address}
-          = link_to 'Change address', shopping_addresses_path, :class => 'button green'
-
-  .span5
-    %table.table.table-striped.table-bordered
+  .span4
+    %table.table.table-radius
       %thead
         %tr.shopping-cart-header
           %th
@@ -31,11 +22,12 @@
           %th
             Precio
           %th
-            Precio Total
+            Total
       %tbody
         - @order.order_items.each do |item|
           %tr
-            %td= "#{item.variant.product.name} (#{item.property_value_ids.size})"
+            %td
+              %span.cream-name= "#{item.variant.product.name} #{item.cream_name}"
             %td= number_to_currency item.price 
             %td= number_to_currency item.total
         %tr
@@ -49,7 +41,7 @@
           %td
             = number_to_currency @order.shipping_charges
             - if @order.ship_address.state.shipping_zone.at_df?
-              = link_to 'Change', '#myModal', "data-toggle" => "modal", class: 'btn btn-mini'
+              = link_to image_tag('/assets/update-btn.png'), '#myModal', "data-toggle" => "modal"
 
         - if @order.coupon_amount > 0.0
           %tr
@@ -70,12 +62,23 @@
           %td Total:
           %td
             %em= number_to_currency @order.total
-    
-    #payment-methods
-      = link_to 'Apply coupon', '#couponModal', "data-toggle" => "modal", class: 'btn btn-mini'
-    #payment-methods
-      = link_to shopping_paypal_checkout_path, method: :post do
-        = image_tag 'https://www.paypalobjects.com/es_XC/i/btn/btn_xpressCheckout.gif', align: 'left', style: 'margin-right: 7px'
+        
+        
+.row
+  .span4.offset2
+    #final-order-shipping-address
+      %span.any-change Shipping address
+      %div.address-details
+        = render :partial => '/shared/compact_address', :locals => {:shopping_address => @order.ship_address}
+      = link_to 'Change', shopping_addresses_path, :class => 'small-btn'
+
+  .span4
+    = form_tag apply_coupon_shopping_order_path(@order), id: 'apply-coupon-code-form', class: 'pull-left' do
+      = text_field_tag 'coupon_code', '', placeholder: 'Coupon code', class: :span2
+      = image_submit_tag('/assets/submit-btn.png')
+
+    = link_to shopping_paypal_checkout_path, method: :post, class: 'pull-left' do
+      = image_tag '/assets/btn_paypal.gif', align: 'left', style: 'margin-right: 7px'
 
 #myModal.modal.hide.fade
   .modal-header
