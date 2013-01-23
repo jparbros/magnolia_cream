@@ -38,7 +38,7 @@
         .row.hide.properties{id: "#{property.display_name.downcase.parameterize}"}
           .span7
             -property.property_values.each do |property_value|
-              = link_to '#', 'data-property' => "property_#{property.id}_property_value_id_#{property_value.id}", class: 'link-property' do
+              = link_to '#', 'data-property' => "property_#{property.id}_property_value_id_#{property_value.id}", class: 'link-property', :rel => "tooltip", "data-placement" => "top", "data-original-title" => property_value.description  do
                 = image_tag "/assets/steps/#{property.display_name.downcase.parameterize}-#{property_value.display_name.downcase.parameterize}.png", class: 'lazy'
               = radio_button_tag "property[#{property.id}][property_value_id]", property_value.id, '', class: :hide
       - @product.variants.each do |variant|
@@ -51,4 +51,5 @@
 - content_for :javascript do
   $(document).ready(function(){
   Magnolias.crema.init();
+  $('.link-property').tooltip();
   });
