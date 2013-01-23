@@ -1,6 +1,6 @@
 .row
   .span10.offset1
-    %span.any-change Resumen de la orden
+    %span.any-change Order summary
   
 .row
   .span5.offset1
@@ -8,7 +8,7 @@
       %thead
         %tr.shopping-cart-header
           %th
-            Detalles del Producto
+            Product details
       %tbody
         - @order.order_items.each do |item|
           = render :partial => 'order_item', :locals => {:item => item }
@@ -18,9 +18,9 @@
       %thead
         %tr.shopping-cart-header
           %th
-            Producto
+            Product
           %th
-            Precio
+            Price
           %th
             Total
       %tbody

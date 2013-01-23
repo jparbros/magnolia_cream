@@ -586,4 +586,16 @@ span.any-change {
   font-size: 16px;
   font-weight: 700;
   padding: 2px 14px;
+  
+  &.use {padding: 2px 23px; margin-right: 10px;}
+}
+
+.medium-btn {
+  color: #fff;
+  background: url('/assets/medium-btn.png') no-repeat;
+  border: 0;
+  font-family: 'BenchNine', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 6px 19px;
 }

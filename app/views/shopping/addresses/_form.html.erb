@@ -12,41 +12,33 @@
 <div class='main-address'>
   <div class="inline">
     <div class="field column">
-       <%= f.label :nombre %>
-       <%= f.text_field :first_name, :class => 'span-3' %>
+       <%= f.text_field :first_name, :class => 'span-3', placeholder: 'First name' %>
     </div>
 
     <div class="field column">
-      <%= f.label :apellido %>
-      <%= f.text_field :last_name, :class => 'span-3' %>
+      <%= f.text_field :last_name, :class => 'span-3', placeholder: 'Last name' %>
     </div>
   </div>
   <div class='clear'></div>
     <div class="inline">
       <div class="field column">
-        <%= f.label :direccion, 'Dirección' %>
-        <%= f.text_field :address1 %><br/>
-        <%= f.label :address2, 'Colonia' %>
-        <%= f.text_field :address2 %>
+        <%= f.text_field :address1, placeholder: 'Address' %><br/>
+        <%= f.text_field :address2, placeholder: 'Address line 2' %>
       </div>
     </div>
   <div class='clear'></div>
 
     <div class="field column">
-
-      <%= f.label :state_id, "Estado" %>
       <%= f.select  :state_id, @states,
-                    :include_blank => true %>
+                    :include_blank => true, :prompt => 'State'%>
     </div>
   <div class='clear'></div>
     <div class="inline">
       <div class="field column">
-        <%= f.label 'Ciudad' %>
-        <%= f.text_field :city, :class => 'span-3' %>
+        <%= f.text_field :city, :class => 'span-3', placeholder: 'City' %>
       </div>
       <div class="field column">
-        <%= f.label 'Codigo Postal' %>
-        <%= f.text_field :zip_code, :class => 'span-3' %>
+        <%= f.text_field :zip_code, :class => 'span-3', placeholder: 'Postal code' %>
       </div>
 
     <% if nil %>
@@ -65,5 +57,5 @@
 </div>
 
 <div class="actions prepend-1">
-  <%= submit_tag 'Crear Direccion', :class => 'btn' %>
+  <%= submit_tag 'Create', :class => 'medium-btn' %>
 </div>

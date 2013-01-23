@@ -1,24 +1,34 @@
 .row
-  .span12
-    - if @shopping_addresses.empty?
-      %h2 Nueva dirección
-    - else
-      %h3 Seleccion una dirección
+  .span8.offset2
+    %span.any-change Address
 
 .row
-  .span5
-    %ol
-      - @shopping_addresses.each do |shopping_address|
-        %li
-          = render :partial => '/shared/compact_address', :locals => {:shopping_address => shopping_address}
-          = link_to 'Usar', select_address_shopping_address_path(shopping_address), :class => 'btn btn-primary', :method => :put
-          %br/
-          = link_to 'Editar', edit_shopping_address_path(shopping_address), class: ['btn', 'btn-mini']
-          = link_to 'Borrar', shopping_address_path(shopping_address), :data => {:confirm => '¿Esta seguro?'}, :method => :delete, class: ['btn', 'btn-mini', 'btn-danger']
+  .span4.offset2
+    %table.table.table-radius
+      %thead
+        %tr.shopping-cart-header
+          %th{colspan: 2} Select an address
+
+      %tbody
+        - @shopping_addresses.each do |shopping_address|
+          %tr
+            %td
+              = render :partial => '/shared/compact_address', :locals => {:shopping_address => shopping_address}
+            %td
+              = link_to 'Use', select_address_shopping_address_path(shopping_address), :class => 'small-btn use', :method => :put
+              = link_to image_tag('/assets/edit-btn.png'), edit_shopping_address_path(shopping_address)
+              = link_to image_tag('/assets/delete-btn.png'), shopping_address_path(shopping_address), :data => {:confirm => '¿Esta seguro?'}, :method => :delete
       
-        - if session_order.ready_to_checkout?
-          = link_to 'Resumen de la orden', shopping_orders_path, :class => 'btn btn-primary'
+          - if session_order.ready_to_checkout?
+            = link_to 'Orden summary', shopping_orders_path, :class => 'btn btn-primary'
       
-  .span7
-    = form_for @shopping_address, :url => shopping_addresses_path do |address_form|
-      = render :partial =>  'form', :locals => {:f => address_form}
+  .span4
+    %table.table.table-radius
+      %thead
+        %tr.shopping-cart-header
+          %th New address
+      %tbody
+        %tr
+          %td
+            = form_for @shopping_address, :url => shopping_addresses_path do |address_form|
+              = render :partial =>  'form', :locals => {:f => address_form}
