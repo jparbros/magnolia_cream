@@ -15,14 +15,14 @@
 
       .buttons-container
         .button-row
-          = link_to '< Regresar', '#', class: 'button-steps  float-left hide', id: 'back-step'
-          = link_to 'Empezar >', '#', class: 'button-steps  float-right', id: 'next-steps'
+          = link_to '< Back', '#', class: 'button-steps  float-left hide', id: 'back-step'
+          = link_to 'Start', '#', class: 'button-steps  float-right', id: 'next-steps'
         .button-row
           .cream_name_container
-            %span ¿C&oacute;mo te llamas?
+            %span Your name?
             = text_field_tag 'cart_item[cream_name]', ''
         .button-row
-          = link_to 'Comprar', '#', class: 'button-steps checkout-button hide float-left', id: 'checkout'
+          = link_to 'Buy', '#', class: 'button-steps checkout-button hide float-left', id: 'checkout'
 
 
     .span7.ingredients-container

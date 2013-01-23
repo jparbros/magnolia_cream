@@ -50,7 +50,7 @@ Magnolias.crema = {
     $('.span5').css('min-height','100px');
     Magnolias.crema.$$$.instruccionsContainer.hide(1000);
     Magnolias.crema.$$$.animacionContainer.animate({"margin-top": "0px", 'margin-bottom': '0'}, 1300, 'linear');
-    Magnolias.crema.$$$.nextStepButton.html('Siguiente >');
+    Magnolias.crema.$$$.nextStepButton.html('Next >');
     Magnolias.crema.$$$.baseContainer.show('slow');
     Magnolias.crema.stepsSign();
     Magnolias.crema.markNextSteps();

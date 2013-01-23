@@ -2,16 +2,16 @@
   .row
     .span12
       - unless @cart_items.blank?
-        %span.any-change= I18n.t 'cart_items.changes_bellow'
+        %span.any-change Do you want to make any changes?
         
   .row
     .span12
       %table.table.table-radius
         %thead
           %tr.shopping-cart-header
-            %th{colspan: 2}= I18n.t 'cart_items.to_buy_now'
-            %th= I18n.t 'cart_items.price'
-            %th= I18n.t 'cart_items.qty'
+            %th{colspan: 2} Products
+            %th Price
+            %th Quantity
             %th
 
         - unless @cart_items.blank?
