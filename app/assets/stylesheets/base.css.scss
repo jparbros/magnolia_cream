@@ -298,6 +298,7 @@ nav {
 
 #skin-type {
   .link-property {
+    display: inline-table;
     max-height: 219px;
     max-width: 219px;
   }
@@ -314,6 +315,7 @@ nav {
 
 #power-blend, #flavor {
   .link-property {
+    display: inline-table;
     max-height: 167px;
     max-width: 167px;
   }
@@ -321,6 +323,7 @@ nav {
 
 #extra {
   .link-property {
+    display: inline-table;
     max-height: 136px;
     max-width: 218px;
   }
