@@ -298,7 +298,6 @@ nav {
 
 #skin-type {
   .link-property {
-    display: inline-block;
     max-height: 219px;
     max-width: 219px;
   }
@@ -307,15 +306,14 @@ nav {
 .link-property.checked::after {
   content: url("/assets/checked.png");
   position: relative;
-  top: -60px;
-  left: 10px;
+  top: -35px;
+  left: -60px;
   z-index: 1040;
-  margin-right: -50px;
+  margin-right: -58px;
 }
 
 #power-blend, #flavor {
   .link-property {
-    display: inline-block;
     max-height: 167px;
     max-width: 167px;
   }
@@ -323,7 +321,6 @@ nav {
 
 #extra {
   .link-property {
-    display: inline-block;
     max-height: 136px;
     max-width: 218px;
   }
@@ -603,4 +600,10 @@ span.any-change {
 .share-fb {
   display: inline-block;
   margin: 60px;
+}
+
+span.welcome {
+  color: #EED297;
+  font-family: "Lobster";
+  font-size: 18px;
 }
