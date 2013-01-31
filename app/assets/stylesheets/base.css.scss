@@ -301,10 +301,6 @@ nav {
     display: inline-table;
     max-height: 219px;
     max-width: 219px;
-    
-    [class*=ff] & {
-      display: inline;
-    }
   }
 }
 
@@ -322,10 +318,6 @@ nav {
     display: inline-table;
     max-height: 167px;
     max-width: 167px;
-    
-    [class*=ff] & {
-      display: inline;
-    }
   }
 }
 
@@ -334,10 +326,12 @@ nav {
     display: inline-table;
     max-height: 136px;
     max-width: 218px;
-    
-    [class*=ff] & {
-      display: inline;
-    }
+  }
+}
+
+.link-property.checked {
+  [class*=ff] & {
+    display: inline !important;
   }
 }
 
