@@ -41,6 +41,7 @@ gem 'rake', '~> 0.9.2'
 gem 'state_machine', '~> 1.1.2'
 gem 'will_paginate', '~> 3.0.0'
 gem 'dynamic_form'
+gem 'detect_browser_os'
 
 group :development do
   gem 'sqlite3'

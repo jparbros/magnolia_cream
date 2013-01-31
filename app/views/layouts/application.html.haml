@@ -11,7 +11,7 @@
     = yield :head
 
 
-  %body
+  %body{:class => detect_browser_os}
     #wrap
       .container
         %header
