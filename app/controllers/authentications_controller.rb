@@ -21,6 +21,7 @@ class AuthenticationsController < ApplicationController
         set_user_to_cart_items
 
         flash[:info] = 'Authentication successful.'
+        create_session(current_user)
         redirect_back_or_default root_url
       else
         

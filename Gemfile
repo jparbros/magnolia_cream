@@ -22,6 +22,7 @@ gem 'bluecloth',     '~> 2.1.0'
 gem 'cancan', '~> 1.6.7'
 gem 'compass', '~> 0.12.rc.0'
 gem 'compass-rails'
+gem 'fb_graph'
 
 gem "friendly_id", "~> 3.3"
 gem 'haml',  ">= 3.0.13"#, ">= 3.0.4"#, "2.2.21"#,
