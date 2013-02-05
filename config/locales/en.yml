@@ -3,11 +3,11 @@
 
 en:
   company:              'RoR Ecommerce'
-  hello:                'Hola'
-  out_of_stock_notice:  'Disculpe, este producto esta agotado.'
+  hello:                'Hello'
+  out_of_stock_notice:  'Sorry this item is out of stock.'
   item_saved_for_later: 'El producto de guardara para despues.'
-  reset_password_title: 'Confirme su identidad para resetear el password.'
-  reset_password_text:  'Introduzca su email abajo y de click en el boton de continuar.'
+  reset_password_title: 'Confirm your identity to reset password'
+  reset_password_text:  'Enter your email below and Click the Continue button.'
   something_went_wrong: 'Sorry something went wrong'
   item_failed_update:   'Item failed to be updated.'
   item_passed_update:   'Item was successfully updated.'
@@ -24,11 +24,11 @@ en:
   checkout: "checkout"
   
   nav:
-    about_us: 'Sobre nosotros'
-    contact:  'Contacto'
-    login:    'Ingresar'
-    logout:   'Salir'
-    cart:     'Carrito'
+    about_us: 'About Us'
+    contact:  'Contact'
+    login:    'Login'
+    logout:   'Logout'
+    cart:     'Cart'
 
   select_address_before_shipping_method:  'Seleccione una dirección antes de seleccionar un metodo de envio.'
   shipping_method_created:                'Shipping method was successfully created.'
@@ -64,5 +64,5 @@ en:
   user_sessions:
     registration: 'Registro'
     password_confirmation: 'Confirmacion del password'
-    register: 'Registro'
-    forgot_password: '¿Olvido su contraseña?'
+    register: 'Signup'
+    forgot_password: 'Forgot your password?'

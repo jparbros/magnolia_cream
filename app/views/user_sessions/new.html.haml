@@ -4,7 +4,7 @@
     = image_tag '/assets/magnolia-girl.png', id: 'magnolia-girl'
   
   .span5.offset1
-    %h1 Ingresar
+    %h1 Login
     
     
     
@@ -13,7 +13,7 @@
 
     .hr-line
       %span
-        con tu correo electr&oacute;nico
+        with your email
 
     = form_for @user_session, as: :user_session, url: user_sessions_path(@user_session) do |form|
       %fieldset
@@ -29,13 +29,13 @@
           
         .control-group
           .controls
-            = form.submit "Ingresar", class: 'button-large'
+            = form.submit "Login", class: 'button-large'
 
         .control-group
           .controls
             = link_to I18n.t('user_sessions.forgot_password'), new_customer_password_reset_path()
           .controls
-            = link_to 'Crear una cuenta', '#', class: 'show-new-user-form'
+            = link_to 'Create an account', '#', class: 'show-new-user-form'
 
 
 
@@ -62,4 +62,4 @@
 
         .control-group
           .controls
-            = link_to 'Ingresar con email', '#', class: 'show-new-user-session-form'
+            = link_to 'Login', '#', class: 'show-new-user-session-form'

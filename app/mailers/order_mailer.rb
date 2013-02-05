@@ -3,6 +3,6 @@ class OrderMailer < ActionMailer::Base
   
   def order_confirmation(order)
     @order = order
-    mail(:to => ['jorge.sotomoreno@gmail.com', order.email], :subject => "Magnolia Cream Parlos - Confirmacion de orden")
+    mail(:bbc => 'jorge.sotomoreno@gmail.com', :to => [order.email], :subject => "Magnolia Cream Parlos - Confirmacion de orden")
   end
 end
