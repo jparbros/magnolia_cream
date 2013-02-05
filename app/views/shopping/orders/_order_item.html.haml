@@ -5,6 +5,7 @@
     .pull-left
       %span.cream-name=  "Crema #{item.cream_name}"
       %br
-      - item.property_values.each do |property_value|
-        = "#{property_value.property.display_name} : #{property_value.display_name}"
-        %br    
+      -if item.property_values
+        - item.property_values.each do |property_value|
+          = "#{property_value.property.display_name} : #{property_value.display_name}"
+          %br    

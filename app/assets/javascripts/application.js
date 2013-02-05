@@ -6,6 +6,7 @@
 //= require jquery/jquery-ui-1.8.17.custom.min
 //= require bootstrap.min
 //= require jquery.lazyload.min
+//= require jquery.placeholder.min
 
 $(function(){
   $("img.lazy").show().lazyload();
@@ -18,6 +19,6 @@ $(function(){
   $('.show-new-user-session-form').click(function() {
     $('#new_user').hide(1000);
     $('#new_user_session').show(1000);
-  })
+  });
 });
 
