@@ -55,7 +55,19 @@ class Shopping::BaseController < ApplicationController
       @session_order.ship_address = current_user.shipping_addresses.first 
       @session_order.save
     end
+    set_shipping_rate(@session_order) if @session_order.ship_address.present?
     @session_order
+  end
+  
+  def set_shipping_rate(the_session_order)
+    the_session_order.order_items.each do |item|
+      if the_session_order.ship_address.state.shipping_zone.name == "Mexico DF"
+        item.shipping_rate_id = the_session_order.ship_address.state.shipping_zone.shipping_methods.find_by_name('Envio DF').shipping_rates.first.id
+      else
+        item.shipping_rate_id = the_session_order.ship_address.state.shipping_zone.shipping_methods.find_by_name('Envio').shipping_rates.first.id
+      end
+      item.save
+    end
   end
 
   def create_order

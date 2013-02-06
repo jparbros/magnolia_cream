@@ -4,12 +4,12 @@
     = image_tag '/assets/magnolia-girl.png', id: 'magnolia-girl'
   
   .span5.offset1
-    %h1 Contacto
+    %h1 Contact
   
     = form_tag '/contacto', id: 'contact-form' do
     
       .control-group
-        %label Nombre
+        %label Name
         .controls
           = text_field_tag 'nombre', '', class: 'span5'
 
@@ -19,10 +19,10 @@
           = text_field_tag 'email', '', class: 'span5'
          
       .control-group
-        %label Mensaje
+        %label Message
         .controls
           = text_area_tag 'mensaje', '', class: 'span5'
 
       .control-group
         .controls
-          = submit_tag 'Enviar', class: 'button-large'
+          = submit_tag 'Send', class: 'button-large'

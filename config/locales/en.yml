@@ -63,6 +63,6 @@ en:
     move_to_cart: 'Mover al carrito'
   user_sessions:
     registration: 'Registro'
-    password_confirmation: 'Confirmacion del password'
+    password_confirmation: 'Password confirmation'
     register: 'Signup'
     forgot_password: 'Forgot your password?'
