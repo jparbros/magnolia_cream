@@ -28,6 +28,11 @@
     <%= render :partial => '/shared/compact_address', :locals => {:shopping_address => @order.ship_address} %>
   </div>
 </div>
+
+<% @order.order_items.each do |item| %>
+  <%= render :partial => 'order_item', :locals => {:item => item } %>
+<% end %>
+
 <div class='span-7 last float-left'>
 <h4>Shipment Details</h4>
   <% if @order.shipments.empty? %>
