@@ -15,7 +15,7 @@
     <tr class='<%= cycle("odd", "")%>'>
       <td><%= invoice.amount %></td>
       <td><%= invoice.state %></td>
-      <td><%= invoice.order.number %></td>
+      <td><%= invoice.order.number if invoice.order %></td>
       <td><%= invoice.invoice_type %></td>
       <td><%= link_to "Show", admin_document_invoice_path(invoice) %></td>
       <td>
