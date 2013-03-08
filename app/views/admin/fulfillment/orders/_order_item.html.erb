@@ -1,8 +1,9 @@
 <div>
   <span>Crema <%= item.cream_name %></span>
+  <br />
   <% if item.property_values %>
     <% item.property_values.each do |property_value| %>
-      <%= "#{property_value.property.display_name} : #{property_value.display_name}"%>          
+      <b><%= "#{property_value.property.display_name} : </b> #{property_value.display_name}"%>          
     <% end %>
   <% end %>
 </div>
