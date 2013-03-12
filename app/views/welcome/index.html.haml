@@ -3,14 +3,15 @@
     = image_tag '/assets/magnolia-girl.png', id: 'magnolia-girl'
 
   .span6.main-text-container
-    = link_to '/products/Crema-Magnolia', id: 'lets-do-it' do
-      %span.main-text
-        THE PERFECT PRODUCT
-        %br
-        FOR YOUR BODY
     
-    %span.ribbon
-      &nbsp;
+    %span.main-text
+      THE PERFECT PRODUCT
+      %br
+      FOR YOUR BODY
+
+    = link_to '/products/Crema-Magnolia' do
+      %span.ribbon
+        &nbsp;
     
     / = image_tag '/assets/instructions.png'
     %span.welcome Welcome to the Magnolia Cream Parlor experience

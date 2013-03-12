@@ -23,6 +23,8 @@ html {
 body {
   background-color: transparent;
   color: #E3E3D6;
+  font-family: 'BenchNine', sans-serif;
+  font-size: 18px;
 }
 
 html, body {height: 100%;}
@@ -313,7 +315,7 @@ nav {
   margin-right: -58px;
 }
 
-#power-blend, #flavor {
+#power-blend, #flavor, #topping {
   .link-property {
     display: inline-table;
     max-height: 167px;
