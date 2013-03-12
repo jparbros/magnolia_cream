@@ -616,3 +616,21 @@ span.welcome {
   font-family: "Lobster";
   font-size: 18px;
 }
+
+@media (max-width: 1200px) {
+  img#magnolia-girl {
+    width: 400px;
+  }
+  
+  span.main-text {
+    font-size: 45px !important;
+  }
+  
+  span.ribbon {
+    margin: 25px 0;
+  }
+  
+  a#lets-do-it {
+    margin: 10px 105px 30px 105px;
+  }
+}
