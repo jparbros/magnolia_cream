@@ -486,7 +486,7 @@ span.any-change {
   img#magnolia-girl {
     width: 410px;
     margin-left: 10px;
-    bottom: -35px;
+    bottom: 0px;
   }
   
   span.main-text {
@@ -498,7 +498,7 @@ span.any-change {
   img#magnolia-girl {
     width: 460px;
     margin-left: 10px;
-    bottom: -35px;
+    bottom: 0px;
   }
   
   span.main-text {
@@ -635,4 +635,8 @@ span.welcome {
   a#lets-do-it {
     margin: 10px 105px 30px 105px;
   }
+}
+
+.tooltip {
+  font-size: 15px;
 }
