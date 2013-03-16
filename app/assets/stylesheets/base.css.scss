@@ -24,7 +24,7 @@ body {
   background-color: transparent;
   color: #E3E3D6;
   font-family: 'BenchNine', sans-serif;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 html, body {height: 100%;}
@@ -298,9 +298,14 @@ nav {
   position: relative;
 }
 
+#power-blend, #flavor, #topping, #skin-type {
+  .link-property {
+    float: left;
+  }
+}
+
 #skin-type {
   .link-property {
-    display: inline-table;
     max-height: 219px;
     max-width: 219px;
   }
@@ -309,15 +314,19 @@ nav {
 .link-property.checked::after {
   content: url("/assets/checked.png");
   position: relative;
-  top: -35px;
-  left: -60px;
+  top: -150px;
+  left: 110px;
   z-index: 1040;
-  margin-right: -58px;
+  
+  #skin-type & {
+    top: -200px;
+    left: 160px;
+  
+  }
 }
 
 #power-blend, #flavor, #topping {
   .link-property {
-    display: inline-table;
     max-height: 167px;
     max-width: 167px;
   }
@@ -638,5 +647,5 @@ span.welcome {
 }
 
 .tooltip {
-  font-size: 15px;
+  font-size: 16px;
 }
