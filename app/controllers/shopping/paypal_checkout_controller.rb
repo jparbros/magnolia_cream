@@ -27,7 +27,7 @@ class Shopping::PaypalCheckoutController < Shopping::BaseController
       Notifier.order_confirmation(@order, invoice).deliver rescue puts( 'do nothing...  dont blow up over an email')
       OrderMailer.order_confirmation(@order).deliver
       if current_user && current_user.facebook_authentication
-        current_user.facebook_authentication.facebook_client.feed!({message: ENV['FACEBOOK_MESSAGE']}) raise nil
+        current_user.facebook_authentication.facebook_client.feed!({message: ENV['FACEBOOK_MESSAGE']}) rescue nil
       end
       redirect_to myaccount_order_path(@order)
     else
