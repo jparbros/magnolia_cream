@@ -9,5 +9,9 @@ class Authentication < ActiveRecord::Base
   # Associations
   #
   belongs_to :user
+  
+  def facebook_client
+    @client ||= FbGraph::User.me(token)
+  end
 
 end
