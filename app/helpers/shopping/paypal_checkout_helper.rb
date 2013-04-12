@@ -10,7 +10,6 @@ module Shopping::PaypalCheckoutHelper
         :tax =>      0,
         :allow_note =>  true,
         :items => get_items,
-        :allow_guest_checkout => true,
         :solution_type => 'sole',
         :landing_page => 'billing',
         :currency => 'MXN'
