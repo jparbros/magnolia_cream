@@ -25,7 +25,7 @@ class Customer::RegistrationsController < ApplicationController
   
   def sign_in_and_redirect(user)
     create_session(user)
-    redirect_to root_path
+    redirect_back_or_default root_path
   end
     
   def create_session(user)

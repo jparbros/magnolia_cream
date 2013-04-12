@@ -11,6 +11,7 @@ module Shopping::PaypalCheckoutHelper
         :allow_note =>  true,
         :items => get_items,
         :solution_type => 'sole',
+        :landingpage => 'billing',
         :currency => 'MXN'
       }
   end
