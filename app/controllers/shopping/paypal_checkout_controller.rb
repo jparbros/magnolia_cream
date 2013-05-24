@@ -5,6 +5,7 @@ class Shopping::PaypalCheckoutController < Shopping::BaseController
   def create
     @order = find_or_create_order
     @order.find_total
+    debugger
     setup_response = ::GATEWAY.setup_purchase(to_cents(@order.total), get_setup_purchase_params(request)) 
     redirect_to ::GATEWAY.redirect_url_for(setup_response.token)
   end
@@ -25,7 +26,7 @@ class Shopping::PaypalCheckoutController < Shopping::BaseController
       @order.remove_user_store_credits
       session_cart.mark_items_purchased(@order)
       Notifier.order_confirmation(@order, invoice).deliver rescue puts( 'do nothing...  dont blow up over an email')
-      OrderMailer.order_confirmation(@order).deliver
+      OrderMailer.order_confirmation(@order).deliver rescue puts( 'do nothing...  dont blow up over an email')
       if current_user && current_user.facebook_authentication
         current_user.facebook_authentication.facebook_client.feed!({message: ENV['FACEBOOK_MESSAGE']}) rescue nil
       end

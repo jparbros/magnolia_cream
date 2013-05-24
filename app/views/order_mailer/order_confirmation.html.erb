@@ -232,7 +232,7 @@
                                                     <% @order.order_items.each do |item| %>
                                                       <tr>
                                                         <td>
-                                                          <span class="cream-name"><%= "#{item.variant.product.name} (#{item.property_value_ids.size})"%></span>
+                                                          <span class="cream-name"><%= "#{item.variant.product.name} (#{item.property_value_ids.size if item.property_value_ids})"%></span>
                                                         </td>
                                                         <td><%= number_to_currency item.price %></td>
                                                         <td><%= number_to_currency item.total%></td>
