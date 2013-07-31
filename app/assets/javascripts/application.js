@@ -20,5 +20,10 @@ $(function(){
     $('#new_user').hide(1000);
     $('#new_user_session').show(1000);
   });
+  
+  $('#save-names').click(function(event) {
+    event.preventDefault();
+    $('#modal-name form').submit();
+  })
 });
 

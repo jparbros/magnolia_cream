@@ -37,7 +37,7 @@
                     = link_to I18n.t('nav.login'), login_path
 
         #content.row
-          .span12            
+          .span12
             = yield
           
     %footer
@@ -62,3 +62,23 @@
       }(document, 'script', 'facebook-jssdk'));
 
       !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+      
+      - if show_modal_name?
+        $(document).ready(function() {
+        $('#modal-name').modal();
+        });
+      
+- if current_user
+  #modal-name.modal.hide.fade
+    .modal-header
+      %button{:type => "button", :class => "close", 'data-dismiss' => "modal", 'aria-hidden' => "true"}
+        &times;
+      %h3 Tell me your name
+
+    .modal-body
+      = form_for current_user, url: myaccount_overview_path, method: :put do |form|
+        = form.text_field :first_name, placeholder: 'First name'
+        = form.text_field :last_name, placeholder: 'Last name'
+    .modal-footer
+      %a.btn{'data-dismiss' => "modal"} Close
+      %a#save-names.btn.btn-primary Save name

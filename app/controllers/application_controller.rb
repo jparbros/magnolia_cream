@@ -10,7 +10,8 @@ class ApplicationController < ActionController::Base
                 :is_production_simulation,
                 :search_product,
                 :product_types,
-                :myaccount_tab
+                :myaccount_tab,
+                :show_modal_name?
 
   before_filter :secure_session
 
@@ -133,5 +134,12 @@ class ApplicationController < ActionController::Base
   def redirect_back_or_default(default)
     redirect_to(session[:return_to] || default)
     session[:return_to] = nil
+  end
+  
+  def show_modal_name?
+    return false if current_user && current_user.first_name.present?
+    session[:modal_name_count] ||= 0
+    session[:modal_name_count] += 1
+    return current_user && current_user.first_name.blank? && ((session[:modal_name_count] % 3) == 0)
   end
 end
