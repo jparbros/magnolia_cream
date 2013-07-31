@@ -75,10 +75,13 @@
   .span5
     = form_tag apply_coupon_shopping_order_path(@order), id: 'apply-coupon-code-form', class: 'pull-left' do
       = text_field_tag 'coupon_code', '', placeholder: 'Coupon code', class: :span2
+
       = image_submit_tag('/assets/submit-btn.png')
 
+    = link_to 'Pay with credit card', shopping_paypal_checkout_path, method: :post, class: 'pull-right button-steps credit-card'
+      
     = link_to shopping_paypal_checkout_path, method: :post, class: 'pull-right' do
-      = image_tag '/assets/btn_paypal.gif', align: 'left', style: 'margin-right: 7px'
+      = image_tag '/assets/btn_paypal.gif'
 
 #myModal.modal.hide.fade
   .modal-header

@@ -14,7 +14,8 @@ class UserSessionsController < ApplicationController
       cookies[:insecure] = false
       ## if there is a cart make sure the user_id is correct
       set_user_to_cart_items
-      redirect_back_or_default root_url, notice: I18n.t('login_successful')
+      flash[:notice] = I18n.t('login_successful')
+      redirect_back_or_default root_url
     else
       @user = User.new
       redirect_to login_url, alert: I18n.t('login_failure')
