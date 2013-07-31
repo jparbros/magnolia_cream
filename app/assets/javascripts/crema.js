@@ -20,7 +20,6 @@ Magnolias.crema = {
   },
   
   cacheElements: function() {
-    var manager = new jsAnimManager(40);
     this.$$$.startStepsButton = $('#start-steps');
     this.$$$.nextStepButton = $('#next-steps');
     this.$$$.instruccionsContainer = $('#instruccions');
