@@ -20,6 +20,7 @@ Magnolias.crema = {
   },
   
   cacheElements: function() {
+    var manager = new jsAnimManager(40);
     this.$$$.startStepsButton = $('#start-steps');
     this.$$$.nextStepButton = $('#next-steps');
     this.$$$.instruccionsContainer = $('#instruccions');
@@ -160,30 +161,20 @@ Magnolias.crema = {
   transitionSelection: function() {
     switch(Magnolias.crema.currentStep) {
       case 'step1':
-        Magnolias.crema.animateStep('67', '-116', '-199');
+        Magnolias.crema.$$$.fill.removeClass('step0').removeClass('step2').addClass('step1')
         break;
       case 'step2':
-        Magnolias.crema.animateStep('134', '-183', '-132');
+        Magnolias.crema.$$$.fill.removeClass('step1').removeClass('step2').addClass('step2')
         break;
       case 'step3':
-        Magnolias.crema.animateStep('201', '-250', '-65');
+        Magnolias.crema.$$$.fill.removeClass('step2').removeClass('step4').addClass('step3')
         break;
       case 'step4':
-        Magnolias.crema.animateStep('266', '-315', '0');
+        Magnolias.crema.$$$.fill.removeClass('step3').addClass('step4')
         break;
     }
   },
-  
-  animateStep: function(height, top, background_position_y) {
-    if(jQuery.browser.webkit || jQuery.browser.safari) {
-      Magnolias.crema.$$$.fill.animate({height: height+"px", top: top+"px", "background-position-y":  background_position_y + "px"}, 1500, 'linear');
-    }
-    else if(jQuery.browser.mozilla) {
-      Magnolias.crema.$$$.fill.switchClass(Magnolias.crema.previousStep, Magnolias.crema.currentStep, 1500, 'linear');
-      // Magnolias.crema.$$$.fill.animate({height: height + "px", top: top + "px", "background-position": [0, background_position_y]}, 1500, 'linear');
-    }
-  },
-  
+
   showCheckoutButton: function() {
     if(Magnolias.crema.currentStep == 'step4') {
       Magnolias.crema.$$$.checkoutButton.show(1000);

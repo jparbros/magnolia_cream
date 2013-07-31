@@ -141,30 +141,55 @@ h1 {
       height: 0px;
       top: -49px;
       background-position: 0px -266px;
+      -webkit-transition: all 1300ms linear;
+      -moz-transition: all 1300ms linear;
+      -ms-transition: all 1300ms linear;
+      -o-transition: all 1300ms linear;
+      transition: all 1300ms linear;
     }
     
     &.step1 {
       height: 67px;
       top: -116px;
       background-position: 0px -199px;
+      -webkit-transition: all 1300ms linear;
+      -moz-transition: all 1300ms linear;
+      -ms-transition: all 1300ms linear;
+      -o-transition: all 1300ms linear;
+      transition: all 1300ms linear;
     }
     
     &.step2 {
       height: 134px;
       top: -183px;
       background-position: 0px -132px;
+      -webkit-transition: all 1300ms linear;
+      -moz-transition: all 1300ms linear;
+      -ms-transition: all 1300ms linear;
+      -o-transition: all 1300ms linear;
+      transition: all 1300ms linear;
     }
     
     &.step3 {
       height: 201px;
       top: -250px;
       background-position: 0px -65px;
+      -webkit-transition: all 1300ms linear;
+      -moz-transition: all 1300ms linear;
+      -ms-transition: all 1300ms linear;
+      -o-transition: all 1300ms linear;
+      transition: all 1300ms linear;
     }
     
     &.step4 {
       height: 266px;
       top: -315px;
       background-position: 0px 0px;
+      -webkit-transition: all 1300ms linear;
+      -moz-transition: all 1300ms linear;
+      -ms-transition: all 1300ms linear;
+      -o-transition: all 1300ms linear;
+      transition: all 1300ms linear;
     }
   }
 }
