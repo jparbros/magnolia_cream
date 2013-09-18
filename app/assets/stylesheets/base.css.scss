@@ -437,7 +437,7 @@ img.lazy {display: none;}
   font-size: 18px;
 }
 
-#new_user_session, #new_user, #contact-form {
+form[id*=edit_user], #new_user_session, #new_user, #contact-form {
   margin-bottom: 50px;
 
   input[type=email], input[type=password], input[type=text] {

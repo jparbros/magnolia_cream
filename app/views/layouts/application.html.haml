@@ -32,7 +32,7 @@
                     
                 %li
                   - if current_user
-                    = "Hello #{current_user.first_name}" #
+                    = link_to "Hello #{current_user.first_name}", myaccount_overview_path
                   - else
                     = link_to I18n.t('nav.login'), login_path
 

@@ -1,0 +1,23 @@
+.row
+  .span12
+    %h1
+      = I18n.t :reset_password_title
+
+.row
+  .span6
+  
+    = image_tag '/assets/magnolia-girl.png', id: 'magnolia-girl'
+  
+  .span5.offset1
+    
+    %p
+      = t :reset_password_text
+    = form_for(@user, :url => customer_password_reset_path(@user)) do |form|
+      %fieldset
+        .control-group
+          = form.label :email, 'Email', class: 'control-label'
+          .controls
+            = form.email_field :email, :autocomplete => 'off', :autocapitalize => 'off', class: 'span5'
+        .control-group
+          .controls
+            = submit_tag 'Continue', :class => 'button-large'
