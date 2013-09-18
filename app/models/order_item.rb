@@ -52,9 +52,7 @@ class OrderItem < ActiveRecord::Base
   end
   
   def property_values
-    property_value_ids.collect do |property_value_id|
-      PropertyValue.find(property_value_id)
-    end if property_value_ids.present?
+    property_value_ids.present? ? PropertyValue.where(id: property_value_ids) : []
   end
 
   def product_type

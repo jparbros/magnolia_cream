@@ -5,7 +5,6 @@ class Shopping::PaypalCheckoutController < Shopping::BaseController
   def create
     @order = find_or_create_order
     @order.find_total
-    debugger
     setup_response = ::GATEWAY.setup_purchase(to_cents(@order.total), get_setup_purchase_params(request)) 
     redirect_to ::GATEWAY.redirect_url_for(setup_response.token)
   end
