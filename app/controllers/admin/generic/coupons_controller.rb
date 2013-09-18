@@ -13,12 +13,13 @@ class Admin::Generic::CouponsController < Admin::Generic::BaseController
   end
 
   def create
-      if params[:coupon][:c_type] == 'coupon_value'
-        @coupon = CouponValue.new(params[:coupon])
-      elsif params[:coupon][:c_type] == 'coupon_percent'
-        @coupon = CouponPercent.new(params[:coupon])
+      coupon_attributtes = params[:coupon] || params[:coupon_value] || params[:coupon_percent]
+      if coupon_attributtes[:c_type] == 'coupon_value'
+        @coupon = CouponValue.new(coupon_attributtes)
+      elsif coupon_attributtes[:c_type] == 'coupon_percent'
+        @coupon = CouponPercent.new(coupon_attributtes)
       else
-        @coupon = Coupon.new(params[:coupon])
+        @coupon = Coupon.new(coupon_attributtes)
         @coupon.errors.add(:base, 'please select coupon type')
       end
     if @coupon.errors.size == 0 && @coupon.save
@@ -36,8 +37,9 @@ class Admin::Generic::CouponsController < Admin::Generic::BaseController
   end
 
   def update
-      @coupon = Coupon.find(params[:id])
-    if @coupon.update_attributes(params[:coupon])
+    coupon_attributtes = params[:coupon] || params[:coupon_value] || params[:coupon_percent]
+    @coupon = Coupon.find(params[:id])
+    if @coupon.update_attributes(coupon_attributtes)
       flash[:notice] = "Successfully updated coupon."
       redirect_to admin_generic_coupon_url(@coupon)
     else

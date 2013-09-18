@@ -108,7 +108,7 @@ Hadean::Application.configure do
     #Formtastic::SemanticFormBuilder.send(:include, Formtastic::FuturePicker)
     #Formtastic::SemanticFormBuilder.send(:include, Formtastic::YearPicker)
 
-    ActiveMerchant::Billing::Base.mode = :test
+    ActiveMerchant::Billing::Base.mode = :production
     # ::GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(
     #  :login      => HADEAN_CONFIG['paypal']['login'],
     #  :password   => HADEAN_CONFIG['paypal']['password'],

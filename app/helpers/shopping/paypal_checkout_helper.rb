@@ -1,10 +1,11 @@
 module Shopping::PaypalCheckoutHelper
   def get_setup_purchase_params(request)
+    order_subtotal = @order.coupon.present? ? @order.sub_total - @order.coupon_amount : @order.sub_total
     return {
         :ip => request.remote_ip,
         :return_url => review_shopping_paypal_checkout_url,
         :cancel_return_url => root_url,
-        :subtotal => to_cents(@order.sub_total),
+        :subtotal => to_cents(order_subtotal),
         :shipping => to_cents(@order.shipping_charges),
         :handling => 0,
         :tax =>      0,
@@ -19,9 +20,10 @@ module Shopping::PaypalCheckoutHelper
   def get_items
     @order.order_items.group_by(&:variant_id).collect do |variant_id, items|
       product = items.first.variant.product
+      item_price = @order.coupon.present? ? @order.coupon.value([items.first.price], @order) : items.first.price
       {:name => product.name, 
        :quantity => items.size, 
-       :amount => to_cents(items.first.price), 
+       :amount => to_cents(item_price), 
       }
     end
   end
@@ -31,11 +33,12 @@ module Shopping::PaypalCheckoutHelper
   end
   
   def get_purchase_params(request, params)
+    order_subtotal = @order.coupon.present? ? @order.sub_total - @order.coupon_amount : @order.sub_total
     return {
       :ip => request.remote_ip,
       :token => params[:token],
       :payer_id => params[:PayerID],
-      :subtotal => to_cents(@order.sub_total),
+      :subtotal => to_cents(order_subtotal),
       :shipping => to_cents(@order.shipping_charges),
       :handling => 0,
       :tax =>      0,
