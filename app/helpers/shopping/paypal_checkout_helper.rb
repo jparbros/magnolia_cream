@@ -20,7 +20,7 @@ module Shopping::PaypalCheckoutHelper
   def get_items
     @order.order_items.group_by(&:variant_id).collect do |variant_id, items|
       product = items.first.variant.product
-      item_price = @order.coupon.present? ? @order.coupon.value([items.first.price], @order) : items.first.price
+      item_price = @order.coupon.present? ? (items.first.price * (100.0 - @order.coupon.percent.to_f)/100.0).to_f, @order) : items.first.price
       {:name => product.name, 
        :quantity => items.size, 
        :amount => to_cents(item_price), 
