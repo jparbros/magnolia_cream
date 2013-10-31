@@ -2,13 +2,14 @@ source 'http://rubygems.org'
 
 ## Bundle rails:
 gem 'rails'
-gem 'compass_twitter_bootstrap'
-gem 'sass-rails', "  ~> 3.2.3"
 
 group :assets do
   gem 'coffee-rails'
   gem 'uglifier', '>= 1.0.3'
 end
+gem 'sass-rails'
+gem 'bootstrap-sass', git: 'git@github.com:thomas-mcdonald/bootstrap-sass.git'
+gem 'compass-rails', '~> 2.0.alpha.0'
   
 
 gem 'haml-rails'
@@ -20,8 +21,6 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook','1.4.0'
 gem 'bluecloth',     '~> 2.1.0'
 gem 'cancan', '~> 1.6.7'
-gem 'compass', '~> 0.12.rc.0'
-gem 'compass-rails'
 gem 'fb_graph'
 
 gem "friendly_id", "~> 3.3"

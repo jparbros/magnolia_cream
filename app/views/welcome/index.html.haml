@@ -1,21 +1,90 @@
 .row
-  .span6
-    = image_tag '/assets/magnolia-girl.png', id: 'magnolia-girl'
+  .col-lg-12
+    #carousel-example-generic.carousel.slide
+      %ol.carousel-indicators
+        %li.active{"data-slide-to" => "0", "data-target" => "#carousel-example-generic"}
+        %li{"data-slide-to" => "1", "data-target" => "#carousel-example-generic"}
+        %li{"data-slide-to" => "2", "data-target" => "#carousel-example-generic"}
 
-  .span6.main-text-container
+      .carousel-inner
+        .item.item-free-shipping.active
+          = image_tag 'carousel/free-shipping.png', class: 'free-shipping'
+          = link_to "/products/Crema-Magnolia", class: 'create-yours' do
+            = image_tag('carousel/create-yours.png')
+        .item
+          = image_tag 'carousel/flavor.png'
+          = link_to "/products/Crema-Magnolia", class: 'create-yours flavor' do
+            = image_tag('carousel/create-yours.png')
+        .item
+          = image_tag 'carousel/4-simple-steps.png'
+          = link_to "/products/Crema-Magnolia", class: 'create-yours steps' do
+            = image_tag('carousel/create-yours.png')
+
+.new-sections
+  .superstarts
+    = image_tag "my-superstarts.png"
+    = image_tag "superstarts-tv.png"
+  .pick-week
+    = image_tag "pick-week.png"
+    = image_tag "pick-week-tv.png"
+  .take-quiz
+    = image_tag "take-a-quiz.png"
+    = image_tag "take-quiz-tv.png"
+
+.separator
+  .section
+    Join the club!
+  .section
+    Contact Us
+  .section 
+    What's up?
+
+.new-sections
+  .join-club
+    %ul.social-networks
+      %li
+        = image_tag 'rss-icon.png'
+      %li
+        = image_tag 'facebook-icon.png'
+      %li
+        = image_tag 'youtube-icon.png'
+      %li
+        = image_tag 'twitter-icon.png'
+      %li
+        = image_tag 'pinterest-icon.png'
     
-    %span.main-text
-      THE PERFECT PRODUCT
-      %br
-      FOR YOUR BODY
-
-    = link_to '/products/Crema-Magnolia' do
-      %span.ribbon
-        &nbsp;
+    = image_tag 'magnolia-times.png'
     
-    %span.welcome Welcome to the Magnolia Cream Parlor experience
-    %p.instructions
-      When we say it’s perfect for YOUR body, we mean it. No one knows what YOUR body needs better than yourself. Magnolia Cream Parlor gives the opportunity to all women of all ages to find the perfect body cream. We don't believe in prepackaged beauty products because all women are different. All women are unique.
+    %p.col-lg-10.col.md-10
+      Suscribe to receive all the latest news about our products, promotions and skin health tips!
+    
+    %input.col-lg-10.col.md-10{type: 'text', placeholder: 'your email address'}
+    %input{type: 'submit', value: "Subscribe to get it!", class: 'btn btn-magnolia'}
 
-    = link_to '/products/Crema-Magnolia', id: 'lets-do-it' do
-      = image_tag '/assets/lets-do-it.png'
+  .contact-us
+    = form_tag '/contacto', id: 'contact-form' do
+    
+      .form-group
+        = text_field_tag 'nombre', '', class: 'form-control', placeholder: 'your name'
+
+      .form-group
+        = text_field_tag 'email', '', class: 'form-control', placeholder: 'your email address'
+         
+      .form-group
+        = text_area_tag 'mensaje', '', class: 'form-control', placeholder: 'message'
+
+      .form-group
+        = submit_tag 'Submit', class: 'btn btn-magnolia'
+    
+  .whats-up
+    .social-feed-container
+
+:javascript
+  $('.social-feed-container').socialfeed({
+                  fb_username:'454390021250578',
+                  fb_limit: 5,
+                  fb_token:'131116330377094|ISkYHalkkjxucC3S8g1nRXYUZr4',
+                  length:130,
+                  cookies:true,
+                  show_media: false
+              });

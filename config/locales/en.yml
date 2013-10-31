@@ -25,10 +25,12 @@ en:
   
   nav:
     about_us: 'About Us'
-    contact:  'Contact'
+    contact:  'Contact Us'
     login:    'Login'
     logout:   'Logout'
     cart:     'Cart'
+    home:     'Home'
+    our_superstar: 'Our Superstars'
 
   select_address_before_shipping_method:  'Seleccione una dirección antes de seleccionar un metodo de envio.'
   shipping_method_created:                'Shipping method was successfully created.'

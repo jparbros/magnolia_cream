@@ -1,0 +1,96 @@
+.carousel {
+  .carousel-inner {
+    .item {
+      height: 595px;
+      
+      &.item-free-shipping {
+        height: 545px;
+      }
+      
+      img {
+        margin: 0 auto;
+        
+        &.free-shipping {
+          margin-top: 50px;
+        }
+      }
+      
+      .create-yours {
+        position: relative;
+        top: -550px;
+        left: 400px;
+        
+        &.flavor {
+          left: 500px;
+        }
+        
+        &.steps {
+          left: 550px;
+        }
+        
+      }
+    }
+  }
+}
+
+.new-sections {
+  @extend .row;
+  margin: 25px 0 0 0;
+  
+  .superstarts, .pick-week, .take-quiz {
+    @extend .col-lg-4;
+    @extend .col-md-4;
+    text-align: center;
+  }
+  
+  .join-club, .contact-us, .whats-up {
+    @extend .col-lg-4;
+    @extend .col-md-4;
+  }
+  
+  .join-club {
+    ul.social-networks {
+      display: inline-block;
+      padding: 0;
+      list-style-type: none;
+
+      li {
+        float: left;
+        margin-right: 8px;
+    
+        &:last-child {
+          margin-right: 0px;
+        }
+      }
+    }
+    
+    p {
+      text-align: left;
+    }
+  }
+}
+
+.separator {
+  @extend .row;
+  margin: 25px 0 0 0;
+  background-color: #8bb7a8;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  padding: 5px 0;
+  
+  .section {
+    @extend .col-lg-4;
+    @extend .col-md-4;
+    text-align: center;
+    color: white;
+    font-family: "Lemondrop";
+    font-size: 25px;
+    padding: 10px 0;
+    border-right: 5px #fff solid;
+    
+    &:last-child {
+      border: none;
+    }
+  }
+}

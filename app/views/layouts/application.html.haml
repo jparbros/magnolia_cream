@@ -3,6 +3,7 @@
   %head
     %title
       Magnolia Cream Parlor
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
     %link{href: 'http://openfontlibrary.org/face/osp-din', rel: 'stylesheet', type: 'text/css'}
     %link{href: 'http://fonts.googleapis.com/css?family=BenchNine:400,700', rel: 'stylesheet', type: 'text/css'}
     = stylesheet_link_tag 'application'
@@ -12,30 +13,54 @@
 
 
   %body{:class => detect_browser_os}
-    #wrap
+    %header
       .container
-        %header
-          .row
+        .row
+          .col-lg-3.col-md-3
             = link_to image_tag('/assets/logo-magnolias.png', id: :logo), root_path
-            %nav
+          .nav-container
+            .row
+              .col-lg-12.col-md-12
+                %span.create-cream
+                  Create your cream!
+            .row
+              .col-lg-12.col-md-12
+                %ul.gen-nav
+                  %li
+                    %a{href: '/'}
+                      = I18n.t 'nav.home'
+                  %li
+                    %a{href: '/about'}
+                      = I18n.t 'nav.about_us'
+                  %li
+                    %a{href: '/'}
+                      = I18n.t 'nav.our_superstar'
+                  %li
+                    %a{href: '/contacto/new'}
+                      = I18n.t 'nav.contact'
+          .col-lg-3.col-md-3
+            .nav-box
+              .call-us
+                Give us a call
+                %br
+                01800 699 6333
               %ul
                 %li
-                  %a{href: '/about'}
-                    = I18n.t 'nav.about_us'
-                %li
-                  %a{href: '/contacto/new'}
-                    = I18n.t 'nav.contact'
+                  - if current_user
+                    = link_to "My account", myaccount_overview_path
+                  - else
+                    = link_to I18n.t('nav.login'), login_path
+
                 - if current_user
                   %li
                     = link_to "#{I18n.t('nav.cart')} (#{session_cart.shopping_cart_items.count})", shopping_cart_items_path
                   %li= link_to I18n.t('nav.logout'), logout_path
-                    
-                %li
-                  - if current_user
-                    = link_to "Hello #{current_user.first_name}", myaccount_overview_path
-                  - else
-                    = link_to I18n.t('nav.login'), login_path
 
+              .hello-container
+                = "Hello #{current_user.first_name}"
+
+    #wrap
+      .container
         #content.row
           .span12
             = yield

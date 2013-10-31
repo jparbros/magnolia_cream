@@ -1,0 +1,6 @@
+$screen-lg: 1440px !default;
+$screen-md: 1200px !default;
+$grid-gutter-width: 30px !default;
+$container-desktop: ((1140px + $grid-gutter-width)) !default;
+$container-lg-desktop: ((1340px + $grid-gutter-width)) !default;
+@import "bootstrap";

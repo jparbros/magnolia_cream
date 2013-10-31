@@ -1,3 +1,6 @@
+@import 'twitter-bootstrap';
+@import 'home';
+
 @font-face {
     font-family: "Forque Font";
     src: url(/assets/fonts/Forque.ttf) format("truetype");
@@ -8,8 +11,13 @@
     src: url(/assets/fonts/Lobster.otf) format("truetype");
 }
 
+@font-face {
+    font-family: "Lemondrop";
+    src: url(/assets/fonts/Lemondrop.ttf) format("truetype");
+}
+
 html {
-  background: url('/assets/top-background.png') repeat-x top, url("/assets/bedge_grunge.png");
+  background: url('/assets/background.png');
   
   &.products {
     background: url('/assets/top-background.png') repeat-x top, url("/assets/bkg.png");
@@ -22,12 +30,82 @@ html {
 
 body {
   background-color: transparent;
-  color: #E3E3D6;
+  color: #f7f5cb;
   font-family: 'BenchNine', sans-serif;
   font-size: 20px;
+  
+  header {
+    background: url('/assets/background-navbar.png') repeat;
+    height: 215px;
+    
+    .nav-container {
+      @extend .col-lg-6;
+      @extend .col-md-6;
+      text-align: center;
+      margin-top: 25px;
+    }
+    
+    span.create-cream {
+      font-family: "Lobster";
+      font-size: 56px;
+      text-shadow: 4px 0 0 #852C43, -4px 0 0 #852C43, 0 4px 0 #852C43, 0 -4px 0 #852C43, 2px 2px #852C43, -2px -2px 0 #852C43, 2px -2px 0 #852C43, -2px 2px 0 #852C43;
+    }
+    
+    ul.gen-nav {
+      li {
+        float: left;
+        list-style-type: none;
+        border-right: 2px #f7f5cb solid;
+        padding: 0 10px 0 0;
+        margin: 0 0 0 10px;
+        font-family: "Lemondrop";
+
+        &:first-child {
+          margin: 0;
+        }
+
+        
+        &:last-child {
+          border: 0;
+        }
+        
+        a {
+          color: #f7f5cb;
+        }
+      }
+    }
+  }
 }
 
 html, body {height: 100%;}
+
+.btn-magnolia {
+  background-color: #8bb7a8;
+  color: #fff;
+  font-family: "Lemondrop";
+  font-size: 14px;
+}
+
+.nav-box {
+  background-color: #8b1b3f;
+  -webkit-border-bottom-left-radius: 10px;
+  -moz-border-radius-bottomleft: 10px;
+  border-bottom-left-radius: 10px;
+  text-align: center;
+  padding: 15px;
+  
+  ul {
+    list-style: none;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+
+    li {
+      float:left;
+      margin-right: 5px;
+    }
+  }
+}
 
 #wrap {
   min-height: 100%;
@@ -36,14 +114,13 @@ html, body {height: 100%;}
 header {height: 145px; margin: 3px 0 10px 0;}
 
 footer {
-  background: url('/assets/bottom-background.png') repeat-x bottom;
-  height: 30px;
+  background-color: #8b1b3f;
+  height: 115px;
   padding: 15px 0 0 0;
   text-align: center;
-  color: #636363;
   position: relative;
-  margin-top: -40px;
   clear: both;
+  margin: 20px 0 0 0;
 }
 
 img#magnolia-girl {
