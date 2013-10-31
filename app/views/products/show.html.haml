@@ -1,12 +1,12 @@
 = form_for  @cart_item, :as => :cart_item, :url  => shopping_cart_items_path(@cart_item), :html => { :id => 'new_cart_item' } do |f|
   .row
-    .span12
+    .col-lg-12.col-md-12
       .steps.step0
     
       
 
   .row
-    .span5
+    .col-lg-5.col-md-5
       #animacion
         #cream-name
         = image_tag '/assets/bottle/frasco.png', id: 'bottle'
@@ -25,9 +25,9 @@
           = link_to 'Buy', '#', class: 'button-steps checkout-button hide float-left', id: 'checkout'
 
 
-    .span7.ingredients-container
+    .col-lg-7.col-md-7.ingredients-container
       #instruccions.row
-        .span7
+        .col-lg-12.col-md-12
           %h3
             INSTRUCTIONS
           
@@ -42,8 +42,8 @@
           %p 4th. Flavor: If you want to add some flavor to your life, we can make it happen. We’ve developed a very ambitious palette of flavors to fulfill from the sweetest  to the freshest taste. Our sublime flavors are going to  make your boyfriend, husband, partner, buddy, fiance, etc. want to “taste” YOU. It is sexy. And no, you can’t eat the product although we know everybody wants to.
 
       - Property.all.each do |property|
-        .row.hide.properties{id: "#{property.display_name.downcase.parameterize}"}
-          .span7
+        .row.properties{id: "#{property.display_name.downcase.parameterize}"}
+          .col-lg-12.col-md-12
             -property.property_values.each do |property_value|
               = link_to '#', 'data-property' => "property_#{property.id}_property_value_id_#{property_value.id}", class: 'link-property', :rel => "tooltip", "data-placement" => "top", "data-original-title" => property_value.description  do
                 = image_tag "/assets/steps/#{property.display_name.downcase.parameterize}-#{property_value.display_name.downcase.parameterize}.png", class: 'lazy'
