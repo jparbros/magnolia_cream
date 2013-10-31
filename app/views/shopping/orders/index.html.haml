@@ -83,10 +83,12 @@
     = link_to shopping_paypal_checkout_path, method: :post, class: 'pull-right' do
       = image_tag '/assets/btn_paypal.gif'
     
-    %form{:action => "https://www.pagofacil.net/st/public/Payform", :method => "post", :name => "formularioPago", :target => "_blank"}
+    %form{:action => "https://www.pagofacil.net/st/public/Payform", :method => "post", :name => "formularioPago"}
       %input{:name => "idSucursal", :type => "hidden", :value => "9e8c1820833d3b615714d8cf44a24eb0d1b02d93"}
       %input{:name => "idUsuario", :type => "hidden", :value => "c68750b3fdf11760c78d457b4eade51df1c75fca"}
       %input{:name => "idServicio", :type => "hidden", :value => "1"}
+      %input{:name => "redireccion", :type => "hidden", :value => "1"}
+      %input{:name => "urlResponse", :type => "hidden", :value => "#{new_shopping_pago_facil_checkout_url}"}
       %input{:name => "idPedido", :type => "hidden", :value => "#{@order.id}"}
       %input{:name => "monto", :type => "hidden", :value => "#{@order.total}"}
       %input{:name => "submit", :type => "submit", :value => "compra"}

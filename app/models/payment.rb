@@ -147,6 +147,17 @@ class Payment < ActiveRecord::Base
       result
     end
     
+    def pago_facil_payment(amount, response)
+      result = Payment.new
+      result.amount = (amount && !amount.integer?) ? (amount * 100).to_i : amount
+      result.action = 'charge'
+      result.success    = response[:autorizado] == "1"
+      result.confirmation_id  = response[:autorizacion]
+      result.message    = response[:texto]
+      result.params     = response
+      result
+    end
+    
     def df_pending_payment(amount)
       result = Payment.new
       result.amount = (amount && !amount.integer?) ? (amount * 100).to_i : amount

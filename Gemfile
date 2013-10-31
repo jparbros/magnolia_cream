@@ -52,6 +52,7 @@ group :development do
 
   gem 'yard'
   gem 'RedCloth'
+  gem 'unicorn'
 end
 group :test, :development do
   gem "rspec-rails"

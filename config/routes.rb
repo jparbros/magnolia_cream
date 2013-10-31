@@ -41,13 +41,8 @@ Hadean::Application.routes.draw do
         get :review
       end
     end
-
-    resource :dinero_facil_checkout, controller: :dinero_facil_checkout do
-      member do
-        get :review
-        get :pending
-      end
-    end
+    
+    resource :pago_facil_checkout, controller: :pago_facil_checkout
 
     resources  :cart_items do
       member do

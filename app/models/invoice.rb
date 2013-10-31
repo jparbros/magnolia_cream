@@ -268,6 +268,13 @@ class Invoice < ActiveRecord::Base
     authorize_complete_order
   end
   
+  def pago_facil_payment(response)
+    payment = Payment.pago_facil_payment(amount, response)
+    payments.push(payment)
+    payment_authorized!
+    authorize_complete_order
+  end
+  
   def df_pending_payment
     payment = Payment.df_pending_payment(amount)
     payments.push(payment)
