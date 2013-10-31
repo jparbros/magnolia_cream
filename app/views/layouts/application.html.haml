@@ -56,13 +56,14 @@
                     = link_to "#{I18n.t('nav.cart')} (#{session_cart.shopping_cart_items.count})", shopping_cart_items_path
                   %li= link_to I18n.t('nav.logout'), logout_path
 
-              .hello-container
-                = "Hello #{current_user.first_name}"
+              - if current_user
+                .hello-container
+                  = "Hello #{current_user.first_name}"
 
     #wrap
       .container
         #content.row
-          .span12
+          .col-lg-12.col-md-12
             = yield
           
     %footer

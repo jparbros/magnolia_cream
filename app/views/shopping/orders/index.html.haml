@@ -1,9 +1,9 @@
 .row
-  .span10.offset1
+  .col-lg-12
     %span.any-change Order summary
   
 .row
-  .span5.offset1
+  .col-lg-6
     %table.table.table-radius
       %thead
         %tr.shopping-cart-header
@@ -13,7 +13,7 @@
         - @order.order_items.each do |item|
           = render :partial => 'order_item', :locals => {:item => item }
 
-  .span5
+  .col-lg-6
     %table.table.table-radius
       %thead
         %tr.shopping-cart-header
@@ -65,14 +65,14 @@
         
         
 .row
-  .span5.offset1
+  .col-lg-6.col-md-6
     #final-order-shipping-address
       %span.any-change Shipping address
       %div.address-details
         = render :partial => '/shared/compact_address', :locals => {:shopping_address => @order.ship_address}
       = link_to 'Change', shopping_addresses_path, :class => 'small-btn'
 
-  .span5
+  .col-lg-6.col-md-6
     = form_tag apply_coupon_shopping_order_path(@order), id: 'apply-coupon-code-form', class: 'pull-left' do
       = text_field_tag 'coupon_code', '', placeholder: 'Coupon code', class: :span2
 
@@ -82,6 +82,14 @@
       
     = link_to shopping_paypal_checkout_path, method: :post, class: 'pull-right' do
       = image_tag '/assets/btn_paypal.gif'
+    
+    %form{:action => "https://www.pagofacil.net/st/public/Payform", :method => "post", :name => "formularioPago", :target => "_blank"}
+      %input{:name => "idSucursal", :type => "hidden", :value => "ba3b2748672431ebeebeed1327c14959a94a74be"}
+      %input{:name => "idUsuario", :type => "hidden", :value => "ce4287a4093e4fca1928f2cde9bf041ee7de8292"}
+      %input{:name => "idServicio", :type => "hidden", :value => "1"}
+      %input{:name => "idPedido", :type => "hidden", :value => "1372109726"}
+      %input{:name => "monto", :type => "hidden", :value => "36"}
+      %input{:name => "submit", :type => "submit", :value => "compra"}
 
 #myModal.modal.hide.fade
   .modal-header
