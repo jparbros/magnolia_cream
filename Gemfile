@@ -8,7 +8,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 gem 'sass-rails'
-gem 'bootstrap-sass', git: 'git@github.com:thomas-mcdonald/bootstrap-sass.git'
+gem 'bootstrap-sass', '~> 3.0.0.0.rc'
 gem 'compass-rails', '~> 2.0.alpha.0'
   
 
