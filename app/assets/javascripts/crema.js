@@ -61,7 +61,7 @@ Magnolias.crema = {
     if (Magnolias.crema.currentStep == 'step0')
       Magnolias.crema.startSteps();
     if (Magnolias.crema.canContinue()) {
-      Magnolias.crema.$$$.backButton.show('slow');
+      Magnolias.crema.$$$.backButton.hide().removeClass('hide').show('slow');
       Magnolias.crema.stepsSign();
       Magnolias.crema.markNextSteps();
       Magnolias.crema.onOffBox();
