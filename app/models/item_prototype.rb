@@ -8,4 +8,8 @@ class ItemPrototype < ActiveRecord::Base
       PropertyValue.find(property_value_id)
     end
   end
+  
+  def self.availables
+    where(active: true)
+  end
 end

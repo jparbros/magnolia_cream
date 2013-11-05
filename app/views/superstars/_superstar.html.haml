@@ -1,0 +1,29 @@
+.superstar-container
+  .superstar
+    .title My Superstar
+    .superstar-name= superstar.name
+    .superstar-quoete= "\"#{superstar.quote}\""
+    .superstar-properties
+      - superstar.property_values.each do |property_value|
+        .superstar-property
+          .superstar-property-image
+            = image_tag "/assets/steps/#{property_value.property.display_name.downcase.parameterize}-#{property_value.display_name.downcase.parameterize}.png"
+          %span= property_value.property.display_name
+
+  .superstar-bottom
+    .supertar-description
+      = superstar.description
+
+    .superstar-actions
+      = form_for  @cart_item, :as => :cart_item, :url  => shopping_cart_items_path(@cart_item), :html => { :id => 'new_cart_item' } do |f|
+        - @product.variants.each do |variant|
+          - if variant.sku == "1040"
+            = hidden_field_tag "cart_item[variant_id]", variant.id
+        = hidden_field_tag "cart_item[quantity]", 1
+        = hidden_field_tag "cart_item[property_value_ids]", superstar.property_value_ids.join(',')
+        = hidden_field_tag "cart_item[cream_name]", superstar.name
+        = submit_tag "Add to cart", class: 'btn btn-magnolia'
+        = submit_tag "Add && Checkout", class: 'btn btn-magnolia'
+
+  = link_to "/products/Crema-Magnolia", class: 'create-yours' do
+    = image_tag('carousel/create-yours.png')

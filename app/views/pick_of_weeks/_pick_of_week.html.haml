@@ -1,0 +1,29 @@
+.pick-of-week-container
+  .pick-of-week
+    .title Pick of the week!
+    .pick-of-week-name= "#{pick_of_week.name}'s Pick of the week"
+    .pick-of-week-quoete= "\"#{pick_of_week.quote}\""
+    .pick-of-week-properties
+      - pick_of_week.property_values.each do |property_value|
+        .pick-of-week-property
+          .pick-of-week-property-image
+            = image_tag "/assets/steps/#{property_value.property.display_name.downcase.parameterize}-#{property_value.display_name.downcase.parameterize}.png"
+          %span= property_value.property.display_name
+
+  .pick-of-week-bottom
+    .pick-of-week-description
+      = pick_of_week.description
+
+    .pick-of-week-actions
+      = form_for  @cart_item, :as => :cart_item, :url  => shopping_cart_items_path(@cart_item), :html => { :id => 'new_cart_item' } do |f|
+        - @product.variants.each do |variant|
+          - if variant.sku == "1040"
+            = hidden_field_tag "cart_item[variant_id]", variant.id
+        = hidden_field_tag "cart_item[quantity]", 1
+        = hidden_field_tag "cart_item[property_value_ids]", pick_of_week.property_value_ids.join(',')
+        = hidden_field_tag "cart_item[cream_name]", pick_of_week.name
+        = submit_tag "Add to cart", class: 'btn btn-magnolia'
+        = submit_tag "Add && Checkout", class: 'btn btn-magnolia'
+
+  = link_to "/products/Crema-Magnolia", class: 'create-yours' do
+    = image_tag('carousel/create-yours.png')

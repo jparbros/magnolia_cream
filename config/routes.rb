@@ -13,6 +13,8 @@ Hadean::Application.routes.draw do
   resources :states,      :only => [:index]
   resource :about,        :only => [:show]
   resources :terms,       :only => [:index]
+  resources :superstars, only: [:index]
+  resources :pick_of_weeks, only: [:index]
 
   root :to => "welcome#index"
   
