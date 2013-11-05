@@ -41,46 +41,52 @@
 
 .new-sections
   .join-club
-    %ul.social-networks
-      %li
-        = image_tag 'rss-icon.png'
-      %li
-        = link_to 'https://www.facebook.com/pages/Magnolia-Cream-Parlor/454390021250578', class: 'facebook', target: '_blank' do
-          = image_tag 'facebook-icon.png'
-      %li
-        = image_tag 'youtube-icon.png'
-      %li
-        = link_to 'http://www.twitter.com/magnoliacream', class: 'twitter', target: '_blank' do
-          = image_tag 'twitter-icon.png'
-      %li
-        = link_to 'http://pinterest.com/Magnoliacreampa', class: 'pinterest', target: '_blank' do
-          = image_tag 'pinterest-icon.png'
+    .section-container
+      %p
+        Follow us and have fun!
+
+      %ul.social-networks
+        %li
+          = image_tag 'rss-icon.png'
+        %li
+          = link_to 'https://www.facebook.com/pages/Magnolia-Cream-Parlor/454390021250578', class: 'facebook', target: '_blank' do
+            = image_tag 'facebook-icon.png'
+        %li
+          = image_tag 'youtube-icon.png'
+        %li
+          = link_to 'http://www.twitter.com/magnoliacream', class: 'twitter', target: '_blank' do
+            = image_tag 'twitter-icon.png'
+        %li
+          = link_to 'http://pinterest.com/Magnoliacreampa', class: 'pinterest', target: '_blank' do
+            = image_tag 'pinterest-icon.png'
     
-    = image_tag 'magnolia-times.png'
+      = image_tag 'magnolia-times.png'
     
-    %p.col-lg-10.col.md-10
-      Suscribe to receive all the latest news about our products, promotions and skin health tips!
+      %p
+        Suscribe to receive all the latest news about our products, promotions and skin health tips!
     
-    %input.col-lg-10.col.md-10{type: 'text', placeholder: 'your email address'}
-    %input{type: 'submit', value: "Subscribe to get it!", class: 'btn btn-magnolia'}
+      %input.col-lg-10.col.md-10{type: 'text', placeholder: 'your email address'}
+      %input{type: 'submit', value: "Subscribe to get it!", class: 'btn btn-magnolia'}
 
   .contact-us
-    = form_tag '/contacto', id: 'contact-form' do
+    .section-container
+      = form_tag '/contacto', id: 'contact-form' do
     
-      .form-group
-        = text_field_tag 'nombre', '', class: 'form-control', placeholder: 'your name'
+        .form-group
+          = text_field_tag 'nombre', '', class: 'form-control', placeholder: 'your name'
 
-      .form-group
-        = text_field_tag 'email', '', class: 'form-control', placeholder: 'your email address'
+        .form-group
+          = text_field_tag 'email', '', class: 'form-control', placeholder: 'your email address'
          
-      .form-group
-        = text_area_tag 'mensaje', '', class: 'form-control', placeholder: 'message'
+        .form-group
+          = text_area_tag 'mensaje', '', class: 'form-control', placeholder: 'message'
 
-      .form-group
-        = submit_tag 'Submit', class: 'btn btn-magnolia'
+        .form-group
+          = submit_tag 'Submit', class: 'btn btn-magnolia'
     
   .whats-up
-    .social-feed-container
+    .section-container
+      .social-feed-container
 
 :javascript
   $('.social-feed-container').socialfeed({
