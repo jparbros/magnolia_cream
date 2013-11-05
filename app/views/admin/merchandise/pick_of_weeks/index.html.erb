@@ -1,0 +1,53 @@
+<%= render :partial => '/admin/merchandise/sub_header'%>
+
+<% content_for :sidemenu do %>
+
+  <div class='admin_filters'>
+    <%= form_tag admin_merchandise_pick_of_weeks_path, :method => 'get', :id => "products_search" do %>
+      <label>Name</label>
+      <%= text_field_tag :name, params[:name] %>
+
+      <div style="text-align:center; margin-top: 15px">
+        <%= submit_tag "Search", :name => nil, :class => 'button red-button' %>
+      </div>
+      </p>
+      <div id="order_hidden">
+        <%= hidden_field_tag :direction, params[:direction] %>
+        <%= hidden_field_tag :sort, params[:sort] %>
+      </div>
+    <% end %>
+    <div class='clearfix'></div>
+  </div>
+<% end %>
+
+<div class='admin_title_header'>
+  <h3>Superstar</h3>
+  <%= link_to "New Pick of the week", new_admin_merchandise_pick_of_week_path, :class => "button", :id => "new_product_button" %>
+</div>
+<div class="admin_products">
+  <table>
+    <thead>
+    <tr class='odd'>
+        <th class='column1_header'><%= sortable "name" %></th>
+        <th>Property Values</th>
+        <th>Active</th>
+        <th></th>
+    </tr>
+    </thead>
+    <% @pick_of_weeks.each do |pick_of_week| %>
+      <tr class='<%= cycle("odd", "")%>'>
+        <td><%= link_to pick_of_week.name, edit_admin_merchandise_pick_of_week_path(pick_of_week) %></td>
+        <td>
+          <% pick_of_week.property_values.each do |property_value| %>
+            <b><%= property_value.property.display_name + ':'%></b> <%= property_value.display_name%>
+            <br/>
+          <% end %>
+        </td>
+        <td><%=  pick_of_week.active? ? 'Yes' : 'No' %></td>
+        <td><%= link_to "Edit",  edit_admin_merchandise_pick_of_week_path(pick_of_week) %></td>
+      </tr>
+    <% end %>
+  </table>
+
+  <%= will_paginate @pick_of_weeks %>
+</div>

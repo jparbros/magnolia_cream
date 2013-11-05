@@ -159,6 +159,8 @@ Hadean::Application.routes.draw do
       resources :brands
       resources :product_types
       resources :prototype_properties
+      resources :superstars
+      resources :pick_of_weeks
 
       namespace :changes do
         resources :products do

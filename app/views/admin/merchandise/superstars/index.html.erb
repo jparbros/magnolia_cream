@@ -1,0 +1,53 @@
+<%= render :partial => '/admin/merchandise/sub_header'%>
+
+<% content_for :sidemenu do %>
+
+  <div class='admin_filters'>
+    <%= form_tag admin_merchandise_superstars_path, :method => 'get', :id => "products_search" do %>
+      <label>Name</label>
+      <%= text_field_tag :name, params[:name] %>
+
+      <div style="text-align:center; margin-top: 15px">
+        <%= submit_tag "Search", :name => nil, :class => 'button red-button' %>
+      </div>
+      </p>
+      <div id="order_hidden">
+        <%= hidden_field_tag :direction, params[:direction] %>
+        <%= hidden_field_tag :sort, params[:sort] %>
+      </div>
+    <% end %>
+    <div class='clearfix'></div>
+  </div>
+<% end %>
+
+<div class='admin_title_header'>
+  <h3>Superstar</h3>
+  <%= link_to "New Superstar", new_admin_merchandise_superstar_path, :class => "button", :id => "new_product_button" %>
+</div>
+<div class="admin_products">
+  <table>
+    <thead>
+    <tr class='odd'>
+        <th class='column1_header'><%= sortable "name" %></th>
+        <th>Property Values</th>
+        <th>Active</th>
+        <th></th>
+    </tr>
+    </thead>
+    <% @superstars.each do |superstar| %>
+      <tr class='<%= cycle("odd", "")%>'>
+        <td><%= link_to superstar.name, edit_admin_merchandise_superstar_path(superstar) %></td>
+        <td>
+          <% superstar.property_values.each do |property_value| %>
+            <b><%= property_value.property.display_name + ':'%></b> <%= property_value.display_name%>
+            <br/>
+          <% end %>
+        </td>
+        <td><%=  superstar.active? ? 'Yes' : 'No' %></td>
+        <td><%= link_to "Edit",  edit_admin_merchandise_superstar_path(superstar) %></td>
+      </tr>
+    <% end %>
+  </table>
+
+  <%= will_paginate @superstars %>
+</div>

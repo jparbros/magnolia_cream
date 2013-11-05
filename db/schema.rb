@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121218175546) do
+ActiveRecord::Schema.define(:version => 20131105100538) do
 
   create_table "accounting_adjustments", :force => true do |t|
     t.integer  "adjustable_id",                                 :null => false
@@ -217,6 +217,17 @@ ActiveRecord::Schema.define(:version => 20121218175546) do
   end
 
   add_index "invoices", ["order_id"], :name => "index_invoices_on_order_id"
+
+  create_table "item_prototypes", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.text     "quote"
+    t.text     "property_value_ids"
+    t.string   "type"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.boolean  "active"
+  end
 
   create_table "item_types", :force => true do |t|
     t.string "name"
