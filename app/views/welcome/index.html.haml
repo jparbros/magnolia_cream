@@ -8,11 +8,11 @@
         %li{"data-slide-to" => "3", "data-target" => ".carousel"}
 
       .carousel-inner
-        .item.item-free-shipping.active
+        .item.active
           = image_tag 'carousel/coming-soon.png'
           = link_to "/products/Crema-Magnolia", class: 'create-yours steps' do
             = image_tag('carousel/create-yours.png')
-        .item
+        .item.item-free-shipping
           = image_tag 'carousel/free-shipping.png', class: 'free-shipping'
           = link_to "/products/Crema-Magnolia", class: 'create-yours' do
             = image_tag('carousel/create-yours.png')
