@@ -58,6 +58,7 @@
 }
 .social-feed-element p.social-feed-text {
     margin: 0;
+    font-size: 16px !important;
 }
 
 /* Message styles */
@@ -117,6 +118,7 @@
 }
 .social-feed-element .muted {
     color: #999;
+    font-size: 12px;
 }
 .social-feed-element a.muted:hover,
 .social-feed-element a.muted:focus {
@@ -153,5 +155,6 @@
 }
 .social-feed-element .author-title{
     color: #444;
-    font-weight: 500;  
+    font-weight: 500; 
+    font-size: 18px; 
 }
