@@ -1,0 +1,231 @@
+.row
+  .col-lg-12.col-md-12
+    #quiz
+      .row
+        .col-lg-4.col-md-4= image_tag 'quiz-time.png'
+        .quiz-description
+          Discover your perfect body cream by answering a few simple questions!
+      %form.form  
+        .general-information
+          .name-information
+            .form-group
+              %input.name.form-control{type: :text, name: 'name', placeholder: 'Your first name'}
+            .form-group
+              %input.initials.form-control{type: :text, name: 'initials', placeholder: 'Your initials'}
+          .genre-information
+            .form-group
+              %label
+                %input.initials{type: :radio, name: 'genre', value:  "female"}
+                Female
+            .form-group
+              %label 
+                %input.initials{type: :radio, name: 'genre', value:  "male"}
+                Male
+          .age-information
+            .form-group
+              %label 
+                %input.initials{type: :radio, name: 'age', value:  "11-19"}
+                11 - 19
+              %label 
+                %input.initials{type: :radio, name: 'age', value:  "25-29"}
+                25 - 29
+              %label 
+                %input.initials{type: :radio, name: 'age', value:  "35-39"}
+                35 - 39
+              %label 
+                %input.initials{type: :radio, name: 'age', value:  "45-49"}
+                45 - 49
+              %label 
+                %input.initials{type: :radio, name: 'age', value:  "55-59"}
+                55 - 59
+              %label 
+                %input.initials{type: :radio, name: 'age', value:  "65-69"}
+                65 - 69
+
+            .form-group
+              %label 
+                %input.initials{type: :radio, name: 'age', value:  "20-24"}
+                20 - 24
+              %label 
+                %input.initials{type: :radio, name: 'age', value:  "30-34"}
+                30 - 34
+              %label 
+                %input.initials{type: :radio, name: 'age', value:  "40-44"}
+                40 - 44
+              %label 
+                %input.initials{type: :radio, name: 'age', value:  "50-54"}
+                50 - 54
+              %label 
+                %input.initials{type: :radio, name: 'age', value:  "60-64"}
+                60 - 64
+              %label 
+                %input.initials{type: :radio, name: 'age', value:  "70+"}
+                70 and more
+        
+        .questions-container
+          #question-1.question.disabled
+            = image_tag 'q1-title.png', class: 'question-title'
+            .question-text Wich sentence would describe your body skin? Select all that apply
+            .anwsers
+              .form-group
+                %label 
+                  %input.initials{type: :checkbox, name: 'q1', value:  "4", data: {name: "skin-type-sensitive"}}
+                  My body skin is easily damaged.
+              .form-group
+                %label 
+                  %input.initials{type: :checkbox, name: 'q1', value:  "3", data: {name: "skin-type-dry"}}
+                  It shows severe dryness.
+              .form-group
+                %label 
+                  %input.initials{type: :checkbox, name: 'q1', value:  "4", data: {name: "skin-type-sensitive"}}
+                  It can show itching and redness.
+              .form-group
+                %label 
+                  %input.initials{type: :checkbox, name: 'q1', value:  "3", data: {name: "skin-type-dry"}}
+                  It has a rough appearance.skin-type-
+              .form-group
+                %label 
+                  %input.initials{type: :checkbox, name: 'q1', value:  "2", data: {name: "skin-type-normal"}}
+                  My body skin has no particular traits.
+            .required
+              This is a required field.
+
+          #question-2.question
+            = image_tag 'q2-title.png', class: 'question-title'
+            .question-text What is your main skin concern?
+            .anwsers
+              .form-group
+                %label 
+                  %input.initials{type: :radio, name: 'q2', value:  "14", data: {name: "power-blend-fluffy-killer"}}
+                  Recovering elasticity, tightening and firming the skin.
+              .form-group
+                %label 
+                  %input.initials{type: :radio, name: 'q2', value:  "15", data: {name: "power-blend-featherly-touch"}}
+                  Having a more even, soft complexion.
+              .form-group
+                %label 
+                  %input.initials{type: :radio, name: 'q2', value:  "13", data: {name: "power-blend-untainted-veil"}}
+                  Having fewer dark spots.
+              .form-group
+                %label 
+                  %input.initials{type: :radio, name: 'q2', value:  "12", data: {name: "power-blend-good-pumpkin"}}
+                  Removing celullite.
+              .form-group
+                %label 
+                  %input.initials{type: :radio, name: 'q2', value:  "11", data: {name: "power-blend-shameless-stripper"}}
+                  Removing stretch marks. 
+            .required
+              This is a required field.
+          
+        
+          #question-3.question
+            = image_tag 'q3-title.png', class: 'question-title'
+            .question-text Which of the following would you choose as an extra benefit for your perfect body cream?
+            .anwsers
+              .form-group
+                %label 
+                  %input.initials{type: :radio, name: 'q3', value:  "6", data: {name: "topping-vitamin-bomb"}}
+                  Extra vitamins for a nourished and protected skin.
+              .form-group
+                %label 
+                  %input.initials{type: :radio, name: 'q3', value:  "9", data: {name: "topping-rubberband-complex"}}
+                  Extra dose of collagen and elastin.
+              .form-group
+                %label 
+                  %input.initials{type: :radio, name: 'q3', value:  "8", data: {name: "topping-restore"}}
+                  Extra help for delaying the signs of aging.
+              .form-group
+                %label 
+                  %input.initials{type: :radio, name: 'q3', value:  "7", data: {name: "topping-hydramax"}}
+                  Extra hydration for your skin.
+              .form-group
+                %label 
+                  %input.initials{type: :radio, name: 'q3', value:  "5", data: {name: "topping-tan-booster"}}
+                  Special care to ensure a more even tan, making it last longer. 
+            .required
+              This is a required field.
+
+          #question-4.question
+            = image_tag 'q4-title.png', class: 'question-title'
+            .question-text What kind of fragante would you prefer?
+            .anwsers
+              \- Sweet
+              .form-group
+                %label 
+                  %input.initials{type: :radio, name: 'q4', value:  "28", data: {name: "flavor-peach-yogurth"}}
+                  Strawberry Cheesecake
+              .form-group
+                %label 
+                  %input.initials{type: :radio, name: 'q4', value:  "22", data: {name: "flavor-chocolate-marshmallow"}}
+                  Chocolate Marshmallow 
+              .form-group
+                %label 
+                  %input.initials{type: :radio, name: 'q4', value:  "31", data: {name: "flavor-cherry-popsicle"}}
+                  Cherry Popsicle
+
+            .anwsers
+              \- Fresh
+              .form-group
+                %label 
+                  %input.initials{type: :radio, name: 'q4', value:  "28", data: {name: "flavor-peach-yogurth"}}
+                  Peach Yogurth
+              .form-group
+                %label 
+                  %input.initials{type: :radio, name: 'q4', value:  "25", data: {name: "flavor-guaba-rosa"}}
+                  Guabarosa
+              .form-group
+                %label 
+                  %input.initials{type: :radio, name: 'q4', value:  "31", data: {name: "flavor-tangerine"}}
+                  Tangerine
+            .required
+              This is a required field.
+
+        .buttons
+          .form-group
+            %a#next-btn{href: '#', class: "btn btn-magnolia btn-lg disabled"} Next >>
+
+    #results
+      .row
+        .col-lg-8.col-md-8
+          %h1 Congratulations %name%!
+          Your Perfect Magnolia Cream is:
+        .col-lg-4.col-md-4
+          = form_for  @cart_item, :as => :cart_item, :url  => shopping_cart_items_path(@cart_item), :html => { :id => 'new_cart_item' } do |f|
+            - @product.variants.each do |variant|
+              - if variant.sku == "1040"
+                = hidden_field_tag "cart_item[variant_id]", variant.id
+            = hidden_field_tag "cart_item[quantity]", 1
+            = hidden_field_tag "cart_item[property_value_ids]"
+            = hidden_field_tag "cart_item[cream_name]"
+            = submit_tag "Add to cart", class: 'btn btn-magnolia'
+            = submit_tag "Add && Checkout", class: 'btn btn-magnolia'
+      
+      .ingredients
+        .base
+          %img#base-image
+          = image_tag 'quiz-base.png', class: 'ingredient-title'
+        
+        .power-blend
+          %img#power-blend-image
+          = image_tag 'quiz-power-blend.png', class: 'ingredient-title'
+        
+        .topping
+          %img#topping-image
+          = image_tag 'quiz-topping.png', class: 'ingredient-title'
+        
+        .flavor
+          %img#flavor-image
+          = image_tag 'quiz-flavor.png', class: 'ingredient-title'
+
+      #results-bottom.row
+        .col-lg-6.col-md-6
+          = image_tag "quiz-image.png", class: 'quiz-image'
+        .col-lg-6.col-md-6
+          = image_tag "quiz-iconically.png", class: 'iconically-image'
+          = image_tag "quiz-enjoy.png", class: 'enjoy-image'
+
+= javascript_include_tag 'quiz'
+- content_for :javascript do
+  $(document).ready(function(){
+  Magnolias.Quiz.init();
+  });

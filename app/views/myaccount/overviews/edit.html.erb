@@ -1,7 +1,7 @@
 <h3> Edit Profile </h3>
 
-<%= form_for current_user, :url => myaccount_overview_path, :method => 'PUT' do |f| %>
+<%= form_for current_user, :url => myaccount_overview_path, :method => 'PUT', html: {class: 'form'} do |f| %>
   <%=  render :partial => 'form', :locals => {:f => f} %>
-  <div class="actions"><%= f.submit 'Update' , :class => 'button' %></div>
+  <div class="form-group"><%= f.submit 'Update' , :class => 'btn btn-magnolia btn-lg' %></div>
 <% end %>
 

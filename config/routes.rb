@@ -15,6 +15,8 @@ Hadean::Application.routes.draw do
   resources :terms,       :only => [:index]
   resources :superstars, only: [:index]
   resources :pick_of_weeks, only: [:index]
+  resources :quiz, only: [:index]
+  
 
   root :to => "welcome#index"
   
@@ -22,6 +24,7 @@ Hadean::Application.routes.draw do
   resource :contacto, only: [:new, :create], controller: 'contact'
   resources :authentications
   match '/auth/:provider/callback' => 'authentications#create'
+
 
   namespace :customer do
     resources :registrations,   :only => [:new, :create]

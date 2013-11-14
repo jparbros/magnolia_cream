@@ -1,0 +1,160 @@
+// Place all the styles related to the quiz controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.quiz-description {
+  @extend col-lg-8;
+  @extend .col-md-8;
+  color: #8b1b3f;
+  font-size: 18pt;
+  font-family: "Lemondrop";
+}
+
+.general-information {
+  @extend .row;
+  margin-top: 30px;
+  
+  .name-information {
+    @extend .col-lg-3;
+    @extend .col-md-3;
+  }
+  
+  .genre-information {
+    @extend .col-lg-2;
+    @extend .col-md-2;
+  }
+
+  .age-information {
+    @extend .col-lg-7;
+    @extend .col-md-7;
+  }
+  
+  label {
+    color: #000;
+    font-family: Century Gothic;
+    font-size: 15.28pt;
+    font-weight: 100;
+    margin-right: 25px;
+  }
+}
+
+.questions-container {
+  margin: 50px 0 0 0;
+  .question {
+    color: #8b1b3f;
+    font-size: 19pt;
+    font-family: "Lemondrop";
+    background: image-url('question-background.png');
+    width: 1039px;
+    height: 525px;
+    margin: 0 auto;
+    
+    .question-title {
+      position: relative;
+      right: -800px;
+      top: 50px;
+    }
+    
+    .question-text {
+      margin: 60px 200px 30px 40px;
+    }
+    
+    .anwsers {
+      margin: 0px 100px 0px 100px;
+    }
+    
+    &#question-2, &#question-3, &#question-4 {
+      display: none;
+    }
+    
+    &#question-3 {
+      font-size: 16.5pt;
+    }
+    
+    &#question-4 {
+      .anwsers {
+        margin: 0px 0 0px 50px;
+        width: 440px;
+        display: inline-block;
+        font-size: 13pt;
+      }
+    }
+    
+    &.disabled {
+      opacity: .5;
+    }
+  }
+  
+  .required {
+    display: none;
+    width: 500px;
+    height: 100px;
+    position: relative;
+    top: -50%;
+    background: white;
+    opacity: .8;
+    left: 50%;
+    margin: -50px 0 0 -250px;
+    text-align: center;
+    padding-top: 35px;
+  }
+}
+#results {
+  color: #852c43;
+  display: none;
+  font-family: Lemondrop;
+  font-size: 18pt;
+  
+  h1 {
+    color: #f7f5cb;
+    font-family: "Lobster";
+    text-shadow: 4px 0 0 #852c43, -4px 0 0 #852c43, 0 4px 0 #852c43, 0 -4px 0 #852c43, 2px 2px #852c43, -2px -2px 0 #852c43, 2px -2px 0 #852c43, -2px 2px 0 #852c43;
+  }
+  
+  .ingredients {
+    width: 920px;
+    margin: 50px auto;
+    
+    .base, .power-blend, .topping, .flavor {
+      display: inline-block;
+      margin: 0 20px 0 0;
+      text-align: center;
+      
+      img.ingredient-title {
+        margin: -50px 0 0 0;
+      }
+    }
+
+    .base {
+      width: 135px;
+      img#base-image { width: 167px;}
+    }
+  
+    .power-blend {
+      width: 310px;
+    }
+  
+    .topping,  {
+      width: 204px;
+    }
+  
+    .flavor {
+      width: 166px;
+    }
+  }
+  
+  .btn.btn-magnolia[name=commit] {
+    display: block;
+  }
+  
+  #results-bottom {
+    margin: 100px 0 0 0;
+
+    .quiz-image { margin-bottom: -45px;}
+  
+    .enjoy-image {
+      float: right;
+      margin-top: 100px;
+    }
+  }
+}
