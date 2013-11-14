@@ -8,21 +8,17 @@
   
     = form_tag '/contacto', id: 'contact-form' do
     
-      .control-group
+      .form-group
         %label Name
-        .controls
-          = text_field_tag 'nombre', '', class: 'span5'
+        = text_field_tag 'nombre', '', class: 'form-control'
 
-      .control-group
+      .form-group
         %label Email
-        .controls
-          = text_field_tag 'email', '', class: 'span5'
+        = text_field_tag 'email', '', class: 'form-control'
          
-      .control-group
+      .form-group
         %label Message
-        .controls
-          = text_area_tag 'mensaje', '', class: 'span5'
+        = text_area_tag 'mensaje', '', class: 'form-control'
 
-      .control-group
-        .controls
-          = submit_tag 'Send', class: 'button-large'
+      .form-group
+        = submit_tag 'Send', class: 'btn btn-magnolia btn-lg'
